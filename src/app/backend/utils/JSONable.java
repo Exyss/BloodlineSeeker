@@ -16,7 +16,7 @@ public interface JSONable {
         File dir = new File(outputPath);
 
         //Create dirs recursively if not existing
-        if (!dir.exists()) {
+        if (outputPath.contains("/") && !dir.exists()) {
             Files.createDirectories(Paths.get(dir.getParent()));
         }
 

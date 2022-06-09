@@ -10,6 +10,8 @@ import org.apache.log4j.Logger;
 import app.backend.BackendManager;
 import app.backend.controllers.BinariesController;
 import app.frontend.FrontendManager;
+import app.tests.DynastyTester;
+import app.tests.WikipediaScraperTester;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,7 +24,12 @@ public class Main {
             Main.run();
         }
     }
-    
+
+    private static void run() {
+        FrontendManager.setupGUI();
+        FrontendManager.createLauncherWindow();
+    }
+
     private static void programConfiguration() {
         BasicConfigurator.configure();
         Logger.getRootLogger().setLevel(Level.OFF);
@@ -33,18 +40,12 @@ public class Main {
         BinariesController.clearTempDirectories();
         BinariesController.extractGraphVizBinaries();
     }
-
-    private static void run() {
-        FrontendManager.setupGUI();
-        FrontendManager.createLauncherWindow();
-    }
     
     private static boolean parseArgs(String[] inputArgs) {
         List<String> args = Arrays.asList(inputArgs);
         
         if (args.contains("--help") || args.contains("-h")) {
             printHelp();
-
             return false;   //close the program after running help
         }
         
@@ -58,12 +59,20 @@ public class Main {
         
         if (args.contains("--run-tests") || args.contains("-t")) {
             Main.runTests();
+            return false;   //close the program after running help
         }
 
         return true;
     }
 
-    private static void runTests() {}
+    private static void runTests() {
+        System.out.println("Running Tests:\n");
+
+        DynastyTester.runTests();
+        WikipediaScraperTester.runTests();
+
+        System.out.println("\nTests completed");
+    }
 
     private static void printHelp() {
         System.out.println("");
@@ -72,20 +81,20 @@ public class Main {
             
         String juliusCeasar = String.join("\n",
             "                              ",
-            "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣶⣿⣿⢿⡶⠆⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀ " ,
-            "⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⡿⠻⠋⣠⠀⢀⣶⠇⢠⣾⡿⠁⠀⠀⠀⠀⠀ " ,
-            "⠀⠀⠀⠀⠀⠀⢀⣼⠟⠋⠻⢁⣴⠀⣾⣿⠀⠾⠟⠀⠈⣉⣠⣦⡤⠀⠀⠀⠀ " ,
-            "⠀⠀⠀⠀⠀⠀⠸⠃⣠⡆⠀⣿⡟⠀⠛⠃⠀⠀⣶⣶⣦⣄⠉⢁⡄⠀⠀⠀⠀ " ,
-            " ⠀⠀⠀⠀⣰⡀⢰⣿⠇⠀⢉⣀⣀⠛⠿⠿⠦⠀⢀⣠⣤⣴⣾⡇⠀⠀⠀⠀ " ,
-            "⠀⠀⠀⠀⠀⣿⠃⠀⠠⣴⣦⡈⠙⠛⠓⠀⢰⣶⣶⣿⣿⣿⣿⣿⣧⡀⠀⠀⠀ " ,
-            "⠀⠀⢀⣤⠦⡀⠰⢷⣦⠈⠉⠉⠀⣰⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀  " ,
-            "⠀⠀⠈⠁⠀⠘⣶⣤⣄⣀⣨⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠃⠀  " ,
-            "⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀ " ,
-            "⠀⠀⠀⠀⠀⠀⠀⠈⢿⣿⣿⣯⡈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀ " ,
-            "⠀⠀⠀⠀⠀⠀⠀⠀⢨⣿⣿⣿⣷⣤⣈⡉⠛⠛⠛⠛⠻⠟⠛⠛⠛⠀⠀⠀⠀ " ,
-            "⠀⠀⠀⠀⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" ,
-            "⠀⠀⠀⠀⠀⠀⠀⠙⠻⠿⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" ,
-            "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" 
+            "          ⢀⣠⣴⣶⣿⣿⢿⡶⠆   ⢀⡀      " ,
+            "        ⣠⣾⣿⣿⡿⠻⠋⣠ ⢀⣶⠇⢠⣾⡿⠁      " ,
+            "      ⢀⣼⠟⠋⠻⢁⣴ ⣾⣿ ⠾⠟ ⠈⣉⣠⣦⡤     " ,
+            "      ⠸⠃⣠⡆ ⣿⡟ ⠛⠃  ⣶⣶⣦⣄⠉⢁⡄     " ,
+            "     ⣰⡀⢰⣿⠇ ⢉⣀⣀⠛⠿⠿⠦ ⢀⣠⣤⣴⣾⡇     " ,
+            "     ⣿⠃ ⠠⣴⣦⡈⠙⠛⠓ ⢰⣶⣶⣿⣿⣿⣿⣿⣧⡀    " ,
+            "  ⢀⣤⠦⡀⠰⢷⣦⠈⠉⠉ ⣰⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀   " ,
+            "  ⠈⠁ ⠘⣶⣤⣄⣀⣨⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠃   " ,
+            "      ⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿     " ,
+            "       ⠈⢿⣿⣿⣯⡈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿     " ,
+            "        ⢨⣿⣿⣿⣷⣤⣈⡉⠛⠛⠛⠛⠻⠟⠛⠛⠛     " ,
+            "       ⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁           " ,
+            "       ⠙⠻⠿⣿⣿⣿⣿⣿⣿⣿⠁            " ,
+            "            ⠉⠉⠉⠉⠉             " 
         );
 
         System.out.println(juliusCeasar);
