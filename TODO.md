@@ -6,7 +6,7 @@
 
 ## Test
 
-- [] scrivere la percentuale di passati alla fine, il success rate
+- [ ] scrivere la percentuale di passati alla fine, il success rate
 
 ## README
 
