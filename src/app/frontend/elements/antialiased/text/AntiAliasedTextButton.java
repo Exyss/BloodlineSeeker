@@ -16,9 +16,9 @@ import javax.swing.JButton;
  *
  */
 public class AntiAliasedTextButton extends JButton {
-	/**
-	 * ID 
-	 */
+    /**
+     * ID 
+     */
     private static final long serialVersionUID = 3L;
 
     /**

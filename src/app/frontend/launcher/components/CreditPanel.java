@@ -16,9 +16,9 @@ import app.frontend.utils.QuattrocentoFont;
  *
  */
 public class CreditPanel extends JPanel {
-	/**
-	 * ID
-	 */
+    /**
+     * ID
+     */
     private static final long serialVersionUID = 8L;
 
     /**

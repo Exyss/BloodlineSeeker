@@ -16,9 +16,9 @@ import javax.swing.JTextField;
  *
  */
 public class AntiAliasedTextField extends JTextField {
-	/**
-	 * ID
-	 */
+    /**
+     * ID
+     */
     private static final long serialVersionUID = 5L;
 
     /**

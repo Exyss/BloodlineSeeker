@@ -21,9 +21,9 @@ import app.frontend.utils.QuattrocentoFont;
  *
  */
 public class ConsolePage extends JPanel {
-	/**
-	 * ID
-	 */
+    /**
+     * ID
+     */
     private static final long serialVersionUID = 11L;
 
     /**

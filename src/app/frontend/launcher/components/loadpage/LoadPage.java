@@ -24,9 +24,9 @@ import app.frontend.utils.QuattrocentoFont;
  *
  */
 public class LoadPage extends JPanel {
-	/**
-	 * ID
-	 */
+    /**
+     * ID
+     */
     private static final long serialVersionUID = 14L;
 
     /**

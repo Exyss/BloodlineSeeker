@@ -31,9 +31,9 @@ import app.frontend.utils.ImagePath;
  * 
  */
 public final class FrontendManager {
-	/**
-	 * The logo of the application.
-	 */
+    /**
+     * The logo of the application.
+     */
     public final static Image APP_LOGO = ImageLoader.asImage(ImagePath.APP_LOGO.get());
     
     /**

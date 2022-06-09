@@ -27,9 +27,9 @@ import app.frontend.utils.ComponentBorder;
  *
  */
 public final class LauncherManager {
-	/**
-	 * A LauncherWindow object named window.
-	 */
+    /**
+     * A LauncherWindow object named window.
+     */
     private static LauncherWindow window;
 
     /**

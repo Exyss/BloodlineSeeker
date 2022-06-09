@@ -38,9 +38,9 @@ import app.frontend.mainwindow.window.MainWindow;
  *
  */
 public class MainWindowManager {
-	/**
-	 * The main window.
-	 */
+    /**
+     * The main window.
+     */
     private static MainWindow window;
     /**
      * If is true the window 

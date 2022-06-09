@@ -16,9 +16,9 @@ import javax.swing.JLabel;
  *
  */
 public class AntiAliasedImageLabel extends JLabel {
-	/**
-	 * ID 
-	 */
+    /**
+     * ID 
+     */
     private static final long serialVersionUID = 2L;
     
     /**

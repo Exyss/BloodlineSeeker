@@ -17,8 +17,8 @@ import javax.swing.JButton;
  */
 public class AntiAliasedImageButton extends JButton {
     /**
-	 * ID 
-	 */
+     * ID 
+     */
     private static final long serialVersionUID = 1L;
     
     /**

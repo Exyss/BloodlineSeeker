@@ -13,9 +13,9 @@ import app.frontend.launcher.LauncherManager;
  *
  */
 public final class ConsoleRunner extends Thread{
-	/**
-	 * The starting message.
-	 */
+    /**
+     * The starting message.
+     */
     private final String DOWNLOAD_START_MSG = "Initializing download...";
     /**
      * The download complete message.

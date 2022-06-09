@@ -15,9 +15,9 @@ import app.frontend.utils.QuattrocentoFont;
  *
  */
 public class StartButton extends AntiAliasedTextButton {
-	/**
-	 * ID
-	 */
+    /**
+     * ID
+     */
     private static final long serialVersionUID = 10L;
 
     /**

@@ -16,9 +16,9 @@ import javax.swing.JFileChooser;
  *
  */
 public class AntialiasedTextFileChooser extends JFileChooser {
-	/**
-	 * ID
-	 */
+    /**
+     * ID
+     */
     private static final long serialVersionUID = 6L;
 
     /**

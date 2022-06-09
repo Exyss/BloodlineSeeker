@@ -26,9 +26,9 @@ import app.frontend.utils.ComponentColor;
  *
  */
 public class LauncherWindow extends JFrame {
-	/**
-	 * ID
-	 */
+    /**
+     * ID
+     */
     private static final long serialVersionUID = 15L;
 
     /**
