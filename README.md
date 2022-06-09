@@ -40,14 +40,16 @@ Support on macOS is not guaranteed, because of hardware limitations due to the i
 
 To run the jar file, simply double-click on it, or run
 
-```java -jar BloodlineSeeker.jar [options]```
+```sh
+java -jar BloodlineSeeker.jar [options]
+```
 
 on your terminal. Also, by doing so you can run some other commands that are supported by the program:
 
-- ```--help``` or ```-h``` to show the help message
-- ```--debug``` or ```-d``` to run the program with the debug mode activated
-- ```--no-headless``` or ```-nh``` to run the program without the headless mode activated (in case the dynasties are downloaded through Selenium)
-- ```--run-tests``` or ```-t``` to run the tests
+- `--help` or `-h` to show the help message
+- `--debug` or `-d` to run the program with the debug mode activated
+- `--no-headless` or `-nh` to run the program without the headless mode activated (in case the dynasties are downloaded through Selenium)
+- `--run-tests` or `-t` to run the tests
 
 ## Usage
 
@@ -61,8 +63,12 @@ After the download is completed, the files of the found dynasties will be create
 
 To contribute to the program, first clone this repository. Then, to compile the program, just run
 
-```NON SO COME SI COMPILA```
+```sh
+NON SO COME SI COMPILA
+```
 
 Then, to run the program, simply run
 
-```NON SO COME SI RUNNA```
+```sh
+NON SO COME SI RUNNA
+```
