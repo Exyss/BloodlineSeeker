@@ -87,7 +87,7 @@ public class Member implements JSONable {
 		return IDs;
 	}
 
-	public ArrayList<Member> getAllRelatives(){
+	public ArrayList<Member> getAllRelatives() {
 		ArrayList<Member> relatives = new ArrayList<Member>();
 		relatives.addAll(this.parents);
 		relatives.addAll(this.children);

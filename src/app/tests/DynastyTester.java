@@ -8,34 +8,35 @@ import app.backend.scraper.results.member.Member;
 import app.backend.scraper.results.member.Relative;
 
 public class DynastyTester {
-    
     private static final String JSON_FILE = "test.json";
 
-    public static void runTests(){
-
+    public static void runTests() {
         Dynasty createdDynasty = createTestDynasty();
 
         System.out.print("Testing Dynasty Serialization... ");
 
-        if(testDynastySerialization(createdDynasty)){
+        if (testDynastySerialization(createdDynasty)) {
             System.out.println("SUCCESS");
+        } else {
+            System.out.println("FAILED");
         }
-        else System.out.println("FAILED");
 
         System.out.print("Testing Dynasty De-Serialization... ");
 
-        if(testDynastyDeserialization(createdDynasty)){
+        if (testDynastyDeserialization(createdDynasty)) {
             System.out.println("SUCCESS");
+        } else {
+            System.out.println("FAILED");
         }
-        else System.out.println("FAILED");
 
         File testFile = new File(JSON_FILE);
-        if(testFile.isFile()){
+
+        if (testFile.isFile()) {
             testFile.delete();
         }
     }
 
-    private static Dynasty createTestDynasty(){
+    private static Dynasty createTestDynasty() {
         Dynasty dynasty = new Dynasty("Test Dynasty", "https://example.com");
         Member member1 = new Member("Member 1", "", false);
         Member member2 = new Member("Member 2", "https://example.com", true);
@@ -52,7 +53,7 @@ public class DynastyTester {
         return dynasty;
     }
 
-    private static boolean testDynastySerialization(Dynasty createdDynasty){
+    private static boolean testDynastySerialization(Dynasty createdDynasty) {
         try {
             createdDynasty.toJSONFile(JSON_FILE);
         } catch (IOException e) {
@@ -63,7 +64,7 @@ public class DynastyTester {
         return true;
     }
 
-    private static boolean testDynastyDeserialization(Dynasty createdDynasty){
+    private static boolean testDynastyDeserialization(Dynasty createdDynasty) {
         Dynasty loadedDynasty;
 
         try {
@@ -75,6 +76,7 @@ public class DynastyTester {
 
         String loadedString = loadedDynasty.toJSONObject().toString();
         String expectedString = createdDynasty.toJSONObject().toString();
+
         return expectedString.equals(loadedString);
     }
 }

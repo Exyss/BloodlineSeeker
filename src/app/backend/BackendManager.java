@@ -216,7 +216,7 @@ public final class BackendManager {
         return "";
     }
 
-    public static ArrayList<Dynasty> getDynasties(){
+    public static ArrayList<Dynasty> getDynasties() {
         return dynasties;
     }
     

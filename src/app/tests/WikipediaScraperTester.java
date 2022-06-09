@@ -9,7 +9,6 @@ import java.util.HashMap;
 import app.backend.scraper.engine.WikipediaScraper;
 
 public class WikipediaScraperTester {
-    
     private static final String EXAMPLE_LINK = "https://example.com";
 
     private static final String ROMOLO_LINK = "https://it.wikipedia.org/wiki/Romolo";
@@ -40,43 +39,45 @@ public class WikipediaScraperTester {
         ""
     );
 
-    public static void runTests(){
-
+    public static void runTests() {
         System.out.print("Testing HTML scraping with HTTP Requests... ");
 
-        if(testHTTPrequests()){
+        if (testHTTPrequests()) {
             System.out.println("SUCCESS");
+        } else {
+            System.out.println("FAILED");
         }
-        else System.out.println("FAILED");
 
         System.out.print("Testing HTML scraping with Selenium... ");
 
-        if(testSelenium()){
+        if (testSelenium()) {
             System.out.println("SUCCESS");
+        } else {
+            System.out.println("FAILED");
         }
-        else System.out.println("FAILED");
 
         System.out.print("Testing Wikipedia summary scraping... ");
 
-        if(testWikipediaSummary()){
+        if (testWikipediaSummary()) {
             System.out.println("SUCCESS");
+        } else {
+            System.out.println("FAILED");
         }
-        else System.out.println("FAILED");
     }
 
-    private static boolean testHTTPrequests(){
-        
+    private static boolean testHTTPrequests() {
         try {
             WikipediaScraper.getPageHTMLwithHTTP(EXAMPLE_LINK);
-            
         } catch (IOException e) {
             System.err.println(e);
+
             return false;
         }
+
         return true;
     }
     
-    private static boolean testSelenium(){
+    private static boolean testSelenium() {
         WikipediaScraper scraper = new WikipediaScraper();
         
         // Temporally disable console out and err streams to
@@ -107,7 +108,7 @@ public class WikipediaScraperTester {
     }
 
 
-    private static boolean testWikipediaSummary(){
+    private static boolean testWikipediaSummary() {
         HashMap<String, HashMap<String, String>> summary;
 
         WikipediaScraper scraper = new WikipediaScraper();
@@ -126,17 +127,17 @@ public class WikipediaScraperTester {
         // Check results
         StringBuilder builder = new StringBuilder();
 
-        for(String key : summary.keySet()){
+        for(String key : summary.keySet()) {
             HashMap<String, String> data = summary.get(key);
             
             builder.append(key + "\n");
             
-            for(String field: data.keySet()){
+            for(String field: data.keySet()) {
                 String link = data.get(field);
 
                 builder.append("\t" + field);
                 
-                if(!link.equals("")){
+                if (!link.equals("")) {
                     builder.append(": " + link);
                 }
 
@@ -152,17 +153,19 @@ public class WikipediaScraperTester {
 // Fake output to disable system streams
 class NullOutputStream extends OutputStream {
     @Override
-    public void write(int b){
+    public void write(int b) {
         return;
     }
+
     @Override
-    public void write(byte[] b){
+    public void write(byte[] b) {
         return;
     }
+
     @Override
-    public void write(byte[] b, int off, int len){
+    public void write(byte[] b, int off, int len) {
         return;
     }
-    public NullOutputStream(){
-    }
+
+    public NullOutputStream() {}
 }

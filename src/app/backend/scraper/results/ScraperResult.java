@@ -35,12 +35,12 @@ public final class ScraperResult implements Comparable<ScraperResult> {
         }
     }
 
-    private int compareRankAndStatus(ScraperResult other){
+    private int compareRankAndStatus(ScraperResult other) {
         boolean thisStatus = this.member.isEmperor();
         boolean otherStatus  = other.member.isEmperor();
-        if (!(thisStatus || otherStatus) || (thisStatus && otherStatus)){
+        if (!(thisStatus || otherStatus) || (thisStatus && otherStatus)) {
             return compareRank(other);
-        }else if (thisStatus){
+        }else if (thisStatus) {
             return -1;
         }else {
             return 1;
