@@ -57,7 +57,7 @@ In the Download page, the user will be able to choose between HTTP requests and 
 
 After the download is completed, the files of the found dynasties will be created under `data/jsons/`. Then, the program will launch, giving the user the ability to search through every person of every dynasty, and the option to explore the person's close family graph dynamically in the program.
 
-## Developing
+## Contributing
 
 To contribute to the program, first clone this repository. Then, to compile the program, just run
 
