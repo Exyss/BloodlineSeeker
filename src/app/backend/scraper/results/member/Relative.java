@@ -11,7 +11,7 @@ public enum Relative {
             return CHILD;
         } else if (field.contains("Madre") || field.contains("Padre")) {
             return PARENT;
-        } else if (field.contains("Consorte") || field.contains("Coniuge")) {
+        } else if (field.contains("Consort") || field.contains("Coniug")) {
             return SPOUSE;
         } else {
             return INVALID;

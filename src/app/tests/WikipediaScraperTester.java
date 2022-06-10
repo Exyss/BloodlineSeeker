@@ -86,7 +86,6 @@ public class WikipediaScraperTester {
             WikipediaScraper.getPageHTMLwithHTTP(EXAMPLE_LINK);
         } catch (IOException e) {
             System.err.println(e);
-
             return false;
         }
 

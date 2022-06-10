@@ -16,9 +16,9 @@ import app.backend.scraper.results.member.Relative;
 
 public class DynastiesScraper extends WikipediaScraper {
     private static final String MAIN_EMPEROR_PAGE = WIKI_DOMAIN + "/wiki/Imperatori_romani";
-    private static final String[] RELATIVE_FIELDS = {"Consorte", "Madre", "Padre", "Coniuge", "Figli"};
+    private static final String[] RELATIVE_FIELDS = {"Consort", "Madre", "Padre", "Coniug", "Figli"};
 
-    private static final String VALID_NAME_FILTER = "(^Da [\\w\\s]+:)|( e )|Adottivi|equestre|due figli";
+    private static final String VALID_NAME_FILTER = "(^Da [\\w\\s]+:)|( e )|Adottivi|equestre|due figli|presunto";
     private static final String TRAILING_INVALID_CHARS = "[^a-zA-Z\']+$";
     private static final String TRAILING_SINGLE_CHAR = "\\s[a-zA-Z]?$";
     private static final String INVALID_CHARS = "\"";

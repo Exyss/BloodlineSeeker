@@ -72,7 +72,6 @@ public class DynastyTester {
             createdDynasty.toJSONFile(JSON_FILE);
         } catch (IOException e) {
             System.out.println(e);
-
             return false;
         }
 
