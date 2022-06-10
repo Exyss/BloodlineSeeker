@@ -8,15 +8,25 @@ import app.backend.scraper.results.member.Member;
 import app.backend.scraper.results.member.Relative;
 
 public class DynastyTester {
+    private static final int TESTS_NUMBER = 2;
+
     private static final String JSON_FILE = "test.json";
 
-    public static void runTests() {
+    public static int getTotalTests() {
+        return TESTS_NUMBER;
+    }
+
+    public static int runTests() {
         Dynasty createdDynasty = createTestDynasty();
 
         System.out.print("Testing Dynasty Serialization... ");
 
+        int passedTests = 0;
+
         if (testDynastySerialization(createdDynasty)) {
             System.out.println("SUCCESS");
+
+            passedTests++;
         } else {
             System.out.println("FAILED");
         }
@@ -25,6 +35,8 @@ public class DynastyTester {
 
         if (testDynastyDeserialization(createdDynasty)) {
             System.out.println("SUCCESS");
+
+            passedTests++;
         } else {
             System.out.println("FAILED");
         }
@@ -34,6 +46,8 @@ public class DynastyTester {
         if (testFile.isFile()) {
             testFile.delete();
         }
+
+        return passedTests;
     }
 
     private static Dynasty createTestDynasty() {
@@ -58,6 +72,7 @@ public class DynastyTester {
             createdDynasty.toJSONFile(JSON_FILE);
         } catch (IOException e) {
             System.out.println(e);
+
             return false;
         }
 

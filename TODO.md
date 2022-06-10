@@ -7,6 +7,7 @@
 ## Test
 
 - [ ] scrivere la percentuale di passati alla fine, il success rate
+- [ ] interfaccia Testable? però non potrebbero essere statici i metodi
 
 ## README
 

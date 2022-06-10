@@ -9,6 +9,8 @@ import java.util.HashMap;
 import app.backend.scraper.engine.WikipediaScraper;
 
 public class WikipediaScraperTester {
+    private static final int TESTS_NUMBER = 3;
+
     private static final String EXAMPLE_LINK = "https://example.com";
 
     private static final String ROMOLO_LINK = "https://it.wikipedia.org/wiki/Romolo";
@@ -39,11 +41,19 @@ public class WikipediaScraperTester {
         ""
     );
 
-    public static void runTests() {
+    public static int getTotalTests() {
+        return TESTS_NUMBER;
+    }
+
+    public static int runTests() {
         System.out.print("Testing HTML scraping with HTTP Requests... ");
+
+        int passedTests = 0;
 
         if (testHTTPrequests()) {
             System.out.println("SUCCESS");
+
+            passedTests++;
         } else {
             System.out.println("FAILED");
         }
@@ -52,6 +62,8 @@ public class WikipediaScraperTester {
 
         if (testSelenium()) {
             System.out.println("SUCCESS");
+
+            passedTests++;
         } else {
             System.out.println("FAILED");
         }
@@ -60,9 +72,13 @@ public class WikipediaScraperTester {
 
         if (testWikipediaSummary()) {
             System.out.println("SUCCESS");
+
+            passedTests++;
         } else {
             System.out.println("FAILED");
         }
+
+        return passedTests;
     }
 
     private static boolean testHTTPrequests() {

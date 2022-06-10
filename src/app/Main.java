@@ -46,7 +46,8 @@ public class Main {
         
         if (args.contains("--help") || args.contains("-h")) {
             printHelp();
-            return false;   //close the program after running help
+
+            return false;   // Close the program after running help
         }
         
         if (args.contains("--debug") || args.contains("-d")) {
@@ -59,7 +60,8 @@ public class Main {
         
         if (args.contains("--run-tests") || args.contains("-t")) {
             Main.runTests();
-            return false;   //close the program after running help
+
+            return false;   // Close the program after running help
         }
 
         return true;
@@ -68,10 +70,21 @@ public class Main {
     private static void runTests() {
         System.out.println("Running Tests:\n");
 
-        DynastyTester.runTests();
-        WikipediaScraperTester.runTests();
+        int passedTests = 0;
 
-        System.out.println("\nTests completed");
+        passedTests += DynastyTester.runTests();
+        passedTests += WikipediaScraperTester.runTests();
+
+        int totalTests = 0;
+
+        totalTests += DynastyTester.getTotalTests();
+        totalTests += WikipediaScraperTester.getTotalTests();
+
+        System.out.println("\nTests completed\n");
+
+        int successRate = (int) Math.round(((double) passedTests) / ((double) totalTests) * 100.0);
+
+        System.out.println("Success rate: " + successRate + "%");
     }
 
     private static void printHelp() {
