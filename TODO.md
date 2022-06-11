@@ -2,6 +2,8 @@
 
 ## Others
 
+- [ ] cambiare ascii art di cesare
+- [ ] scrivere l'help message decente
 - [x] fix bug query
 - [x] modificare "Coniug" e "Consort" (modificare e testare nello stesso commit)
 
