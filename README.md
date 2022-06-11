@@ -2,6 +2,8 @@
 
 BloodlineSeeker is a GUI program written in Java which allows to explore the dynasties of roman emperors. It works by scraping off of Wikipedia the information about the emperors, and then, recursively, scrapes the information of any other person on their bloodline.
 
+![Program screenshot](.github/screenshot.png)
+
 ## Features 🚀
 
 - search every person from every roman dynasty!
@@ -17,7 +19,7 @@ The starting point of the scraping is [this Wikipedia page](https://it.wikipedia
 
 For example, here is the sinottico for Julius Caesar: from this, BloodlineSeeker is able to retrieve the information about his children and his parents, as well as his spouses, and scrape their information recursively.
 
-![Julius Caesar's "sinottico"](repo_assets/sinottico.png)
+![Julius Caesar's "sinottico"](.github/sinottico.png)
 
 ## Requirements
 
