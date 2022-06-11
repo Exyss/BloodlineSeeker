@@ -13,7 +13,7 @@ public class SearchQueryController {
         ArrayList<ScraperResult> results = new ArrayList<ScraperResult>();
         ArrayList<Dynasty> dynasties = BackendManager.getDynasties();
         
-        query = filterQuery(query);
+        query = query.toLowerCase();
         
         for (Dynasty dynasty : dynasties) {
             String dynastyName = dynasty.getName().replaceAll("[^a-zA-Z]"," ").toLowerCase();
@@ -31,7 +31,7 @@ public class SearchQueryController {
     public static ArrayList<ScraperResult> findMatchingMembersAsResults(String query) {
         ArrayList<ScraperResult> results = new ArrayList<ScraperResult>();
 
-        query = filterQuery(query);
+        query = query.toLowerCase();
 
         for (Dynasty dynasty : BackendManager.getDynasties()) {
             for (Member member : dynasty.getMembers()) {
@@ -49,7 +49,7 @@ public class SearchQueryController {
     private static ArrayList<String> findMatchingMemberAsNames(String query) {
         ArrayList<String> matchingMembersNames = new ArrayList<String>();
 
-        query = filterQuery(query);
+        query = query.toLowerCase();
         
         for (Dynasty dynasty : BackendManager.getDynasties()) {
             for (Member member : dynasty.getMembers()) {
@@ -132,7 +132,4 @@ public class SearchQueryController {
         Collections.sort(results);
     }
     
-    private static String filterQuery(String query) {
-        return query.replaceAll("\\s+", " ").trim().toLowerCase();
-    }
 }

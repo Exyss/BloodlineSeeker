@@ -120,6 +120,28 @@ public class MainWindowManager {
             return null;
         }
     }
+
+    public static void searchMembers() {
+        SearchBar searchBar = MainWindowManager.getWindowSearchBar();
+
+        String searchBarText = searchBar.getText();
+
+        String query = searchBarText.replaceAll("[^a-zA-Z\\s]", "").replaceAll("\\s+", " ").trim();
+
+        searchBar.removeFocus();
+
+        if (searchBarText.replaceAll(" ","").equals("")) { // Case when the input is only spaces
+            searchBar.setText(null);
+
+            return;
+        } else if (query.equals("")) { 
+            MainWindowManager.showResultNotFound();
+        } else {
+            searchBar.setText(query);
+            BackendManager.printDebug("Search query: " + query);
+            MainWindowManager.updateScollPane(query);
+        }
+    }
     
     public static void updateScollPane(String query) {
         ArrayList<ScraperResult> results = SearchQueryController.findMatchingMembersAsResults(query);
@@ -145,8 +167,12 @@ public class MainWindowManager {
         if (suggestion != null) {
             getWindowScrollPaneController().showScrollPaneSuggestion(suggestion);
         } else {
-            getWindowScrollPaneController().showResultNotFoundCard();
+            showResultNotFound();
         }
+    }
+
+    public static void showResultNotFound() {
+        getWindowScrollPaneController().showResultNotFoundCard();
     }
 
     public static void openLink(String link) {

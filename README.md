@@ -28,7 +28,7 @@ BloodlineSeeker uses some external programs which may be required to run the jar
   - Microsoft Edge
   - Google Chrome
   - Mozilla Firefox
-- to generate the graph of the dynasties, the program uses a widespread library called [Graphviz](https://graphviz.org/), which needs some backend programs to run properly; in the program's resources, the Windows executable is already provided and should run without any issue, but the support is not guaranteed for any other operating system (if you run some Linux distribution, you should be able to download the library with your package manager)
+- to generate the graph of the dynasties, the program uses a widespread library called [Graphviz](https://graphviz.org/), which needs some backend programs to run properly; in the program's resources, the Windows executable is already provided and should run without any issue, but if you run some Linux distribution, and you don't have the Graphviz package already installed, you should be able to download the library with your package manager.
 
 Support on macOS is not guaranteed, because of hardware limitations due to the inability to test the program.
 
