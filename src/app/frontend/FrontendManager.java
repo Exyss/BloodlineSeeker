@@ -40,7 +40,7 @@ public final class FrontendManager {
     /**
      * The title of the application.
      */
-    public final static String APP_TITLE = "SPQR";
+    public final static String APP_TITLE = "BloodlineSeeker";
     
     /**
      * Sets up the GUI

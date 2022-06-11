@@ -4,6 +4,8 @@
 
 - [ ] cambiare ascii art di cesare
 - [ ] scrivere l'help message decente
+- [x] icona del programma
+- [x] cambiare titolo al programma
 - [x] fixare il centramento
 - [x] fix bug query
 - [x] modificare "Coniug" e "Consort" (modificare e testare nello stesso commit)
