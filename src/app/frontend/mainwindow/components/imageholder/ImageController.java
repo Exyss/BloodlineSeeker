@@ -13,7 +13,7 @@ import app.frontend.utils.Point;
 
 public class ImageController {
     private final static int VERTICAL_DISPLACEMENT = 30;
-    private final static int HORIZONTAL_DISPLACEMENT = 14;
+    private final static int HORIZONTAL_DISPLACEMENT = 10;
     private final static int RECTANGLE_BACKGROUND = -15571381;
     private final static int RECTANGLE_HEIGHT = 34;
     private final static int GRAPH_MARGIN = 245;
@@ -139,7 +139,7 @@ public class ImageController {
 
         int upperLeftX = findHorizontalRectBound(graphImage, startX, startY, -1);
         int upperLeftY = findVerticalRectBound(graphImage, startX, startY, -1);
-        int upperRightX = findHorizontalRectBound(graphImage, startX + UPPER_LEFT_X_SHIFT, startY + UPPER_LEFT_Y_SHIFT, +1);
+        int upperRightX = findHorizontalRectBound(graphImage, upperLeftX + UPPER_LEFT_X_SHIFT, upperLeftY + UPPER_LEFT_Y_SHIFT, +1);
 
         int rectangleWidth = upperRightX - upperLeftX + UPPER_LEFT_X_SHIFT;
 
