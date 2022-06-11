@@ -49,8 +49,9 @@ java -jar BloodlineSeeker.jar [options]
 on your terminal. Also, by doing so you can run some other commands that are supported by the program:
 
 - `--help` or `-h` to show the help message
-- `--debug` or `-d` to run the program with the debug mode activated
-- `--no-headless` or `-nh` to run the program without the headless mode activated (in case the dynasties are downloaded through Selenium)
+- `--version` or - `-v` to show the version of the program
+- `--debug` or `-d` to run the program with the debug mode enabled
+- `--no-headless` or `-nh` to run the program without the headless mode enabled (in case the dynasties are downloaded through Selenium)
 - `--run-tests` or `-t` to run the tests
 
 ## Usage

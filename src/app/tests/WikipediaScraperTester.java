@@ -99,6 +99,7 @@ public class WikipediaScraperTester {
         // remove driver runtime output from console
         PrintStream systemOutStream = System.out;
         PrintStream systemErrStream = System.err;
+
         System.setOut(new PrintStream(new NullOutputStream()));
         System.setErr(new PrintStream(new NullOutputStream()));
 
@@ -122,7 +123,6 @@ public class WikipediaScraperTester {
         return true;
     }
 
-
     private static boolean testWikipediaSummary() {
         HashMap<String, HashMap<String, String>> summary;
 
@@ -133,7 +133,6 @@ public class WikipediaScraperTester {
             scraper.start();
             summary = scraper.getWikipediaSummary(ROMOLO_LINK);
             scraper.kill();
-
         } catch (FileNotFoundException e) {
             System.err.println(e);
             return false;
@@ -161,6 +160,7 @@ public class WikipediaScraperTester {
         }
 
         String scrapedSummary = builder.toString();
+
         return ROMOLO_SUMMARY.equals(scrapedSummary);
     }
 }

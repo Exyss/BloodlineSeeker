@@ -2,8 +2,8 @@
 
 ## Others
 
-- [ ] cambiare ascii art di cesare
-- [ ] scrivere l'help message decente
+- [x] cambiare ascii art
+- [x] scrivere l'help message decente
 - [x] icona del programma
 - [x] cambiare titolo al programma
 - [x] fixare il centramento
@@ -12,7 +12,7 @@
 
 ## Test
 
-- [ ] interfaccia Testable? però non potrebbero essere statici i metodi
+- [ ] classe padre dei test?
 - [x] scrivere la percentuale di passati alla fine, il success rate
 
 ## README
