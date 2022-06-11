@@ -3,6 +3,7 @@ package app.frontend;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -89,7 +90,8 @@ public final class FrontendManager {
      */
     public static void saveDynastyGraph() {
         final String FILE_EXTENTION = "png";
-        String name = BackendManager.getLoadedDynasty().getName()+".png";
+
+        String name = BackendManager.getLoadedDynasty().getName() + ".png";
 
         AntialiasedTextFileChooser fileChooser = new AntialiasedTextFileChooser();
         BufferedImage graph;
@@ -107,9 +109,17 @@ public final class FrontendManager {
             int choice = fileChooser.showSaveDialog(null);
 
             if (choice == JFileChooser.APPROVE_OPTION) {
-                String filename = fileChooser.getSelectedFile().getPath() + "/" + name;
-                File file = new File(filename);
-                ImageIO.write(graph, FILE_EXTENTION,  file);
+                String folderName = fileChooser.getSelectedFile().getPath();
+                File folder = new File(folderName);
+
+                if (folder.isDirectory()) {
+                    String filename = folderName + "/" + name;
+                    File file = new File(filename);
+
+                    ImageIO.write(graph, FILE_EXTENTION,  file);
+                } else {
+                    throw new FileNotFoundException();
+                }
             }
         } catch (IOException e) {
             BackendManager.printDebug("An error occurred while trying to save the dynasty graph image");

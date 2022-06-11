@@ -10,12 +10,19 @@
 - [ ] interfaccia Testable? però non potrebbero essere statici i metodi
 - [x] scrivere la percentuale di passati alla fine, il success rate
 
+## README
+
+- [ ] ultima parte
+- [ ] aggiungere screenshot
+
 ## Lista di cose da fare
 
-- [ ] ultima parte del README
 - [ ] test estensivo del programma e funzionalità su più piattaforme
 - [ ] relazione
   - [ ] introduzione
+    - [x] scelta del progetto
+    - [ ] scelte progettuali
+    - [ ] screenshot del programma
   - [ ] lista delle funzionalità, con referenti
   - [ ] manuale della gui
   - [ ] descrizione delle funzionalità
