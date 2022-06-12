@@ -32,13 +32,14 @@
 - [ ] commenti
 - [ ] test estensivo del programma e funzionalità su più piattaforme
 - [ ] relazione
-  - [ ] introduzione
-    - [x] scelta del progetto
+  - [ ] progettazione e struttura del programma
     - [ ] scelte progettuali
-    - [ ] screenshot del programma
+    - [ ] librerie utilizzate
+    - [x] screenshot del programma
+    - [x] scelta del progetto
+    - [ ] descrizione classi con attributi e metodi
+      - [ ] UML
   - [ ] lista delle funzionalità, con referenti
   - [x] manuale della gui
   - [ ] descrizione delle funzionalità
-  - [ ] descrizione classi con attributi e metodi
-    - [ ] UML
 - [ ] presentazione powerpoint
