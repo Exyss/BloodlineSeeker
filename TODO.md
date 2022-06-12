@@ -2,7 +2,6 @@
 
 ## Others
 
-- [ ] leva warning da compile
 - [x] cambiare ascii art
 - [x] scrivere l'help message decente
 - [x] icona del programma
@@ -19,15 +18,17 @@
 ## README
 
 - [ ] finisci comando per windows
-- [ ] javadoc
+- [ ] sezione per la javadoc
 - [x] aggiungere screenshot
 - [x] aggiungi script linux e windows
 
 ## Lista di cose da fare
 
+- [ ] aggiungere la release al progetto (e levare packages)
+- [ ] aggiungere descrizione alla repository
 - [x] script per la compilazione linux
 - [ ] script per la compilazione windows
-- [ ] javadoc
+- [ ] finire javadoc
 - [ ] commenti
 - [ ] test estensivo del programma e funzionalità su più piattaforme
 - [ ] relazione
