@@ -51,7 +51,7 @@ public final class FrontendManager {
         FlatLightLaf.setup();
         
         UIManager.put("FileChooser.readOnly", true); 
-        loadFonts();
+        FrontendManager.loadFonts();
     }
 
     /**
