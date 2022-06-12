@@ -14,10 +14,10 @@ display_help(){
 	echo ""
 
 	echo "Optional operations:"
-	echo "    -h | --help: Show the help menu"
-	echo "    -j | --jar: Create independent, portable and runnable JAR file"
-	echo "    -r | --run: Run program after compilation"
-	echo "    -v | --verbose: Show more output"
+	echo "    -h, --help: Show the help menu"
+	echo "    -j, --jar: Create independent, portable and runnable JAR file"
+	echo "    -r, --run: Run program after compilation"
+	echo "    -v, --verbose: Show more output"
 }
 
 
