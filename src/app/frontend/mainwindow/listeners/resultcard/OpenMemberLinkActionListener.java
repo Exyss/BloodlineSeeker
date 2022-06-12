@@ -13,6 +13,10 @@ public class OpenMemberLinkActionListener implements ActionListener {
         this.link = link;
     }
     
+    
+    /** 
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         BackendManager.printDebug("Opened a Dynasty Wikipedia link: " + link);

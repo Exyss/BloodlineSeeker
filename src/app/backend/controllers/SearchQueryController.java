@@ -9,6 +9,11 @@ import app.backend.scraper.results.dynasty.Dynasty;
 import app.backend.scraper.results.member.Member;
 
 public class SearchQueryController {
+    
+    /** 
+     * @param query
+     * @return ArrayList<ScraperResult>
+     */
     public static ArrayList<ScraperResult> findMatchingDynastyAsResults(String query) {
         ArrayList<ScraperResult> results = new ArrayList<ScraperResult>();
         ArrayList<Dynasty> dynasties = BackendManager.getDynasties();
@@ -28,6 +33,11 @@ public class SearchQueryController {
         return results;
     }
 
+    
+    /** 
+     * @param query
+     * @return ArrayList<ScraperResult>
+     */
     public static ArrayList<ScraperResult> findMatchingMembersAsResults(String query) {
         ArrayList<ScraperResult> results = new ArrayList<ScraperResult>();
 
@@ -46,6 +56,11 @@ public class SearchQueryController {
         return results;
     }
     
+    
+    /** 
+     * @param query
+     * @return ArrayList<String>
+     */
     private static ArrayList<String> findMatchingMemberAsNames(String query) {
         ArrayList<String> matchingMembersNames = new ArrayList<String>();
 
@@ -64,6 +79,11 @@ public class SearchQueryController {
         return matchingMembersNames;
     }
 
+    
+    /** 
+     * @param query
+     * @return String
+     */
     public static String findSuggestion(String query) {
         ArrayList<String> substrings = getSortedSubstrings(query);
 
@@ -84,6 +104,11 @@ public class SearchQueryController {
         return matchingMemberName;
     }
 
+    
+    /** 
+     * @param possibleSuggestions
+     * @return String
+     */
     private static String findShortestSuggestion(ArrayList<String> possibleSuggestions) {
         String shortestName = possibleSuggestions.get(0);
 
@@ -102,6 +127,11 @@ public class SearchQueryController {
         return shortestName;
     }
 
+    
+    /** 
+     * @param query
+     * @return ArrayList<String>
+     */
     private static ArrayList<String> getSortedSubstrings(String query) {
         ArrayList<String> substrings = new ArrayList<String>();
 
@@ -128,6 +158,10 @@ public class SearchQueryController {
         return substrings;
     }
 
+    
+    /** 
+     * @param results
+     */
     public static void sortResults(ArrayList<ScraperResult> results) {
         Collections.sort(results);
     }

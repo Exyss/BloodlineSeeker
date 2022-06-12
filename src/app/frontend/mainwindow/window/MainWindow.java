@@ -119,30 +119,58 @@ public class MainWindow extends JFrame {
         keyBinding.addKeyBindingController();
     }
     
+    
+    /** 
+     * @return ScrollPaneController
+     */
     public ScrollPaneController getScrollPaneController() {
         return this.scrollPaneController;
     }
 
+    
+    /** 
+     * @return ImageController
+     */
     public ImageController getImageController() {
         return this.imageController;
     }
 
+    
+    /** 
+     * @return ImageHolder
+     */
     public ImageHolder getImageHolder() {
         return this.imageHolder;
     }
 
+    
+    /** 
+     * @return ScrollPane
+     */
     public ScrollPane getScrollPane() {
         return this.scrollPane;
     }
 
+    
+    /** 
+     * @return ButtonBox
+     */
     public ButtonBox getButtonBox() {
         return this.buttonBox;
     }
 
+    
+    /** 
+     * @return InfoBox
+     */
     public InfoBox getInfoBox() {
         return this.infoBox;
     }
 
+    
+    /** 
+     * @return SearchBar
+     */
     public SearchBar getSearchBar() {
         return this.searchbar;
     }

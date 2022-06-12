@@ -9,6 +9,10 @@ import app.frontend.mainwindow.MainWindowManager;
 public class EscKeyAction extends AbstractAction{
     private static final long serialVersionUID = 25L;
 
+    
+    /** 
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         MainWindowManager.getWindowSearchBar().removeFocus();

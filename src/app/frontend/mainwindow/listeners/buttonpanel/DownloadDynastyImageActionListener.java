@@ -6,6 +6,10 @@ import java.awt.event.ActionListener;
 import app.frontend.FrontendManager;
 
 public class DownloadDynastyImageActionListener implements ActionListener {
+    
+    /** 
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         FrontendManager.saveDynastyGraph();

@@ -25,6 +25,10 @@ public final class ScrollPaneController {
         this.cardHolder = this.scrollPane.getCardHolder();
     }
 
+    
+    /** 
+     * @param suggestion
+     */
     private void createSuggestion(String suggestion) {
         SuggestionMessage suggestionCard = new SuggestionMessage(suggestion);
         this.cardHolder.add(suggestionCard);
@@ -33,6 +37,10 @@ public final class ScrollPaneController {
         this.cardHolder.repaint();
     }
 
+    
+    /** 
+     * @param data
+     */
     private void createCards(ArrayList<ScraperResult> data) {
         int dataSize = data.size();
 
@@ -46,6 +54,12 @@ public final class ScrollPaneController {
         this.cardHolder.repaint();
     }
 
+    
+    /** 
+     * @param index
+     * @param scraperResult
+     * @return ScraperResultCard
+     */
     private ScraperResultCard createCard(int index ,ScraperResult scraperResult) {
         Member member = scraperResult.getMember();
         Dynasty dynasty = scraperResult.getDynasty();
@@ -58,18 +72,31 @@ public final class ScrollPaneController {
         this.cardHolder.removeAll();
     }
 
+    
+    /** 
+     * @param data
+     */
     public void showScrollPaneResults(ArrayList<ScraperResult> data) {
         this.removeAll();
         this.createCards(data);
         this.scrollPane.resetScrollBar();
     }
         
+    
+    /** 
+     * @param suggestion
+     */
     public void showScrollPaneSuggestion(String suggestion) {
         this.removeAll();
         this.createSuggestion(suggestion);
         this.scrollPane.resetScrollBar();
     }
 
+    
+    /** 
+     * @param i
+     * @return int
+     */
     private int computeY(int i) {
         return ((i + 1) * VERTICAL_CARD_GAP) + (i * CARD_HEIGHT);
     }

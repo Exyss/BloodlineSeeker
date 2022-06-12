@@ -2,6 +2,7 @@
 
 ## Others
 
+- [ ] leva warning da compile
 - [x] cambiare ascii art
 - [x] scrivere l'help message decente
 - [x] icona del programma
@@ -12,16 +13,22 @@
 
 ## Test
 
-- [ ] classe padre dei test?
+- [ ] test ricerca
 - [x] scrivere la percentuale di passati alla fine, il success rate
 
 ## README
 
-- [ ] ultima parte
-- [ ] aggiungere screenshot
+- [ ] finisci comando per windows
+- [ ] javadoc
+- [x] aggiungere screenshot
+- [x] aggiungi script linux e windows
 
 ## Lista di cose da fare
 
+- [x] script per la compilazione linux
+- [ ] script per la compilazione windows
+- [ ] javadoc
+- [ ] commenti
 - [ ] test estensivo del programma e funzionalità su più piattaforme
 - [ ] relazione
   - [ ] introduzione
@@ -29,7 +36,7 @@
     - [ ] scelte progettuali
     - [ ] screenshot del programma
   - [ ] lista delle funzionalità, con referenti
-  - [ ] manuale della gui
+  - [x] manuale della gui
   - [ ] descrizione delle funzionalità
   - [ ] descrizione classi con attributi e metodi
     - [ ] UML

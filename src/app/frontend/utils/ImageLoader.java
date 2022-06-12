@@ -12,6 +12,11 @@ import javax.swing.ImageIcon;
 import app.backend.BackendManager;
 
 public final class ImageLoader {
+    
+    /** 
+     * @param path
+     * @return ImageIcon
+     */
     public static ImageIcon asImageIcon(String path) {
         BufferedImage bimg = asBufferedImage(path);
         ImageIcon icon = new ImageIcon(bimg);
@@ -19,14 +24,29 @@ public final class ImageLoader {
         return icon;
     }
 
+    
+    /** 
+     * @param path
+     * @return Image
+     */
     public static Image asImage(String path) {
         return Toolkit.getDefaultToolkit().getImage(getImageURL(path));
     }
 
+    
+    /** 
+     * @param path
+     * @return URL
+     */
     public static URL getImageURL(String path) {
         return ImageLoader.class.getResource(path);
     }
 
+    
+    /** 
+     * @param path
+     * @return BufferedImage
+     */
     public static BufferedImage asBufferedImage(String path) {
         try {
             return ImageIO.read(ImageLoader.class.getResource(path));

@@ -7,22 +7,22 @@
 ####################
 
 display_help(){
-	echo "Info: Automatically compile all classes and libraries used in this project"
+	echo "NOTE: Automatically compiles all classes and libraries used in this project"
 	echo ""
 
-	echo "Usage: compile [-h] [-j] [-r] [-v]"
+	echo "Usage: compile [-h] | [-j] | [-r] | [-v]"
 	echo ""
 
 	echo "Optional operations:"
-	echo "    -h, --help: Show the help menu"
-	echo "    -j, --jar: Create independent, portable and runnable JAR file"
-	echo "    -r, --run: Run program after compilation"
-	echo "    -v, --verbose: Show more output"
+	echo "    -h, --help:          Show this help message"
+	echo "    -j, --jar:           Create independent, portable and runnable JAR file"
+	echo "    -r, --run:           Run program after compilation"
+	echo "    -v, --verbose:       Show more output"
 }
 
 
 ####################
-# Main class ompilation process
+# Main class compilation process
 ####################
 
 compile(){

@@ -41,6 +41,10 @@ public class ScraperResultCard extends JPanel {
         this.createComponents();
     }
     
+    
+    /** 
+     * @param y
+     */
     private void setup(int y) {
         this.setLayout(null);
         this.setBounds(25,y,608,107);
@@ -56,6 +60,16 @@ public class ScraperResultCard extends JPanel {
         this.createGraphButton();
     }
     
+    
+    /** 
+     * @param icon
+     * @param pressedIcon
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * @return AntiAliasedImageButton
+     */
     private AntiAliasedImageButton createImageButton(String icon, String pressedIcon, int x, int y, int width, int height) {
         AntiAliasedImageButton button = new AntiAliasedImageButton();
 
@@ -70,6 +84,16 @@ public class ScraperResultCard extends JPanel {
         return button;
     }
 
+    
+    /** 
+     * @param text
+     * @param font
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * @return AntiAliasedTextLabel
+     */
     private AntiAliasedTextLabel createLabel(String text,Font font, int x, int y, int width, int height) {
         AntiAliasedTextLabel label = new AntiAliasedTextLabel(text);
 
@@ -79,11 +103,19 @@ public class ScraperResultCard extends JPanel {
         return label;
     }
 
+    
+    /** 
+     * @param romanIndex
+     */
     private void createIndexLabel(String romanIndex) {
         this.indexLabel = this.createLabel(romanIndex, QuattrocentoFont.PLAIN_16.get(), 20, 10, 110, 15);
         this.add(indexLabel);
     }
     
+    
+    /** 
+     * @param memberName
+     */
     private void createNameLabel(String memberName) {
         if (member.isEmperor()) {
             this.nameLabel = createLabel(memberName, QuattrocentoFont.BOLD_30.get(), 20, 30, 500, 40);
@@ -95,6 +127,10 @@ public class ScraperResultCard extends JPanel {
         this.add(nameLabel);
     }
     
+    
+    /** 
+     * @param dynastyName
+     */
     private void createDynastyLabel(String dynastyName) {
         this.dynastyLabel = this.createLabel(dynastyName, QuattrocentoFont.PLAIN_20.get(), 20, 72, 500, 30);
         this.add(dynastyLabel);

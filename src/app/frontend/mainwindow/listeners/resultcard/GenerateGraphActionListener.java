@@ -17,6 +17,10 @@ public class GenerateGraphActionListener implements ActionListener {
         this.member = member;
     }
 
+    
+    /** 
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         BackendManager.printDebug("Generate graph button pressed");

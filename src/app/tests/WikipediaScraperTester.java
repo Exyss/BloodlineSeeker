@@ -41,10 +41,18 @@ public class WikipediaScraperTester {
         ""
     );
 
+    
+    /** 
+     * @return int
+     */
     public static int getTotalTests() {
         return TESTS_NUMBER;
     }
 
+    
+    /** 
+     * @return int
+     */
     public static int runTests() {
         System.out.print("Testing HTML scraping with HTTP Requests... ");
 
@@ -81,6 +89,10 @@ public class WikipediaScraperTester {
         return passedTests;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     private static boolean testHTTPrequests() {
         try {
             WikipediaScraper.getPageHTMLwithHTTP(EXAMPLE_LINK);
@@ -92,6 +104,10 @@ public class WikipediaScraperTester {
         return true;
     }
     
+    
+    /** 
+     * @return boolean
+     */
     private static boolean testSelenium() {
         WikipediaScraper scraper = new WikipediaScraper();
         
@@ -123,6 +139,10 @@ public class WikipediaScraperTester {
         return true;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     private static boolean testWikipediaSummary() {
         HashMap<String, HashMap<String, String>> summary;
 

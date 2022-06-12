@@ -13,6 +13,10 @@ public final class ScraperRunner extends Thread {
         this.scraper = scraper;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean isScraperActive() {
         return this.scraper.isActive();
     }
@@ -29,6 +33,11 @@ public final class ScraperRunner extends Thread {
         this.scraper.kill();
     }
 
+    
+    /** 
+     * @return ArrayList<Dynasty>
+     * @throws FileNotFoundException
+     */
     public ArrayList<Dynasty> getScraperDynasties() throws FileNotFoundException {
         return this.scrapedDynasties;
     }

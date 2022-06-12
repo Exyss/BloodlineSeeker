@@ -15,7 +15,10 @@ import app.tests.WikipediaScraperTester;
 
 public class Main {
     private static final String VERSION = "1.0";
-
+    
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
         Main.programConfiguration();
         Main.programInitialization();
@@ -43,6 +46,10 @@ public class Main {
         BinariesController.extractGraphVizBinaries();
     }
     
+    /** 
+     * @param inputArgs
+     * @return boolean
+     */
     private static boolean parseArgs(String[] inputArgs) {
         List<String> args = Arrays.asList(inputArgs);
         
@@ -112,14 +119,14 @@ public class Main {
         System.out.println("scrape roman emperors' dynasties from Wikipedia.");
 
         System.out.println("");
-        System.out.println("java BloodlineSeeker.jar [options]");
+        System.out.println("java BloodlineSeeker.jar [-h] | [-v] | [-d] | [-nh] | [-t]");
         System.out.println("");
 
-        System.out.println("  -h,  --help:           shows this help message");
-        System.out.println("  -v,  --version:        shows the version of the program");
-        System.out.println("  -d,  --debug:          enables the debug mode");
-        System.out.println("  -nh, --no-headless:    disables the headless mode for selenium, if used");
-        System.out.println("  -t,  --run-tests:      runs the tests on the program");
+        System.out.println("   -h,  --help:           shows this help message");
+        System.out.println("   -v,  --version:        shows the version of the program");
+        System.out.println("   -d,  --debug:          enables the debug mode");
+        System.out.println("   -nh, --no-headless:    disables the headless mode for selenium, if used");
+        System.out.println("   -t,  --run-tests:      runs the tests on the program");
     }
 
     private static void printVersion() {

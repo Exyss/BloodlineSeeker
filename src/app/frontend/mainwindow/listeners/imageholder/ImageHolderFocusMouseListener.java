@@ -7,6 +7,10 @@ import app.backend.BackendManager;
 import app.frontend.mainwindow.MainWindowManager;
 
 public class ImageHolderFocusMouseListener extends MouseAdapter {
+    
+    /** 
+     * @param e
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         BackendManager.printDebug("Image holder get focus");

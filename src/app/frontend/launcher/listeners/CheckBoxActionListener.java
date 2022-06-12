@@ -15,6 +15,10 @@ import app.frontend.launcher.LauncherManager;
  *
  */
 public class CheckBoxActionListener implements ActionListener {
+    
+    /** 
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         LauncherManager.toggleSelenium();

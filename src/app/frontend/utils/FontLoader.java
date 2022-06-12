@@ -9,6 +9,10 @@ import java.io.InputStream;
 import app.backend.BackendManager;
 
 public final class FontLoader {
+    
+    /** 
+     * @param fontFile
+     */
     public static void loadFont(String fontFile) {
         try {
             InputStream FONT_FILE = FontLoader.class.getResource(fontFile).openStream();

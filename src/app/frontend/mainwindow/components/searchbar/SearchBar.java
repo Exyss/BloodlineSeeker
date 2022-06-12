@@ -71,6 +71,10 @@ public class SearchBar extends JPanel {
         this.panel.add(this.button);
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getText() {
         return this.textField.getText();
     }
@@ -80,10 +84,18 @@ public class SearchBar extends JPanel {
         this.textField.setFocusable(true);
     }
 
+    
+    /** 
+     * @param string
+     */
     public void setText(String string) {
         textField.setText(string);
     }
 
+    
+    /** 
+     * @return AntiAliasedTextField
+     */
     public AntiAliasedTextField getTextField() {
         return textField;
     }

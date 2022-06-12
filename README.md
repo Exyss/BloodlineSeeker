@@ -64,14 +64,24 @@ After the download is completed, the files of the found dynasties will be create
 
 ## Contributing
 
-To contribute to the program, first clone this repository. Then, to compile the program, just run
+To contribute to the program, first clone this repository. Then, use the script for your operating system:
+
+- on Linux, use `compile.sh`
 
 ```sh
-NON SO COME SI COMPILA
+sh compile.sh [options]
 ```
 
-Then, to run the program, simply run
+- on Windows, use `compile.bat`
 
 ```sh
-NON SO COME SI RUNNA
+TODO: qui
 ```
+
+Options on both scripts:
+
+- no options, to compile the program
+- `--run` or `-r` to compile and run the program
+- `--jar` or `-j` to create the jar file
+- `--help` or `-h` to show the help message
+- `--verbose` or `-v` to run the script with detailed output

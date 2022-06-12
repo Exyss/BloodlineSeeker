@@ -23,6 +23,11 @@ public class DynastiesScraper extends WikipediaScraper {
     private static final String TRAILING_SINGLE_CHAR = "\\s[a-zA-Z]?$";
     private static final String INVALID_CHARS = "\"";
 
+    
+    /** 
+     * @return ArrayList<Dynasty>
+     * @throws FileNotFoundException
+     */
     public ArrayList<Dynasty> scrapeDynasties() throws FileNotFoundException {
         HashMap<Dynasty, HashMap<String, String>> emperorDynasties = this.getEmperorDynasties();
 
@@ -45,6 +50,11 @@ public class DynastiesScraper extends WikipediaScraper {
         return dynasties;
     }
 
+    
+    /** 
+     * @return HashMap<Dynasty, HashMap<String, String>>
+     * @throws FileNotFoundException
+     */
     private HashMap<Dynasty, HashMap<String, String>> getEmperorDynasties() throws FileNotFoundException {
         this.setStatus("Initializing Emperors links scraping...");
         this.setStatus("");
@@ -82,6 +92,11 @@ public class DynastiesScraper extends WikipediaScraper {
         return dynasties;
     }
     
+    
+    /** 
+     * @param wikipediaTable
+     * @return HashMap<String, String>
+     */
     private HashMap<String, String> parseEmperorsTable(Element wikipediaTable) {
         // Get table rows
         Elements emperorTable = wikipediaTable.getElementsByTag("tbody").get(0).getElementsByTag("tr");
@@ -115,6 +130,16 @@ public class DynastiesScraper extends WikipediaScraper {
         return emperors;
     }
     
+    
+    /** 
+     * @param existingMembers
+     * @param dynasty
+     * @param name
+     * @param link
+     * @param isEmperor
+     * @return Member
+     * @throws FileNotFoundException
+     */
     private Member createDynastyMember(
             HashMap<String, Member> existingMembers, Dynasty dynasty,
             String name, String link, boolean isEmperor
@@ -143,6 +168,16 @@ public class DynastiesScraper extends WikipediaScraper {
         return member;
     }
 
+    
+    /** 
+     * @param existingMembers
+     * @param dynasty
+     * @param name
+     * @param link
+     * @param isEmperor
+     * @return Member
+     * @throws FileNotFoundException
+     */
     private Member createNewMember(
             HashMap<String, Member> existingMembers,
             Dynasty dynasty, String name,
@@ -169,6 +204,14 @@ public class DynastiesScraper extends WikipediaScraper {
         return member;
     }
 
+    
+    /** 
+     * @param summary
+     * @param dynasty
+     * @param member
+     * @param relativeKey
+     * @throws FileNotFoundException
+     */
     private void addRelativesToMember(
             HashMap<String, Member> existingMembers,
             HashMap<String, HashMap<String, String>> summary,
@@ -191,6 +234,11 @@ public class DynastiesScraper extends WikipediaScraper {
         }
     }
 
+    
+    /** 
+     * @param name
+     * @return String
+     */
     private static String filterName(String name) {
         return name
             .replaceAll(TRAILING_INVALID_CHARS, "")
@@ -199,6 +247,11 @@ public class DynastiesScraper extends WikipediaScraper {
             .trim();
     }
     
+    
+    /** 
+     * @param elem
+     * @return boolean
+     */
     private static boolean isValidTitle(Element elem) {
         String elemText = elem.text().toLowerCase();
 
@@ -209,6 +262,11 @@ public class DynastiesScraper extends WikipediaScraper {
         return false;
     }
 
+    
+    /** 
+     * @param name
+     * @return boolean
+     */
     private static boolean isValidName(String name) {
         Pattern pattern = Pattern.compile(VALID_NAME_FILTER, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(name);
@@ -216,14 +274,30 @@ public class DynastiesScraper extends WikipediaScraper {
         return !matcher.find();
     }
 
+    
+    /** 
+     * @param link
+     * @return boolean
+     */
     private static boolean isValidLink(String link) {
         return !link.equals("");
     }
 
+    
+    /** 
+     * @param name
+     * @param link
+     * @return boolean
+     */
     private static boolean isValidMemberData(String name, String link) {
         return isValidName(name) && isValidLink(link);
     }
 
+    
+    /** 
+     * @param field
+     * @return boolean
+     */
     private boolean isValidField(String field) {
         for (String validField : RELATIVE_FIELDS) {
             if (field.contains(validField)) {

@@ -37,6 +37,15 @@ public class InfoBox extends JPanel {
         this.createMauseWheelText();
     }
     
+    
+    /** 
+     * @param text
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * @return AntiAliasedTextLabel
+     */
     private AntiAliasedTextLabel createTextLabel(String text, int x, int y, int width, int height) {
         AntiAliasedTextLabel label = new AntiAliasedTextLabel(text);
 
@@ -46,6 +55,15 @@ public class InfoBox extends JPanel {
         return label;
     }
 
+    
+    /** 
+     * @param icon
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * @return AntiAliasedImageLabel
+     */
     private AntiAliasedImageLabel createImageLabel(String icon, int x, int y, int width, int height) {
         AntiAliasedImageLabel label = new AntiAliasedImageLabel();
 

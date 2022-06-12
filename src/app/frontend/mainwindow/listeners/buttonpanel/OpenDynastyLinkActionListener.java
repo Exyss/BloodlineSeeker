@@ -8,6 +8,10 @@ import app.backend.scraper.results.dynasty.Dynasty;
 import app.frontend.mainwindow.MainWindowManager;
 
 public class OpenDynastyLinkActionListener implements ActionListener{
+    
+    /** 
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Dynasty dynasty = BackendManager.getLoadedDynasty();

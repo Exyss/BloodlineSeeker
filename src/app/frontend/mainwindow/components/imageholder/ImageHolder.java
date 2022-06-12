@@ -33,6 +33,10 @@ public class ImageHolder extends JPanel {
         this.add(this.label);
     }
 
+    
+    /** 
+     * @return AntiAliasedImageLabel
+     */
     public AntiAliasedImageLabel getLabel() {
         return this.label;
     }

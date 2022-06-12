@@ -25,6 +25,13 @@ public class Dynasty implements JSONable {
         this.wikipediaLink = wikipediaLink;
     }
 
+    
+    /** 
+     * @param membersIDs
+     * @param name
+     * @param wikipediaLink
+     * @return Dynasty
+     */
     private static Dynasty buildDynasty(HashMap<String, JSONObject> membersIDs, String name, String wikipediaLink) {
         Dynasty dynasty = new Dynasty(name, wikipediaLink);
 
@@ -46,6 +53,11 @@ public class Dynasty implements JSONable {
         return dynasty;
     }
 
+    
+    /** 
+     * @param membersArray
+     * @return HashMap<String, JSONObject>
+     */
     private static HashMap<String, JSONObject> getMembersIDs(JSONArray membersArray) {
         HashMap<String, JSONObject> membersIDs = new HashMap<String, JSONObject>();
 
@@ -73,6 +85,13 @@ public class Dynasty implements JSONable {
         return membersIDs;
     }
 
+    
+    /** 
+     * @param membersIDs
+     * @param member
+     * @param relativeType
+     * @param relativesIDs
+     */
     private static void completeRelatives(HashMap<String, JSONObject> membersIDs, Member member, Relative relativeType, JSONArray relativesIDs) {
         for (Object relativeID : relativesIDs) {
             JSONObject relativeJSON = membersIDs.get((String) relativeID);
@@ -81,6 +100,11 @@ public class Dynasty implements JSONable {
         }
     }
 
+    
+    /** 
+     * @param json
+     * @return Dynasty
+     */
     public static Dynasty fromJSONObject(JSONObject json) {
         String name = (String)json.get("Name");
         String wikipediaLink = (String)json.get("Wiki-link");
@@ -91,6 +115,12 @@ public class Dynasty implements JSONable {
         return buildDynasty(membersIDs, name, wikipediaLink);
     }
 
+    
+    /** 
+     * @param jsonPath
+     * @return Dynasty
+     * @throws IOException
+     */
     public static Dynasty fromJSONFile(String jsonPath) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(jsonPath));
         String fileContent = reader.readLine();
@@ -100,6 +130,10 @@ public class Dynasty implements JSONable {
         return Dynasty.fromJSONObject(new JSONObject(fileContent));
     }
 
+    
+    /** 
+     * @return JSONObject
+     */
     @Override
     public JSONObject toJSONObject() {
         JSONObject dynastyObject = new JSONObject();
@@ -117,6 +151,10 @@ public class Dynasty implements JSONable {
         return dynastyObject;
     }
     
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         StringBuilder output = new StringBuilder();
@@ -130,14 +168,26 @@ public class Dynasty implements JSONable {
         return output.toString();
     }
     
+    
+    /** 
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    
+    /** 
+     * @param wikipediaLink
+     */
     public void setLink(String wikipediaLink) {
         this.wikipediaLink = wikipediaLink;
     }
 
+    
+    /** 
+     * @param member
+     */
     public void addMember(Member member) {
         if (this.members == null) {
             this.members = new ArrayList<Member>();
@@ -148,6 +198,10 @@ public class Dynasty implements JSONable {
         }
     }
 
+    
+    /** 
+     * @param member
+     */
     public void addMemberResult(Member member) {
         if (this.membersResults == null) {
             this.membersResults = new ArrayList<ScraperResult>();
@@ -158,18 +212,34 @@ public class Dynasty implements JSONable {
         this.membersResults.add(memberResult);
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getName() {
         return this.name;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getWikipediaLink() {
         return this.wikipediaLink;
     }
 
+    
+    /** 
+     * @return ArrayList<Member>
+     */
     public ArrayList<Member> getMembers() {
         return this.members;
     }
 
+    
+    /** 
+     * @return ArrayList<ScraperResult>
+     */
     public ArrayList<ScraperResult> getMembersResults() {
         return this.membersResults;
     }

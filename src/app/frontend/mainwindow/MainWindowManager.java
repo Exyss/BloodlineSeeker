@@ -113,6 +113,10 @@ public class MainWindowManager {
         }
     }
     
+    
+    /** 
+     * @return BufferedImage
+     */
     public static BufferedImage getImage() {
         if (getWindowImageController().getBrowse()) {
             return getWindowImageController().getGraph();            
@@ -143,6 +147,10 @@ public class MainWindowManager {
         }
     }
     
+    
+    /** 
+     * @param query
+     */
     public static void updateScollPane(String query) {
         ArrayList<ScraperResult> results = SearchQueryController.findMatchingMembersAsResults(query);
         SearchQueryController.sortResults(results);
@@ -163,6 +171,10 @@ public class MainWindowManager {
         getWindowScrollPaneController().showScrollPaneResults(results);
     }
 
+    
+    /** 
+     * @param suggestion
+     */
     public static void showSuggestion(String suggestion) {
         if (suggestion != null) {
             getWindowScrollPaneController().showScrollPaneSuggestion(suggestion);
@@ -175,6 +187,10 @@ public class MainWindowManager {
         getWindowScrollPaneController().showResultNotFoundCard();
     }
 
+    
+    /** 
+     * @param link
+     */
     public static void openLink(String link) {
         try {
             URI uri = new URI(link);
@@ -185,42 +201,84 @@ public class MainWindowManager {
         }
     }
 
+    
+    /** 
+     * @param member
+     * @param dynasty
+     * @return String
+     */
     public static String buildNewTitle(Member member, Dynasty dynasty) {
         return " - " + member.getName() + " (" + dynasty.getName() + ")";
     }
 
+    
+    /** 
+     * @param toAppend
+     */
     public static void updateWindowTitle(String toAppend) {
         getWindow().setTitle(FrontendManager.APP_TITLE + toAppend);
     }
     
+    
+    /** 
+     * @return ScrollPaneController
+     */
     public static ScrollPaneController getWindowScrollPaneController() {
         return getWindow().getScrollPaneController();
     }
     
+    
+    /** 
+     * @return ImageController
+     */
     public static ImageController getWindowImageController() {
         return getWindow().getImageController();
     }
 
+    
+    /** 
+     * @return ImageHolder
+     */
     public static ImageHolder getWindowImageHolder() {
         return getWindow().getImageHolder();
     }
     
+     
+     /** 
+      * @return ScrollPane
+      */
      public static ScrollPane getWindowScrollPane() {
         return getWindow().getScrollPane();
     }
 
+    
+    /** 
+     * @return SearchBar
+     */
     public static SearchBar getWindowSearchBar() {
         return getWindow().getSearchBar();
     }
 
+    
+    /** 
+     * @return ButtonBox
+     */
     public static ButtonBox getWindowButtoBox() {
         return getWindow().getButtonBox();
     }
 
+    
+    /** 
+     * @return InfoBox
+     */
     public static InfoBox getWindowInfoBox() {
         return getWindow().getInfoBox();
     }
 
+    
+    /** 
+     * @return JComponent
+     */
     public static JComponent getWindowContentPane() {
         return (JComponent) getWindow().getContentPane();
     }

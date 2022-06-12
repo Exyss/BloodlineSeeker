@@ -24,6 +24,10 @@ public class BinariesController {
     public static final String DRIVERS_LOCAL_PATH = "/assets/drivers/";
     public static final String DRIVERS_TEMP_PATH = TEMP_PATH + "RomanEmperorsDrivers";
 
+    
+    /** 
+     * @return String
+     */
     private static String getTempPath() {
         String tmpPath = System.getProperty("java.io.tmpdir");
 
@@ -57,6 +61,10 @@ public class BinariesController {
         }
     }
 
+    
+    /** 
+     * @param driver
+     */
     public static void extractDriverBinary(SeleniumDriver driver) {
         String driverZipPath = driver.get(DRIVERS_LOCAL_PATH) + ".zip";
         
@@ -77,6 +85,12 @@ public class BinariesController {
         }
     }
     
+    
+    /** 
+     * @param zipInputStream
+     * @param outputPath
+     * @throws IOException
+     */
     private static void extractZip(InputStream zipInputStream, String outputPath) throws IOException {
         ZipInputStream zipStream = new ZipInputStream(zipInputStream);
         
@@ -113,6 +127,10 @@ public class BinariesController {
         }
     }
     
+    
+    /** 
+     * @param folderToRemove
+     */
     private static void removeTempDirectory(String folderToRemove) {
         File tempDirectory = new File(folderToRemove);
 

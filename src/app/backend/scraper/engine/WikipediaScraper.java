@@ -51,6 +51,10 @@ public class WikipediaScraper {
         this(true, true);
     }
 
+    
+    /** 
+     * @throws FileNotFoundException
+     */
     public void start() throws FileNotFoundException {
         // Avoid usage while scraper has already been spawned
         if (this.isScraperActive) {
@@ -82,6 +86,10 @@ public class WikipediaScraper {
         this.isScraperActive = false;
     }
 
+    
+    /** 
+     * @throws FileNotFoundException
+     */
     private void spawnDriver() throws FileNotFoundException {
         this.setStatus("Finding a supported driver-driven browser to start...");
         
@@ -100,6 +108,11 @@ public class WikipediaScraper {
         throw new FileNotFoundException("No supported browsers found installed (Firefox, Chrome, Edge)");
     }
 
+    
+    /** 
+     * @param browser
+     * @throws FileNotFoundException
+     */
     private void testBrowserInstance(Browser browser) throws FileNotFoundException {
         //Setup driver path based on selected browser
         this.selectDriverBasedOnBrowser(browser);
@@ -144,6 +157,11 @@ public class WikipediaScraper {
         }
     }    
 
+    
+    /** 
+     * @param browser
+     * @throws FileNotFoundException
+     */
     private void selectDriverBasedOnBrowser(Browser browser) throws FileNotFoundException {
         String driverPath;
         String driverType;
@@ -175,6 +193,12 @@ public class WikipediaScraper {
         System.setProperty("webdriver." + driverType + ".driver", driverPath);
     }
 
+    
+    /** 
+     * @param windowsDriver
+     * @param unixDriver
+     * @return SeleniumDriver
+     */
     private SeleniumDriver selectDriverBasedOnOS(SeleniumDriver windowsDriver, SeleniumDriver unixDriver) {
         SeleniumDriver driver;
 
@@ -191,6 +215,12 @@ public class WikipediaScraper {
         return driver;
     }
     
+    
+    /** 
+     * @param pageURL
+     * @return String
+     * @throws FileNotFoundException
+     */
     public String getPageHTML(String pageURL) throws FileNotFoundException {
         if (!this.useSelenium) {
             try {
@@ -203,6 +233,12 @@ public class WikipediaScraper {
         return this.getPageHTMLwithSelenium(pageURL);
     }
 
+    
+    /** 
+     * @param pageURL
+     * @return String
+     * @throws IOException
+     */
     public static String getPageHTMLwithHTTP(String pageURL) throws IOException {
         StringBuilder result = new StringBuilder();
         
@@ -228,6 +264,12 @@ public class WikipediaScraper {
         return result.toString();
    }
     
+    
+    /** 
+     * @param pageURL
+     * @return String
+     * @throws FileNotFoundException
+     */
     public String getPageHTMLwithSelenium(String pageURL) throws FileNotFoundException {
         // Avoid usage while scraper isn't active
         if (!this.isScraperActive) {
@@ -247,6 +289,12 @@ public class WikipediaScraper {
         return "<html>\n" + contents + "\n</html>";
     }
 
+    
+    /** 
+     * @param pageURL
+     * @return HashMap<String, HashMap<String, String>>
+     * @throws FileNotFoundException
+     */
     public HashMap<String, HashMap<String, String>> getWikipediaSummary(String pageURL) throws FileNotFoundException {
         HashMap<String, HashMap<String, String>> summaryData = new HashMap<String, HashMap<String, String>>();
         
@@ -294,6 +342,11 @@ public class WikipediaScraper {
         return summaryData;
     }
 
+    
+    /** 
+     * @param summaryData
+     * @param row
+     */
     private void parseRow(HashMap<String, HashMap<String, String>> summaryData, Element row) {
         Elements ths = row.getElementsByTag("th");
         
@@ -325,6 +378,11 @@ public class WikipediaScraper {
         }
     }
     
+    
+    /** 
+     * @param tdData
+     * @param rowChunk
+     */
     private void parseChunk(HashMap<String, String> tdData, String rowChunk) {
         Document tdChunk = Jsoup.parse(rowChunk);
         String hyperlink = "";
@@ -353,10 +411,20 @@ public class WikipediaScraper {
         tdData.put(tdKey, hyperlink);
     }
     
+    
+    /** 
+     * @param text
+     * @return String
+     */
     public static String parseParenthesis(String text) {
         return text.replaceAll("\\[.*\\]|\\(.*\\)", "").trim();
     }
 
+    
+    /** 
+     * @param anchor
+     * @return boolean
+     */
     private static boolean isValidAnchor(Element anchor) {
         boolean isValid = true;
 
@@ -375,6 +443,10 @@ public class WikipediaScraper {
         return isValid;
     }
     
+    
+    /** 
+     * @param status
+     */
     protected void setStatus(String status) {
         if (this.debugMode) {
             System.out.println(status);
@@ -383,22 +455,42 @@ public class WikipediaScraper {
         this.ScraperStatusHolder.updateStatus(status);
     }
     
+    
+    /** 
+     * @param debugMode
+     */
     public void setDebugMode(boolean debugMode) {
         this.debugMode = debugMode;
     }
 
+    
+    /** 
+     * @param useSelenium
+     */
     public void setSeleniumMode(boolean useSelenium) {
         this.useSelenium = useSelenium;
     }
     
+    
+    /** 
+     * @param useHeadless
+     */
     public void setHeadlessMode(boolean useHeadless) {
         this.useHeadless = useHeadless;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getStatus() {
         return this.ScraperStatusHolder.getStatus();
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean isActive() {
         return this.isScraperActive;
     }

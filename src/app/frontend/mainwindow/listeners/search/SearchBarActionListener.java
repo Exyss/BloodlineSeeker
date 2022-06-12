@@ -6,6 +6,10 @@ import java.awt.event.ActionListener;
 import app.frontend.mainwindow.MainWindowManager;
 
 public class SearchBarActionListener implements ActionListener {
+    
+    /** 
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         MainWindowManager.searchMembers();

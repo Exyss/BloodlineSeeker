@@ -60,6 +60,10 @@ public class ScrollPane extends JPanel{
         UIManager.put("ScrollBar.hoverTrackColor",ComponentColor.WHITE.get());
     }
 
+    
+    /** 
+     * @return JPanel
+     */
     public JPanel getCardHolder() {
         return this.cardHolder;
     }

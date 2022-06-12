@@ -12,10 +12,18 @@ public class DynastyTester {
 
     private static final String JSON_FILE = "test.json";
 
+    
+    /** 
+     * @return int
+     */
     public static int getTotalTests() {
         return TESTS_NUMBER;
     }
 
+    
+    /** 
+     * @return int
+     */
     public static int runTests() {
         Dynasty createdDynasty = createTestDynasty();
 
@@ -50,6 +58,10 @@ public class DynastyTester {
         return passedTests;
     }
 
+    
+    /** 
+     * @return Dynasty
+     */
     private static Dynasty createTestDynasty() {
         Dynasty dynasty = new Dynasty("Test Dynasty", "https://example.com");
         Member member1 = new Member("Member 1", "", false);
@@ -67,6 +79,11 @@ public class DynastyTester {
         return dynasty;
     }
 
+    
+    /** 
+     * @param createdDynasty
+     * @return boolean
+     */
     private static boolean testDynastySerialization(Dynasty createdDynasty) {
         try {
             createdDynasty.toJSONFile(JSON_FILE);
@@ -78,6 +95,11 @@ public class DynastyTester {
         return true;
     }
 
+    
+    /** 
+     * @param createdDynasty
+     * @return boolean
+     */
     private static boolean testDynastyDeserialization(Dynasty createdDynasty) {
         Dynasty loadedDynasty;
 

@@ -13,6 +13,10 @@ public class SuggestionSearchBarActionListener implements ActionListener {
         this.suggestion = suggestion;
     }
 
+    
+    /** 
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         BackendManager.printDebug("Query suggestion: " + suggestion);

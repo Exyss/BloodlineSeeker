@@ -15,6 +15,10 @@ import app.frontend.launcher.LauncherManager;
  *
  */
 public class SwitchToConsolePageActionListener implements ActionListener {
+    
+    /** 
+     * @param arg0
+     */
     @Override
     public void actionPerformed(ActionEvent arg0) {
         LauncherManager.switchToConsolePage();

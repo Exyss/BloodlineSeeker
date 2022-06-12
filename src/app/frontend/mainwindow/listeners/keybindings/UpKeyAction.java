@@ -9,6 +9,10 @@ import app.frontend.mainwindow.MainWindowManager;
 public class UpKeyAction extends AbstractAction{
     private static final long serialVersionUID = 28L;
 
+    
+    /** 
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         MainWindowManager.getWindowImageController().move(0,-1);

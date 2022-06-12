@@ -41,6 +41,11 @@ public final class DynastyVisualizer {
 
     private static Member centerMember;
 
+    
+    /** 
+     * @param dynasty
+     * @return MutableGraph
+     */
     //Iteratively generate whole dynasty with no central member
     public static MutableGraph toGraph(Dynasty dynasty) {
         DynastyVisualizer.centerMember = null;
@@ -59,6 +64,11 @@ public final class DynastyVisualizer {
         return dynastyGraph;
     }
     
+    
+    /** 
+     * @param member
+     * @return MutableGraph
+     */
     //Recursively generate limited dynasty graph using a central member 
     public static MutableGraph toGraph(Member member) {
         DynastyVisualizer.centerMember = member;
@@ -69,12 +79,27 @@ public final class DynastyVisualizer {
         return familyGraph;
     }
 
+    
+    /** 
+     * @param memberNode
+     * @param member
+     * @param relative
+     */
     private static void linkToRelativesIterative(MutableNode memberNode, Member member, Relative relative) {
         for (Member memberRelative : member.getRelatives(relative)) {
             linkToRelativeNode(memberNode, memberRelative, relative);
         }
     }
 
+    
+    /** 
+     * @param existingIDs
+     * @param familyGraph
+     * @param relative
+     * @param member
+     * @param memberNode
+     * @param depth
+     */
     private static void linkToRelativesRecursive(ArrayList<String> existingIDs, MutableGraph familyGraph, Relative relative, Member member, MutableNode memberNode, int depth) {
         for (Member memberRelative : member.getRelatives(relative)) {
 
@@ -93,6 +118,12 @@ public final class DynastyVisualizer {
         }
     }
     
+    
+    /** 
+     * @param memberNode
+     * @param memberRelative
+     * @param relative
+     */
     private static void linkToRelativeNode(MutableNode memberNode, Member memberRelative, Relative relative) {
         switch (relative) {
             case CHILD:
@@ -110,6 +141,13 @@ public final class DynastyVisualizer {
         }
     }
 
+    
+    /** 
+     * @param existingIDs
+     * @param member
+     * @param depth
+     * @return MutableGraph
+     */
     private static MutableGraph createFamily(ArrayList<String> existingIDs, Member member, int depth) {
         if (depth == 0) {
             return null;
@@ -135,6 +173,11 @@ public final class DynastyVisualizer {
         return familyGraph;
     }
 
+    
+    /** 
+     * @param member
+     * @return MutableNode
+     */
     private static MutableNode createMemberNode(Member member) {
         MutableNode memberNode = mutNode(member.getID()).add(Shape.RECTANGLE);
 
@@ -166,6 +209,11 @@ public final class DynastyVisualizer {
         return memberNode;
     }
 
+    
+    /** 
+     * @param subGraphName
+     * @return MutableGraph
+     */
     private static MutableGraph generateBlankGraph(String subGraphName) {
         return mutGraph(subGraphName)
             .setDirected(true)
@@ -177,10 +225,21 @@ public final class DynastyVisualizer {
             );
     }
 
+    
+    /** 
+     * @param subGraphName
+     * @return MutableGraph
+     */
     private static MutableGraph generateBlankSubGraph(String subGraphName) {
         return mutGraph(subGraphName).setDirected(true);
     }
 
+    
+    /** 
+     * @param graph
+     * @return Renderer
+     * @throws FileNotFoundException
+     */
     private static Renderer renderGraph(MutableGraph graph) throws FileNotFoundException {
         try {
             return Graphviz.fromGraph(graph).render(Format.PNG);
@@ -189,26 +248,62 @@ public final class DynastyVisualizer {
         }
     }
 
+    
+    /** 
+     * @param dynasty
+     * @return Renderer
+     * @throws FileNotFoundException
+     */
     public static Renderer toRenderedGraph(Dynasty dynasty) throws FileNotFoundException {
         return renderGraph(toGraph(dynasty));
     }
 
+    
+    /** 
+     * @param member
+     * @return Renderer
+     * @throws FileNotFoundException
+     */
     public static Renderer toRenderedGraph(Member member) throws FileNotFoundException {
         return renderGraph(toGraph(member));
     }
 
+    
+    /** 
+     * @param dynasty
+     * @return BufferedImage
+     * @throws FileNotFoundException
+     */
     public static BufferedImage toBufferedImage(Dynasty dynasty) throws FileNotFoundException {
         return toRenderedGraph(dynasty).toImage();
     }
 
+    
+    /** 
+     * @param member
+     * @return BufferedImage
+     * @throws FileNotFoundException
+     */
     public static BufferedImage toBufferedImage(Member member) throws FileNotFoundException {
         return toRenderedGraph(member).toImage();
     }
 
+    
+    /** 
+     * @param dynasty
+     * @param outputPath
+     * @throws IOException
+     */
     public static void toImageFile(Dynasty dynasty, String outputPath) throws IOException {
         toRenderedGraph(dynasty).toFile(new File(outputPath));
     }
 
+    
+    /** 
+     * @param member
+     * @param outputPath
+     * @throws IOException
+     */
     public static void toImageFile(Member member, String outputPath) throws IOException {
         toRenderedGraph(member).toFile(new File(outputPath));
     }

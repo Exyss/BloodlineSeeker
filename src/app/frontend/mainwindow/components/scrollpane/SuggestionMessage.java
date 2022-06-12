@@ -43,6 +43,10 @@ public final class SuggestionMessage extends JPanel {
         this.add(this.textPanel);
     }
 
+    
+    /** 
+     * @param suggestion
+     */
     private void createButtonPanel(String suggestion) {
         AntiAliasedTextButton searchButton = createSearchButton(suggestion);
 
@@ -54,6 +58,10 @@ public final class SuggestionMessage extends JPanel {
         this.add(this.buttonPanel);
     }
 
+    
+    /** 
+     * @return AntiAliasedTextLabel
+     */
     private AntiAliasedTextLabel createSuggestionLabel() {
         AntiAliasedTextLabel suggestionLabel = new AntiAliasedTextLabel(defaultLabel);
 
@@ -64,6 +72,11 @@ public final class SuggestionMessage extends JPanel {
         return suggestionLabel;
     }
 
+    
+    /** 
+     * @param suggestion
+     * @return AntiAliasedTextButton
+     */
     private AntiAliasedTextButton createSearchButton(String suggestion) {
         AntiAliasedTextButton searchButton = new AntiAliasedTextButton();
 

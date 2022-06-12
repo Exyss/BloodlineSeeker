@@ -12,14 +12,27 @@ public final class ScraperResult implements Comparable<ScraperResult> {
         this.dynasty = dynasty;
     }
 
+    
+    /** 
+     * @return Member
+     */
     public Member getMember() {
         return this.member;
     }
 
+    
+    /** 
+     * @return Dynasty
+     */
     public Dynasty getDynasty() {
         return this.dynasty;
     }
 
+    
+    /** 
+     * @param other
+     * @return int
+     */
     private int compareRank(ScraperResult other) {
         int thisRank = this.member.getAllRelatives().size();
         int otherRank = other.member.getAllRelatives().size();
@@ -35,6 +48,11 @@ public final class ScraperResult implements Comparable<ScraperResult> {
         }
     }
 
+    
+    /** 
+     * @param other
+     * @return int
+     */
     private int compareRankAndStatus(ScraperResult other) {
         boolean thisStatus = this.member.isEmperor();
         boolean otherStatus  = other.member.isEmperor();
@@ -47,6 +65,11 @@ public final class ScraperResult implements Comparable<ScraperResult> {
         }
     }
 
+    
+    /** 
+     * @param other
+     * @return int
+     */
     @Override
     public int compareTo(ScraperResult other) {
         return compareRankAndStatus(other);

@@ -53,6 +53,13 @@ public final class BackendManager {
         }
     }
 
+    
+    /** 
+     * @return boolean
+     * @throws FileNotFoundException
+     * @throws JSONException
+     * @throws NullPointerException
+     */
     public static boolean loadFromFiles() throws FileNotFoundException, JSONException, NullPointerException {
         BackendManager.printDebug("Trying to load dynasties from JSONs");
 
@@ -76,6 +83,11 @@ public final class BackendManager {
         return true;
     }
 
+    
+    /** 
+     * @param dynastyJSONpath
+     * @throws FileNotFoundException
+     */
     private static void JSONtoDynasty(String dynastyJSONpath) throws FileNotFoundException{
         BackendManager.printDebug("Loading dynasty from: " + dynastyJSONpath);
 
@@ -124,24 +136,47 @@ public final class BackendManager {
         }
     }
 
+    
+    /** 
+     * @throws IOException
+     */
     public static void loadedDynastyToPNG() throws IOException {
         String loadedDynastyPNGPath = PNG_PATH + loadedDynasty.getName() + ".png";
         DynastyVisualizer.toImageFile(loadedDynasty, loadedDynastyPNGPath);
     }
 
+    
+    /** 
+     * @return BufferedImage
+     * @throws FileNotFoundException
+     */
     public static BufferedImage loadedDynastyToBufferedImage() throws FileNotFoundException {
         return DynastyVisualizer.toBufferedImage(loadedDynasty);
     }
     
+    
+    /** 
+     * @throws IOException
+     */
     public static void loadedMemberToPNG() throws IOException {
         String loadedMemberPNGPath = PNG_PATH + loadedMember.getName() + ".png";
         DynastyVisualizer.toImageFile(loadedMember, loadedMemberPNGPath);
     }
 
+    
+    /** 
+     * @return BufferedImage
+     * @throws FileNotFoundException
+     */
     public static BufferedImage loadedMemberToBufferedImage() throws FileNotFoundException {
         return DynastyVisualizer.toBufferedImage(loadedMember);
     }
     
+    
+    /** 
+     * @param dirPath
+     * @return ArrayList<String>
+     */
     private static ArrayList<String> listDir(String dirPath) {
         ArrayList<String> fileNames = new ArrayList<String>();
 
@@ -160,12 +195,20 @@ public final class BackendManager {
         return fileNames;
     }
 
+    
+    /** 
+     * @param debugMsg
+     */
     public static void printDebug(String debugMsg) {
         if (debugMode) {
             System.out.println(debugMsg);
         }
     }
 
+    
+    /** 
+     * @param debugMode
+     */
     public static void setDebugMode(boolean debugMode) {
         if (debugMode) {
             BackendManager.printDebug("Debug mode enabled");
@@ -176,6 +219,10 @@ public final class BackendManager {
         BackendManager.debugMode = debugMode;
     }
 
+    
+    /** 
+     * @param seleniumMode
+     */
     public static void setSeleniumMode(boolean seleniumMode) {
         if (seleniumMode) {
             BackendManager.printDebug("Selenium mode enabled");
@@ -186,6 +233,10 @@ public final class BackendManager {
         BackendManager.seleniumMode = seleniumMode;
     }
     
+    
+    /** 
+     * @param headlessMode
+     */
     public static void setHeadlessMode(boolean headlessMode) {
         if (headlessMode) {
             BackendManager.printDebug("Headless mode enabled");
@@ -196,18 +247,34 @@ public final class BackendManager {
         BackendManager.headlessMode = headlessMode;
     }
     
+    
+    /** 
+     * @param dynasty
+     */
     public static void setLoadedDynasty(Dynasty dynasty) {
         loadedDynasty = dynasty;
     }
 
+    
+    /** 
+     * @param member
+     */
     public static void setLoadedMember(Member member) {
         loadedMember = member;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public static boolean getSeleniumMode() {
         return seleniumMode;
     }
 
+    
+    /** 
+     * @return String
+     */
     public static String getScraperStatus() {
         if (scraper != null) {
             return scraper.getStatus();
@@ -216,22 +283,42 @@ public final class BackendManager {
         return "";
     }
 
+    
+    /** 
+     * @return ArrayList<Dynasty>
+     */
     public static ArrayList<Dynasty> getDynasties() {
         return dynasties;
     }
     
+    
+    /** 
+     * @return Dynasty
+     */
     public static Dynasty getLoadedDynasty() {
         return loadedDynasty;
     }
 
+    
+    /** 
+     * @return Member
+     */
     public static Member getLoadedMember() {
         return loadedMember;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public static boolean isScraperRunnerActive() {
         return runner.isScraperActive();
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public static boolean isDebugModeActive() {
         return debugMode;
     }

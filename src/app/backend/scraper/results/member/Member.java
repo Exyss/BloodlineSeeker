@@ -35,6 +35,11 @@ public class Member implements JSONable {
         this.isEmperor = isEmperor;
     }
 
+    
+    /** 
+     * @param relative
+     * @return ArrayList<Member>
+     */
     public ArrayList<Member> getRelatives(Relative relative) {
         ArrayList<Member> relatives;
 
@@ -58,6 +63,11 @@ public class Member implements JSONable {
         return relatives;
     }
 
+    
+    /** 
+     * @param relative
+     * @return ArrayList<String>
+     */
     private ArrayList<String> getRelativesIDs(Relative relative) {
         ArrayList<String> IDs = new ArrayList<String>();
 
@@ -87,6 +97,10 @@ public class Member implements JSONable {
         return IDs;
     }
 
+    
+    /** 
+     * @return ArrayList<Member>
+     */
     public ArrayList<Member> getAllRelatives() {
         ArrayList<Member> relatives = new ArrayList<Member>();
         relatives.addAll(this.parents);
@@ -95,6 +109,11 @@ public class Member implements JSONable {
         return relatives;
     }
 
+    
+    /** 
+     * @param member
+     * @param relative
+     */
     public void addRelative(Member member, Relative relative) {
         switch (relative) {
             case PARENT:                
@@ -123,6 +142,10 @@ public class Member implements JSONable {
         }
     }
 
+    
+    /** 
+     * @return JSONObject
+     */
     @Override
     public JSONObject toJSONObject() {
         // TODo: move to javadoc
@@ -154,35 +177,67 @@ public class Member implements JSONable {
         return json;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "[" + this.getName() + "; isEmperor: "+ this.isEmperor() + "; " + this.getWikipediaLink() + "]";
     }
 
+    
+    /** 
+     * @param ID
+     */
     public void setID(String ID) {
         this.ID = ID;
     }
 
+    
+    /** 
+     * @param isEmperor
+     */
     public void setEmperorStatus(boolean isEmperor) {
         this.isEmperor = isEmperor;
     }
 
+    
+    /** 
+     * @param wikipediaLink
+     */
     public void setWikipediaLink(String wikipediaLink) {
         this.wikipediaLink = wikipediaLink;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getID() {
         return ID;
     }
     
+    
+    /** 
+     * @return String
+     */
     public String getName() {
         return name;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getWikipediaLink() {
         return this.wikipediaLink;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean isEmperor() {
         return this.isEmperor;
     }
