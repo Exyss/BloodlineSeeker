@@ -10,7 +10,7 @@ display_help(){
 	echo "NOTE: Automatically compiles all classes and libraries used in this project"
 	echo ""
 
-	echo "Usage: compile [-h] | [-j] | [-r] | [-v]"
+	echo "Usage: compile [-h] [-j] [-r] [-v]"
 	echo ""
 
 	echo "Optional operations:"

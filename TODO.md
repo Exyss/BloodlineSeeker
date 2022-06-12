@@ -24,10 +24,10 @@
 
 ## Lista di cose da fare
 
-- [ ] aggiungere la release al progetto (e levare packages)
-- [ ] aggiungere descrizione alla repository
+- [x] aggiungere la release al progetto (e levare packages)
+- [x] aggiungere descrizione alla repository
 - [x] script per la compilazione linux
-- [ ] script per la compilazione windows
+- [x] script per la compilazione windows
 - [ ] finire javadoc
 - [ ] commenti
 - [ ] test estensivo del programma e funzionalità su più piattaforme
