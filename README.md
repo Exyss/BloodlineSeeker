@@ -23,20 +23,24 @@ For example, here is the sinottico for Julius Caesar: from this, BloodlineSeeker
 
 ## Requirements
 
-BloodlineSeeker uses some external programs which may be required to run the jar file
+In order to function, BloodlineSeeker need these external programs to be installed:
 
-- Java 8+ is required to run the jar file
-- if chosen, the program will scrape Wikipedia by using Selenium, which needs the driver of some browser; there are some drivers already available in the program's resources, but one of the browsers listed below still needs to be installed in the user's computer
+- **Java 8+ is required to run the jar file**
+
+- In order to generate the required graphs, the program uses a widespread library called [Graphviz](https://graphviz.org/).
+  - On **Windows systems**, all the binaries and DLLs needed are already included.
+  - On **UNIX systems**, the Graphviz package should already be installed (due to it popularity). If not, you should be able to download the library with your package manager.
+
+- OPTIONAL: The scraping can be executed either through HTTP Requests, which works out-of-the-box, or **Selenium**, which one out of the three following browsers to be installed on the system:
   - Microsoft Edge
   - Google Chrome
   - Mozilla Firefox
-- to generate the graph of the dynasties, the program uses a widespread library called [Graphviz](https://graphviz.org/), which needs some backend programs to run properly; in the program's resources, the Windows executable is already provided and should run without any issue, but if you run some Linux distribution, and you don't have the Graphviz package already installed, you should be able to download the library with your package manager.
 
 Support on macOS is not guaranteed, because of hardware limitations due to the inability to test the program.
 
 ## Installation
 
-`BloodlineSeeker.jar` can be found in the [releases page of this repository](https://github.com/Exyss/BloodlineSeeker/releases). Just download the latest release of the program and you are ready to go.
+The portable executable `BloodlineSeeker.jar` file can be found in the [releases page of this repository](https://github.com/Exyss/BloodlineSeeker/releases). Just download the latest releases and you are ready to go.
 
 ## Run
 
@@ -62,26 +66,28 @@ In the Download page, the user will be able to choose between HTTP requests and 
 
 After the download is completed, the files of the found dynasties will be created under `data/jsons/`. Then, the program will launch, giving the user the ability to search through every person of every dynasty, and the option to explore the person's close family graph dynamically in the program.
 
-## Contributing
+## Compiling and Contributing
 
-To contribute to the program, first clone this repository. Then, use the script for your operating system:
+In case you want to compile your own version of this program, you can do it by using the given compile-and-go scripts:
 
-- on Linux, use `compile.sh`
+- on Linux, you can use the file named `unix_compile.sh`:
 
-```sh
-sh compile.sh [options]
+```bash
+bash <path_to_repository>/compile.sh [options]
 ```
 
-- on Windows, use `compile.bat`
+- on Windows, you can use the file named `win_compile.bat`:
 
-```sh
-TODO: qui
+```bash
+<path_to_repository>\win_compile.bat [options]
 ```
 
 Options on both scripts:
 
 - no options, to compile the program
 - `--run` or `-r` to compile and run the program
-- `--jar` or `-j` to create the jar file
+- `--jar` or `-j` to create an independent and portable jar file
 - `--help` or `-h` to show the help message
 - `--verbose` or `-v` to run the script with detailed output
+
+To contribute, make sure that the program gets compiled before opening a pull request.
