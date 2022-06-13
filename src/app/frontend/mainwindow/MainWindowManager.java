@@ -179,7 +179,7 @@ public class MainWindowManager {
      * Show a suggestion when possible.
      * @param suggestion the suggestion to be showed.
      */
-    public static void showSuggestion(String suggestion) {
+    private static void showSuggestion(String suggestion) {
         if (suggestion != null) {
             getWindowScrollPaneController().showScrollPaneSuggestion(suggestion);
         } else {
@@ -190,7 +190,7 @@ public class MainWindowManager {
     /**
      * Shows the result not found panel.
      */
-    public static void showResultNotFound() {
+    private static void showResultNotFound() {
         getWindowScrollPaneController().showResultNotFoundCard();
     }
 
@@ -229,6 +229,13 @@ public class MainWindowManager {
         getWindow().setTitle(FrontendManager.APP_TITLE + toAppend);
     }
     
+    /**
+     * Refreshes the window revalidating it and repainting it.
+     */
+    public static void refresh() {
+        getWindow().revalidate();
+        getWindow().repaint();
+    }
     
     /** 
      * @return the Window ScrollPaneController.
@@ -293,11 +300,4 @@ public class MainWindowManager {
         return (JComponent) getWindow().getContentPane();
     }
     
-    /**
-     * refreshes the window revalidating it and repainting it.
-     */
-    public static void refresh() {
-        getWindow().revalidate();
-        getWindow().repaint();
-    }
 }

@@ -32,7 +32,7 @@ public class SearchBar extends JPanel {
         this.createPanel();
         this.createButton();
         this.addActionListener();
-        this.setUi();
+        this.setUI();
     }
 
     private void setup() {
@@ -106,7 +106,7 @@ public class SearchBar extends JPanel {
         this.button.addActionListener(this.searchActionListener);
     }
     
-    private void setUi() {
+    private void setUI() {
         textField.putClientProperty("JTextField.placeholderText", DEFAULT_TEXT);
     }    
 }

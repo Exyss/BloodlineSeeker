@@ -17,11 +17,12 @@ public class ScrollPane extends JPanel{
     private static final int SCROLLBAR_WIDTH = 15;
     private static final int SCROLLBAR_ARC = 999;
 
+    private static final Point ORIGIN_POINT = new Point(0,0);
     private JScrollPane scrollPane;
     private JPanel cardHolder;
     
     public ScrollPane() {
-        this.setUi();
+        this.setUI();
         this.setup();
         this.createCardHolder();
         this.createScrollPane();
@@ -48,7 +49,7 @@ public class ScrollPane extends JPanel{
         this.add(this.scrollPane, BorderLayout.CENTER);
     }
     
-    private void setUi() {
+    private void setUI() {
         UIManager.put("ScrollBar.width", SCROLLBAR_WIDTH);
         UIManager.put("ScrollBar.thumbArc", SCROLLBAR_ARC);
         
@@ -69,6 +70,6 @@ public class ScrollPane extends JPanel{
     }
     
     public void resetScrollBar() {
-        scrollPane.getViewport().setViewPosition(new Point(0, 0));
+        scrollPane.getViewport().setViewPosition(ORIGIN_POINT);
     }
 }

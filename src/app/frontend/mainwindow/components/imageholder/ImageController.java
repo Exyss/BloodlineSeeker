@@ -138,24 +138,12 @@ public class ImageController {
         return canBrowse && (!searchBarTextField.hasFocus());
     }
 
-    /**
-     *@return the Image of the imageEditor.
-     */
-    public BufferedImage getGraph() {
-        return imageEditor.getImage();
-    }
-
-    /** @return the canBrowse value.*/
-    public boolean getBrowse() {
-        return this.canBrowse;
-    }
-
     /**Finds the node which has the same background color of RECTANGLE_BACKGROUND.
      * 
      * @param graphImage the image where to find the node.
      * @return a point (the coordinates of the node) if find the node, null if the node doesen't exists.
     */
-    public static Point findColoredRectangle(BufferedImage graphImage) {
+    private static Point findColoredRectangle(BufferedImage graphImage) {
         int graphWidth = graphImage.getWidth() - GRAPH_MARGIN;
         int graphHeight = graphImage.getHeight() - GRAPH_MARGIN;
 
@@ -244,5 +232,18 @@ public class ImageController {
 
         meanPixel = new Point(upperLeftX + (rectangleWidth / 2), upperLeftY + (RECTANGLE_HEIGHT / 2));
         return meanPixel;
+    }
+
+    /**
+     *@return the Image of the imageEditor.
+     */
+    public BufferedImage getGraph() {
+        return imageEditor.getImage();
+    }
+
+
+    /** @return the canBrowse value.*/
+    public boolean getBrowse() {
+        return this.canBrowse;
     }
 }
