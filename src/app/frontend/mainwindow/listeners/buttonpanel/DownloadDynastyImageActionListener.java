@@ -3,6 +3,7 @@ package app.frontend.mainwindow.listeners.buttonpanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import app.backend.BackendManager;
 import app.frontend.FrontendManager;
 
 /** 
@@ -17,6 +18,7 @@ public class DownloadDynastyImageActionListener implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        BackendManager.printDebug("Download button pressed");
         FrontendManager.saveDynastyGraph();
     }
 }
