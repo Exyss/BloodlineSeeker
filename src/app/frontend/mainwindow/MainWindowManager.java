@@ -115,7 +115,7 @@ public class MainWindowManager {
     
     
     /** 
-     * @return BufferedImage
+     * @return the current graph image.
      */
     public static BufferedImage getImage() {
         if (getWindowImageController().getBrowse()) {
@@ -124,7 +124,9 @@ public class MainWindowManager {
             return null;
         }
     }
-
+    /**
+     * Shows the search results by updating the ScollPane.
+     */
     public static void searchMembers() {
         SearchBar searchBar = MainWindowManager.getWindowSearchBar();
 
@@ -149,7 +151,8 @@ public class MainWindowManager {
     
     
     /** 
-     * @param query
+     * Updates the ScollPane with the query results.
+     * @param query the search made by the user.
      */
     public static void updateScollPane(String query) {
         ArrayList<ScraperResult> results = SearchQueryController.findMatchingMembersAsResults(query);
@@ -173,7 +176,8 @@ public class MainWindowManager {
 
     
     /** 
-     * @param suggestion
+     * Show a suggestion when possible.
+     * @param suggestion the suggestion to be showed.
      */
     public static void showSuggestion(String suggestion) {
         if (suggestion != null) {
@@ -182,14 +186,18 @@ public class MainWindowManager {
             showResultNotFound();
         }
     }
-
+    
+    /**
+     * Shows the result not found panel.
+     */
     public static void showResultNotFound() {
         getWindowScrollPaneController().showResultNotFoundCard();
     }
 
     
     /** 
-     * @param link
+     * Opens a link in the default Browser.
+     * @param link the link to be browsed.
      */
     public static void openLink(String link) {
         try {
@@ -203,9 +211,10 @@ public class MainWindowManager {
 
     
     /** 
-     * @param member
-     * @param dynasty
-     * @return String
+     * Builds a new string using a member name and a Dynasty name.
+     * @param member the member to use the name from.
+     * @param dynasty the dynasty to use the name from.
+     * @return String the built string
      */
     public static String buildNewTitle(Member member, Dynasty dynasty) {
         return " - " + member.getName() + " (" + dynasty.getName() + ")";
@@ -213,7 +222,8 @@ public class MainWindowManager {
 
     
     /** 
-     * @param toAppend
+     * Updates the window titles with a new String.
+     * @param toAppend the new string that must be showed in the title.
      */
     public static void updateWindowTitle(String toAppend) {
         getWindow().setTitle(FrontendManager.APP_TITLE + toAppend);
@@ -221,7 +231,7 @@ public class MainWindowManager {
     
     
     /** 
-     * @return ScrollPaneController
+     * @return the Window ScrollPaneController.
      */
     public static ScrollPaneController getWindowScrollPaneController() {
         return getWindow().getScrollPaneController();
@@ -229,7 +239,7 @@ public class MainWindowManager {
     
     
     /** 
-     * @return ImageController
+     * @return the window ImageController.
      */
     public static ImageController getWindowImageController() {
         return getWindow().getImageController();
@@ -237,7 +247,7 @@ public class MainWindowManager {
 
     
     /** 
-     * @return ImageHolder
+     * @return the window ImageHolder.
      */
     public static ImageHolder getWindowImageHolder() {
         return getWindow().getImageHolder();
@@ -245,7 +255,7 @@ public class MainWindowManager {
     
      
      /** 
-      * @return ScrollPane
+      * @return the window ScrollPane.
       */
      public static ScrollPane getWindowScrollPane() {
         return getWindow().getScrollPane();
@@ -253,7 +263,7 @@ public class MainWindowManager {
 
     
     /** 
-     * @return SearchBar
+     * @return the window SearchBar.
      */
     public static SearchBar getWindowSearchBar() {
         return getWindow().getSearchBar();
@@ -261,7 +271,7 @@ public class MainWindowManager {
 
     
     /** 
-     * @return ButtonBox
+     * @return the window ButtonBox.
      */
     public static ButtonBox getWindowButtoBox() {
         return getWindow().getButtonBox();
@@ -269,7 +279,7 @@ public class MainWindowManager {
 
     
     /** 
-     * @return InfoBox
+     * @return the window InfoBox.
      */
     public static InfoBox getWindowInfoBox() {
         return getWindow().getInfoBox();
@@ -277,12 +287,15 @@ public class MainWindowManager {
 
     
     /** 
-     * @return JComponent
+     * @return the window ContentPane
      */
     public static JComponent getWindowContentPane() {
         return (JComponent) getWindow().getContentPane();
     }
-
+    
+    /**
+     * refreshes the window revalidating it and repainting it.
+     */
     public static void refresh() {
         getWindow().revalidate();
         getWindow().repaint();

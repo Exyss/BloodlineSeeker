@@ -9,7 +9,7 @@ import app.frontend.utils.Point;
 import net.coobird.thumbnailator.Thumbnails;
 
 /**
- * This ImageEditor edit the image 
+ * This ImageEditor takes care of making changes in the image.
  * @author Alessio Bandiera
  * @author Andrea Ladogana
  * @author Matteo Benvenuti

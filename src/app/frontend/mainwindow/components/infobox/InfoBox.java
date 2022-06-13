@@ -10,26 +10,59 @@ import app.frontend.utils.ImageLoader;
 import app.frontend.utils.ImagePath;
 import app.frontend.utils.QuattrocentoFont;
 
+/**
+ * This Infobox extends JPanel in order to create an info box panel.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ *
+ */
 public class InfoBox extends JPanel {
     private static final long serialVersionUID = 18L;
 
+    /**
+     * An AntiAliasedImageLabel used for the mouseWheelLabel.
+     */
     private AntiAliasedImageLabel mouseWheelLabel;
+    
+    /**
+     * An AntiAliasedImageLabel used for the wasdLabel.
+     */
     private AntiAliasedImageLabel wasdLabel;
+    
+    /**
+     * An AntiAliasedTextLabel used for the wasdText.
+     */
     private AntiAliasedTextLabel wasdText;
+    
+    /**
+     * An AntiAliasedTextLabel used for the mouseWheelText.
+     */
     private AntiAliasedTextLabel mouseWheelText;
     
+    /**
+     * Sets the InfoBpx up.
+     */
     public InfoBox() {
         this.setup();
         this.createComponent();
     }
     
+    /**
+     * Sets up the InfoBox layout, bound, border and background.
+     */
     private void setup() {
         this.setLayout(null);
         this.setBounds(735, 570, 208, 125);
         this.setBorder(ComponentBorder.ALL_GOLD.get());
         this.setBackground(ComponentColor.WHITE.get());
     }
-
+    
+    /**
+     * Creates the various component of the info box.
+     */
     private void createComponent() {
         this.createWasdIcon();
         this.createMauseWheelIcon();
