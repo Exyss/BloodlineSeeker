@@ -188,6 +188,7 @@ public class Member implements JSONable {
 
     
     /** 
+     * 
      * @param ID
      */
     public void setID(String ID) {
@@ -196,7 +197,8 @@ public class Member implements JSONable {
 
     
     /** 
-     * @param isEmperor
+     * Sets the isEmperor variable to the parameter value.
+     * @param isEmperor true if the member was an emperor, false if he wasn't.
      */
     public void setEmperorStatus(boolean isEmperor) {
         this.isEmperor = isEmperor;
@@ -204,7 +206,8 @@ public class Member implements JSONable {
 
     
     /** 
-     * @param wikipediaLink
+     * Sets the wikipedia link of the member.
+     * @param wikipediaLink the string which contains the member wikipedia link.
      */
     public void setWikipediaLink(String wikipediaLink) {
         this.wikipediaLink = wikipediaLink;
@@ -212,7 +215,7 @@ public class Member implements JSONable {
 
     
     /** 
-     * @return String
+     * @return the member ID.
      */
     public String getID() {
         return ID;
@@ -220,7 +223,7 @@ public class Member implements JSONable {
     
     
     /** 
-     * @return String
+     * @return the member name.
      */
     public String getName() {
         return name;
@@ -228,7 +231,7 @@ public class Member implements JSONable {
 
     
     /** 
-     * @return String
+     * @return the member wikipedia link.
      */
     public String getWikipediaLink() {
         return this.wikipediaLink;
@@ -236,7 +239,7 @@ public class Member implements JSONable {
 
     
     /** 
-     * @return 
+     * @return true if the member was an emperor, false if he wasn't.
      */
     public boolean isEmperor() {
         return this.isEmperor;
