@@ -57,14 +57,17 @@ public final class SuggestionMessage extends JPanel {
     }
 
     /**
-     * Sets up the Suggestion Layout as null, the
+     * Sets the Suggestion Layout as null, the bounds of the card and sets the opaque option as false.
      */
     private void setup() {
         this.setLayout(null);
         this.setBounds(0, 0, 600, 100);
         this.setOpaque(false);
     }
-
+    
+    /**
+     * Initializes the textPanel, then sets its bounds and the opaque option as false. Adds thesuggestionLabelto the textPanel and the textPanel to the SuggestionMessage panel.
+     */
     private void createTextPanel() {
         this.textPanel = new JPanel(null);
         this.textPanel.setBounds(20, 20, 165, 30);
@@ -77,7 +80,8 @@ public final class SuggestionMessage extends JPanel {
 
     
     /** 
-     * @param suggestion
+     * Creates an AntiAliasedTextButton with text, Initializes the buttonPanel, adds the button to the buttonPanel then sets the bounds and the opaque option as false. Adds the buttonPanel to the SuggestionMessage panel.
+     * @param suggestion the text of the searchButton.
      */
     private void createButtonPanel(String suggestion) {
         AntiAliasedTextButton searchButton = createSearchButton(suggestion);
@@ -92,7 +96,8 @@ public final class SuggestionMessage extends JPanel {
 
     
     /** 
-     * @return AntiAliasedTextLabel
+     * Creates an AntiAliasedTextLabel with the defaultLabel as text, aligns the y-coordinates of the component by the center. Then sets the default font and the bounds. 
+     * @return the new AntiAliasedTextLabel.
      */
     private AntiAliasedTextLabel createSuggestionLabel() {
         AntiAliasedTextLabel suggestionLabel = new AntiAliasedTextLabel(defaultLabel);
@@ -106,8 +111,11 @@ public final class SuggestionMessage extends JPanel {
 
     
     /** 
-     * @param suggestion
-     * @return AntiAliasedTextButton
+     * Creates an AntiAliasedTextButton used as search button, set the text of the button as the union of the open tag, suggestion and close tag,
+     * sets the foreground color as PERSIAN_RED, sets the project default font, set the Horizontal alignment to the left, set the BorderPainted as false,
+     * sets the border as null, the margin as empty, the ContentAreaFilled as false and adds to the button an SuggestionSearchBarActionListener.
+     * @param suggestion the String which is part of the searchButton.
+     * @return the new AntiAliasedTextButton search button.
      */
     private AntiAliasedTextButton createSearchButton(String suggestion) {
         AntiAliasedTextButton searchButton = new AntiAliasedTextButton();
