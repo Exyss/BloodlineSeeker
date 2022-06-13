@@ -103,7 +103,7 @@ public final class SuggestionMessage extends JPanel {
         AntiAliasedTextLabel suggestionLabel = new AntiAliasedTextLabel(defaultLabel);
 
         suggestionLabel.setAlignmentY(CENTER_ALIGNMENT);
-        suggestionLabel.setFont(QuattrocentoFont.PLAIN_25.get());
+        suggestionLabel.setFont(QuattrocentoFont.PLAIN_24.get());
         suggestionLabel.setBounds(0, 0, 165, 30);
         
         return suggestionLabel;
@@ -122,7 +122,7 @@ public final class SuggestionMessage extends JPanel {
 
         searchButton.setText(HTML_OPEN_TAG + suggestion + HTML_CLOSE_TAG);
         searchButton.setForeground(ComponentColor.PERSIAN_RED.get());
-        searchButton.setFont(QuattrocentoFont.PLAIN_25.get());
+        searchButton.setFont(QuattrocentoFont.PLAIN_24.get());
         searchButton.setHorizontalAlignment(JButton.LEFT);
         searchButton.setBorderPainted(false);
         searchButton.setBorder(null);

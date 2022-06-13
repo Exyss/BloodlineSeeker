@@ -53,7 +53,7 @@ public final class ResultNotFoundMessage extends JPanel {
     private void createNotFoundLabel() {
         this.suggestionLabel = new AntiAliasedTextLabel(DEFAULT_LABEL);
         this.suggestionLabel.setAlignmentY(CENTER_ALIGNMENT);
-        this.suggestionLabel.setFont(QuattrocentoFont.PLAIN_25.get());
+        this.suggestionLabel.setFont(QuattrocentoFont.PLAIN_24.get());
         this.suggestionLabel.setBounds(20, 20, 500, 30);
         this.add(suggestionLabel);
     }
