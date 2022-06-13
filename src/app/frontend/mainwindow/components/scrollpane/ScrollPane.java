@@ -10,16 +10,45 @@ import javax.swing.UIManager;
 import app.frontend.utils.ComponentBorder;
 import app.frontend.utils.ComponentColor;
 
+/** 
+ * This ScrollPane extends JPanel and it's used to display a scroll pane for the search results.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ */
 public class ScrollPane extends JPanel{
     private static final long serialVersionUID = 21L;
 
+    /**
+     * The scroll increment.
+     */
     private static final int SCROLL_INCREMENT = 15;
+    
+    /**
+     * The scroll bar width.
+     */
     private static final int SCROLLBAR_WIDTH = 15;
+    
+    /**
+     * The angle degrees to make the corners rounded.
+     */
     private static final int SCROLLBAR_ARC = 999;
 
+    /**
+     * A JScrollPane used as scroll pane.
+     */
     private JScrollPane scrollPane;
+    
+    /**
+     * A JPanel used as card holder.
+     */
     private JPanel cardHolder;
     
+    /**
+     * Creates the ScrollPane and sets it up.
+     */
     public ScrollPane() {
         this.setUi();
         this.setup();
@@ -27,17 +56,27 @@ public class ScrollPane extends JPanel{
         this.createScrollPane();
     }
     
+    /**
+     * Sets up the ScrollPane layout and bounds.
+     */
     private void setup() {
         this.setLayout(new BorderLayout());
         this.setBounds(25,130,685,565);
     }
     
+    /**
+     * Initializes the cardHolder with a null layout, a white background and sets the auto scrolls false.
+     */
     private void createCardHolder() {
         this.cardHolder= new JPanel(null);
         this.cardHolder.setBackground(ComponentColor.WHITE.get());
         this.cardHolder.setAutoscrolls(true);
     }
     
+    /**
+     * Initializes the scrollPane displaying the cardHolder, sets ALL_GOLD the border color, sets focusable as true, sets SCROLL_INCREMENT as unit increment of the vertical scroll bar,
+     * set the the vertical scroll bar policy so that vertical scroll bar is always displayed, set the the horizontal scroll bar policy so that horizontal scroll bar is never displayed and adds the scrollPane to the panel.
+     */
     private void createScrollPane() {
         this.scrollPane=new JScrollPane(this.cardHolder);
         this.scrollPane.setBorder(ComponentBorder.ALL_GOLD.get());
@@ -48,6 +87,9 @@ public class ScrollPane extends JPanel{
         this.add(this.scrollPane, BorderLayout.CENTER);
     }
     
+    /**
+     * Improve visibility of the Panel rounding the corners and managing the colors components of the ScrollPane.
+     */
     private void setUi() {
         UIManager.put("ScrollBar.width", SCROLLBAR_WIDTH);
         UIManager.put("ScrollBar.thumbArc", SCROLLBAR_ARC);
@@ -62,12 +104,15 @@ public class ScrollPane extends JPanel{
 
     
     /** 
-     * @return JPanel
+     * @return the cardHolder.
      */
     public JPanel getCardHolder() {
         return this.cardHolder;
     }
     
+    /**
+     * Resets the ScrolBar.
+     */
     public void resetScrollBar() {
         scrollPane.getViewport().setViewPosition(new Point(0, 0));
     }

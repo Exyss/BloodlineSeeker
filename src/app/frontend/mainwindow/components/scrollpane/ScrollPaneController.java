@@ -12,6 +12,7 @@ import app.frontend.mainwindow.MainWindowManager;
 import app.frontend.utils.RomanLiteral;
 
 public final class ScrollPaneController {
+	
     private final int PANEL_WIDTH = 685;
     private final int PANEL_HEIGHT = 500;
     private final int VERTICAL_CARD_GAP = 25;

@@ -71,14 +71,15 @@ public class InfoBox extends JPanel {
     }
     
     
-    /** 
-     * @param text
-     * @param x
-     * @param y
-     * @param width
-     * @param height
-     * @return AntiAliasedTextLabel
-     */
+    /**
+	 * Creates an AntiAliasedTextLabel with text, coordinates and dimensions. Sets it the bounds and the project font.
+	 * @param text the text of the label.
+	 * @param x the x-coordinate of the label.
+	 * @param y the y-coordinate of the label.
+	 * @param width the width of the label.
+	 * @param height the height of the label.
+	 * @return the new AntiAliasedTextLabel.
+	 */
     private AntiAliasedTextLabel createTextLabel(String text, int x, int y, int width, int height) {
         AntiAliasedTextLabel label = new AntiAliasedTextLabel(text);
 
@@ -90,12 +91,13 @@ public class InfoBox extends JPanel {
 
     
     /** 
-     * @param icon
-     * @param x
-     * @param y
-     * @param width
-     * @param height
-     * @return AntiAliasedImageLabel
+     * Creates an AntiAliasedImageLabel with icon (using the asImageIcon method from Image loader), coordinates and dimensions. Sets it the bounds and the project font.
+     * @param icon the icon of the label.
+     * @param x the x-coordinate of the label.
+     * @param y the y-coordinate of the label.
+     * @param width the width of the label.
+     * @param height the height of the label.
+     * @return the new AntiAliasedImageLabel.
      */
     private AntiAliasedImageLabel createImageLabel(String icon, int x, int y, int width, int height) {
         AntiAliasedImageLabel label = new AntiAliasedImageLabel();
@@ -106,22 +108,34 @@ public class InfoBox extends JPanel {
 
         return label;
     }
-
+    
+    /**
+     * Initialize the wasdIcon using the createImageLabel method and adds it to the info box panel.
+     */
     private void createWasdIcon() {
         this.wasdLabel = this.createImageLabel(ImagePath.WASD_ICON.get(), 30, 15, 40,40);
         this.add(this.wasdLabel);
     }
     
+    /**
+     * Initialize the mouseWheelIcon using the createImageLabel method and adds it to the info box panel.
+     */
     private void createMauseWheelIcon() {
         this.mouseWheelLabel = this.createImageLabel(ImagePath.MOUSE_ICON.get(), 34, 72,32,32);
         this.add(this.mouseWheelLabel);
     }
     
+    /**
+     * Initialize the wasdText using the createImageLabel method and adds it to the info box panel.
+     */
     private void createWasdText() {
         this.wasdText = this.createTextLabel("Naviga",95,16,100,40);
         this.add(wasdText);
     }
     
+    /**
+     * Initialize the mouseWheelText using the createImageLabel method and adds it to the info box panel.
+     */
     private void createMauseWheelText() {
         this.mouseWheelText= this.createTextLabel("Zoom",100,70,100,40);
         this.add(mouseWheelText);
