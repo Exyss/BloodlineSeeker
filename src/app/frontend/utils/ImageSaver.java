@@ -14,10 +14,7 @@ import app.frontend.elements.antialiased.text.AntialiasedTextFileChooser;
 
 public class ImageSaver extends Thread{
     
-    /**
-     * Saves the dynasty graph image in a directory chosen by the user.
-     * @throws Exception
-     */
+
     public  void saveDynastyGraph()  {
         
         if (BackendManager.getLoadedDynasty() == null) {

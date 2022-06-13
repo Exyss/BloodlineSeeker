@@ -72,6 +72,9 @@ public final class FrontendManager {
         LauncherManager.setupLauncher();
     }
 
+    /**
+     * Saves the dynasty graph image in a directory chosen by the user.
+     */
     public static void saveDynastyGraph() {
         ImageSaver imagesaver = new ImageSaver();
         imagesaver.start();
