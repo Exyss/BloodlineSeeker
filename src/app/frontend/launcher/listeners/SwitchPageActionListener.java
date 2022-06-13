@@ -16,11 +16,17 @@ import app.frontend.launcher.LauncherManager;
  */
 public class SwitchPageActionListener implements ActionListener {
     
-    /** 
-     * @param e
-     */
+    boolean isLoadPage;
+    public SwitchPageActionListener(boolean isLoadPage){
+        this.isLoadPage=isLoadPage;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        LauncherManager.switchPage();
+        boolean pageStatus = LauncherManager.getPageStatus();
+
+        if (isLoadPage != pageStatus){
+            LauncherManager.switchPage();
+        }
     }
 }

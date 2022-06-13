@@ -77,6 +77,46 @@ public final class LauncherManager {
     }
 
     /**
+     * Switches the current loaded page in the launcher window.
+     */
+    public static void switchPage() {
+        JPanel contentPanel = getWindowContentPanel();
+        contentPanel.removeAll();
+        
+        AntiAliasedTextButton switchToLoadPageButton = getWindowPageButtonPanel().getLoadButton();
+        AntiAliasedTextButton switchToDownloadPageButton = getWindowPageButtonPanel().getDownloadButton();
+        
+        if (pageStatus) {
+            contentPanel.add(getWindowDownloadPage());
+
+            contentPanel.revalidate();
+            contentPanel.repaint();
+
+            switchToLoadPageButton.setBorder(ComponentBorder.ALL_GOLD.get());
+            switchToDownloadPageButton.setBorder(ComponentBorder.WHITE_BOTTOM_ALL_GOLD.get());
+
+        } else {
+            contentPanel.add(getWindowLoadPage());
+            
+            contentPanel.revalidate();
+            contentPanel.repaint();
+            
+            switchToLoadPageButton.setBorder(ComponentBorder.WHITE_BOTTOM_ALL_GOLD.get());
+            switchToDownloadPageButton.setBorder(ComponentBorder.ALL_GOLD.get());
+        }
+
+        pageStatus = !pageStatus;
+    }
+
+    /**
+     * Updates the console to a new status.
+     * @param newStatus the new status of the console.
+     */
+    public static void updateConsole(String newStatus) {
+        getWindow().getConsolePage().updateConsole(newStatus);
+    }
+
+    /**
      * @throws IllegalStateException if isSetup is false.
      * @return the LauncherWindow.
      */
@@ -86,6 +126,10 @@ public final class LauncherManager {
         }
 
         return window;
+    }
+    
+    public static boolean getPageStatus() {
+        return pageStatus;
     }
 
     /**
@@ -178,43 +222,6 @@ public final class LauncherManager {
         BackendManager.setSeleniumMode(!seleniumMode);
     }
 
-    /**
-     * Switches the current loaded page in the launcher window.
-     */
-    public static void switchPage() {
-        JPanel contentPanel = getWindowContentPanel();
-        contentPanel.removeAll();
-        
-        AntiAliasedTextButton switchToLoadPageButton = getWindowPageButtonPanel().getLoadButton();
-        AntiAliasedTextButton switchToDownloadPageButton = getWindowPageButtonPanel().getDownloadButton();
-        
-        if (pageStatus) {
-            contentPanel.add(getWindowDownloadPage());
+    
 
-            contentPanel.revalidate();
-            contentPanel.repaint();
-
-            switchToLoadPageButton.setBorder(ComponentBorder.ALL_GOLD.get());
-            switchToDownloadPageButton.setBorder(ComponentBorder.WHITE_BOTTOM_ALL_GOLD.get());
-
-        } else {
-            contentPanel.add(getWindowLoadPage());
-            
-            contentPanel.revalidate();
-            contentPanel.repaint();
-            
-            switchToLoadPageButton.setBorder(ComponentBorder.WHITE_BOTTOM_ALL_GOLD.get());
-            switchToDownloadPageButton.setBorder(ComponentBorder.ALL_GOLD.get());
-        }
-
-        pageStatus = !pageStatus;
-    }
-
-    /**
-     * Updates the console to a new status.
-     * @param newStatus the new status of the console.
-     */
-    public static void updateConsole(String newStatus) {
-        getWindow().getConsolePage().updateConsole(newStatus);
-    }
 }

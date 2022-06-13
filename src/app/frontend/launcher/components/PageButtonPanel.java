@@ -70,10 +70,8 @@ public class PageButtonPanel extends JPanel {
         this.downloadButton = this.createButton(DOWNLOAD_MSG,ComponentBorder.ALL_GOLD.get(),107,  0, 144, 53);
         this.add(downloadButton);
         
-        SwitchPageActionListener switchPageActionListener = new SwitchPageActionListener();
-
-        loadButton.addActionListener(switchPageActionListener);
-        downloadButton.addActionListener(switchPageActionListener);
+        loadButton.addActionListener(new SwitchPageActionListener(true));
+        downloadButton.addActionListener(new SwitchPageActionListener(false));
     }
 
     /**
