@@ -44,6 +44,7 @@ public class MainWindow extends JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.sleep();
         this.setVisible(true);
     }
     
@@ -101,6 +102,14 @@ public class MainWindow extends JFrame {
 
     private void createScrollPaneController() {
         this.scrollPaneController = new ScrollPaneController();
+    }
+
+    private void sleep(){   
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            //Do nothing
+        }
     }
 
     private void setActionListener() {

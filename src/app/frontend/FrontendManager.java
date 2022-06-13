@@ -68,12 +68,6 @@ public final class FrontendManager {
     public static void switchToMainWindow() {
         LauncherManager.closeWindow();
 
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            //Do nothing
-        }
-
         MainWindowManager.setupMainWindow();
         MainWindowManager.refresh();
     }
