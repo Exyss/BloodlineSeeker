@@ -180,7 +180,7 @@ GOTO end
 ::####################
 
 :run_program
-# Run arguments
+:: # Run arguments
 
     echo Running compiled program...
     echo.
