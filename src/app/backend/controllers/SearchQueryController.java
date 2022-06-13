@@ -25,7 +25,6 @@ public class SearchQueryController {
             
             if (dynastyName.contains(query)) {
                 results = dynasty.getMembersResults();
-
                 break;
             }
         }

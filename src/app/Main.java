@@ -11,10 +11,11 @@ import app.backend.BackendManager;
 import app.backend.controllers.BinariesController;
 import app.frontend.FrontendManager;
 import app.tests.DynastyTester;
+import app.tests.SearchTester;
 import app.tests.WikipediaScraperTester;
 
 public class Main {
-    private static final String VERSION = "1.0";
+    private static final String VERSION = "1.1.2";
     
     /** 
      * @param args
@@ -62,7 +63,7 @@ public class Main {
         if (args.contains("--version") || args.contains("-v")) {
             printVersion();
 
-            return false; // Close the program after running help
+            return false; // Close the program after printing version
         }
 
         if (args.contains("--debug") || args.contains("-d")) {
@@ -89,11 +90,13 @@ public class Main {
 
         passedTests += DynastyTester.runTests();
         passedTests += WikipediaScraperTester.runTests();
+        passedTests += SearchTester.runTests();
 
         int totalTests = 0;
 
         totalTests += DynastyTester.getTotalTests();
         totalTests += WikipediaScraperTester.getTotalTests();
+        totalTests += SearchTester.getTotalTests();
 
         System.out.println("\nTests completed\n");
 
