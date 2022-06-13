@@ -85,15 +85,15 @@ public final class FrontendManager {
     public static void saveDynastyGraph() {
         final String FILE_EXTENTION = "png";
 
+        if (BackendManager.getLoadedDynasty() == null) {
+            return;
+        }
+
         String name = BackendManager.getLoadedDynasty().getName() + ".png";
 
         AntialiasedTextFileChooser fileChooser = new AntialiasedTextFileChooser();
         BufferedImage graph;
         BackendManager.printDebug("Download button pressed");
-        
-        if (BackendManager.getLoadedDynasty() == null) {
-            return;
-        }
         
         try {
             graph = BackendManager.loadedDynastyToBufferedImage();
