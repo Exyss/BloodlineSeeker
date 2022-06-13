@@ -50,7 +50,7 @@ public class DownloadPage extends JPanel {
     /**
      * Sets up the settings of the download page.
      */
-    public void setup() {
+    private void setup() {
         this.setLayout(null);
         this.setBounds(6,0,506,296);
         this.setOpaque(false);
@@ -59,7 +59,7 @@ public class DownloadPage extends JPanel {
     /**
      * Sets the description messages in a label.
      */
-    public void setDescriptionLabel() {
+    private void setDescriptionLabel() {
         AntiAliasedTextLabel upperDescriptionLabel = this.createLabel(UPPER_DESC_LABEL_MSG, 0, 25, 506, 40);
         this.add(upperDescriptionLabel);
         
@@ -89,7 +89,7 @@ public class DownloadPage extends JPanel {
     /**
      * Creates a check box panel and adds it in the downolad page.
      */
-    public void createCheckBoxPanel() {
+    private void createCheckBoxPanel() {
         this.checkBoxPanel= new CheckBoxPanel();
         this.add(checkBoxPanel);
     }

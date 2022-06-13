@@ -170,7 +170,7 @@ public class LauncherWindow extends JFrame {
     /**
      * Clears the background panel.
      */
-    public void clear() {
+    private void clear() {
         this.background.removeAll();
         this.background.revalidate();
         this.background.repaint();
@@ -185,6 +185,14 @@ public class LauncherWindow extends JFrame {
         this.background.add(consolePanel);
     }
     
+    /**
+     * Sets the window title.
+     * @param newWindowTitle the new window title.
+     */
+    public void setWindowTitle(String newWindowTitle) {
+        this.setTitle(newWindowTitle);
+    }
+
     /**
      * @return content panel.
      */
@@ -227,11 +235,4 @@ public class LauncherWindow extends JFrame {
         return this.getTitle();
     }
     
-    /**
-     * Sets the window title.
-     * @param newWindowTitle the new window title.
-     */
-    public void setWindowTitle(String newWindowTitle) {
-        this.setTitle(newWindowTitle);
-    }
 }

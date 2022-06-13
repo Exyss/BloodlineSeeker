@@ -102,12 +102,6 @@ public class MainWindow extends JFrame {
     private void createScrollPaneController() {
         this.scrollPaneController = new ScrollPaneController();
     }
-    
-    public void clear() {
-        this.background.removeAll();
-        this.background.revalidate();
-        this.background.repaint();
-    }
 
     private void setActionListener() {
         this.addMouseWheelListener(new ImageHolderMouseWheelListener());

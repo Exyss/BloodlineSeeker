@@ -37,6 +37,11 @@ public class ScrollPane extends JPanel{
     private static final int SCROLLBAR_ARC = 999;
 
     /**
+     * The scroll bar origin point.
+     */
+    private static final Point ORIGIN_POINT = new Point(0,0);
+
+    /**
      * A JScrollPane used as scroll pane.
      */
     private JScrollPane scrollPane;
@@ -50,7 +55,7 @@ public class ScrollPane extends JPanel{
      * Creates the ScrollPane and sets it up.
      */
     public ScrollPane() {
-        this.setUi();
+        this.setUI();
         this.setup();
         this.createCardHolder();
         this.createScrollPane();
@@ -90,7 +95,7 @@ public class ScrollPane extends JPanel{
     /**
      * Improve visibility of the Panel rounding the corners and managing the colors components of the ScrollPane.
      */
-    private void setUi() {
+    private void setUI() {
         UIManager.put("ScrollBar.width", SCROLLBAR_WIDTH);
         UIManager.put("ScrollBar.thumbArc", SCROLLBAR_ARC);
         
@@ -114,6 +119,6 @@ public class ScrollPane extends JPanel{
      * Resets the ScrolBar.
      */
     public void resetScrollBar() {
-        scrollPane.getViewport().setViewPosition(new Point(0, 0));
+        scrollPane.getViewport().setViewPosition(ORIGIN_POINT);
     }
 }

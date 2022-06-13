@@ -69,7 +69,7 @@ public final class ScrollPaneController {
         return resultCard;
     }
 
-    public void removeAll() {
+    private void removeAll() {
         this.cardHolder.removeAll();
     }
 

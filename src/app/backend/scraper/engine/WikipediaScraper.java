@@ -416,7 +416,7 @@ public class WikipediaScraper {
      * @param text
      * @return String
      */
-    public static String parseParenthesis(String text) {
+    protected static String parseParenthesis(String text) {
         return text.replaceAll("\\[.*\\]|\\(.*\\)", "").trim();
     }
 

@@ -54,7 +54,7 @@ public class PageButtonPanel extends JPanel {
     /**
      * Sets up the settings of the PageButtonPanel.
      */
-    public void setup() {
+    private void setup() {
         this.setLayout(null);
         this.setBounds(25, 25, 251, 53);
         this.setOpaque(false);
@@ -63,7 +63,7 @@ public class PageButtonPanel extends JPanel {
     /**
      * Creates the loadButton and the downloadButton and adds them in the PageButtonPanel. Adds a switchPageActionListener at the button.
      */
-    public void createButtons() {
+    private void createButtons() {
         this.loadButton = this.createButton(LOAD_MSG,ComponentBorder.WHITE_BOTTOM_ALL_GOLD.get(),0, 0, 98, 53);
         this.add(loadButton);
        
