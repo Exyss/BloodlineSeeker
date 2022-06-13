@@ -93,6 +93,7 @@ public class WikipediaScraper {
     private void spawnDriver() throws FileNotFoundException {
         this.setStatus("Finding a supported driver-driven browser to start...");
         
+        // Searches through every browser looking for any supported browser
         for (Browser browser : Browser.values()) {
             try {
                 this.testBrowserInstance(browser);
@@ -298,7 +299,7 @@ public class WikipediaScraper {
     public HashMap<String, HashMap<String, String>> getWikipediaSummary(String pageURL) throws FileNotFoundException {
         HashMap<String, HashMap<String, String>> summaryData = new HashMap<String, HashMap<String, String>>();
         
-        // Check pageURL
+        // Check if the pageURL is a valid Wikipedia link
         if (!pageURL.startsWith(WIKI_DOMAIN)) {
             throw new IllegalArgumentException("The given link must be an Italian Wikipedia page (https://it.wikipedia.org)");
         }
@@ -307,6 +308,7 @@ public class WikipediaScraper {
         
         String pageHTML = this.getPageHTML(pageURL);
 
+        // Get the "sinottico" table elenemt
         Elements sinottico = Jsoup.parse(pageHTML).getElementsByClass("sinottico");
             
         // If page is found but there is no wikiSummary
@@ -314,24 +316,19 @@ public class WikipediaScraper {
             return summaryData;
         } else {
             summaryRows = sinottico
-                .get(0) // make sure it's the first one (in some pages there are multiples)
-                .getElementsByTag("table") // get the table element
-                .get(0)
-                .getElementsByTag("tbody") // get the table body
-                .get(0)
-                .getElementsByTag("tr"); // get the rows
+                .get(0) // On some pages there are multiples "sinottico" tables
+                .getElementsByTag("table").get(0)
+                .getElementsByTag("tbody").get(0) // Get the body
+                .getElementsByTag("tr"); // Get the rows of the "sinottico" table
         }
 
-        // skip the first 3 rows
-        // because of names and pictures
+        // Skip the first 3 rows because there are always titles and pictures in those rows
         summaryRows.remove(0);
         summaryRows.remove(0);
         summaryRows.remove(0);
         
         for (Element row : summaryRows) {
-            // extract the th text from the row
-            // which will be the key in the HashMap entry
-
+            // "sinottico_divisione" is a row element used as a separator inside the "sinottico" table
             if (row.attr("class").contains("sinottico_divisione")) {
                 continue;
             }

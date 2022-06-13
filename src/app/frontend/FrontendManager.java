@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
@@ -63,7 +64,7 @@ public final class FrontendManager {
     }
 
     /**
-     * Close the launch window and open the main window.
+     * Closes the launcher window and opens the main window.
      */
     public static void switchToMainWindow() {
         LauncherManager.closeWindow();
@@ -80,43 +81,60 @@ public final class FrontendManager {
     }
 
     /**
-     * Saves a dynasty graph image in a directory chosen by the user.
+     * Saves the dynasty graph image in a directory chosen by the user.
      */
     public static void saveDynastyGraph() {
-        final String FILE_EXTENTION = "png";
-
+        BackendManager.printDebug("Download button pressed");
+        
         if (BackendManager.getLoadedDynasty() == null) {
             return;
         }
 
-        String name = BackendManager.getLoadedDynasty().getName() + ".png";
+        final String FILE_EXTENSION = "png";
 
         AntialiasedTextFileChooser fileChooser = new AntialiasedTextFileChooser();
-        BufferedImage graph;
-        BackendManager.printDebug("Download button pressed");
+        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        fileChooser.setAcceptAllFileFilterUsed(true);
         
         try {
-            graph = BackendManager.loadedDynastyToBufferedImage();
+            BufferedImage graph = BackendManager.loadedDynastyToBufferedImage(); ////////////
             
-            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            fileChooser.setAcceptAllFileFilterUsed(true);
+            String dynastyName = BackendManager.getLoadedDynasty().getName();
+            
             int choice = fileChooser.showSaveDialog(null);
 
             if (choice == JFileChooser.APPROVE_OPTION) {
                 String folderName = fileChooser.getSelectedFile().getPath();
-                File folder = new File(folderName);
+                
+                String filename = FrontendManager.createFileName(folderName, dynastyName, FILE_EXTENSION);
+                System.out.println(filename);
 
-                if (folder.isDirectory()) {
-                    String filename = folderName + "/" + name;
-                    File file = new File(filename);
-
-                    ImageIO.write(graph, FILE_EXTENTION,  file);
-                } else {
-                    throw new FileNotFoundException();
-                }
+                File file = new File(filename);
+                ImageIO.write(graph, FILE_EXTENSION,  file);
             }
         } catch (IOException e) {
             BackendManager.printDebug("An error occurred while trying to save the dynasty graph image");
         }
+    }
+
+    private static String createFileName(String folderName,String fileName,String extension) throws FileNotFoundException {
+        int i = 1; 
+        extension = "."+extension;
+        fileName= "/" + fileName  +extension;
+
+        File directory = new File(folderName);
+
+        if (directory.isDirectory()){
+        
+            File[] files = directory.listFiles();
+            
+            while(Arrays.stream(files).anyMatch(new File (folderName + fileName):: equals)){
+                fileName = fileName+ "(" + i + ")" +extension;
+                i+=1;
+            }
+        }else{
+            throw new FileNotFoundException("Directory not found");
+        }
+        return folderName + fileName;
     }
 }

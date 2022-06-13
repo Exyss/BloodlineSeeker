@@ -5,11 +5,16 @@ import java.awt.event.ActionListener;
 
 import app.frontend.mainwindow.MainWindowManager;
 
+/** 
+ * This SearchBarActionListener implements ActionListener in order to manage the searching operation.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ */
 public class SearchBarActionListener implements ActionListener {
     
-    /** 
-     * @param e
-     */
     @Override
     public void actionPerformed(ActionEvent e) {
         MainWindowManager.searchMembers();

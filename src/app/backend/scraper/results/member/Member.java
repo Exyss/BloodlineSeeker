@@ -236,7 +236,7 @@ public class Member implements JSONable {
 
     
     /** 
-     * @return boolean
+     * @return 
      */
     public boolean isEmperor() {
         return this.isEmperor;

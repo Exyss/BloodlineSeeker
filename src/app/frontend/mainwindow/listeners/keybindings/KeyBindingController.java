@@ -8,7 +8,18 @@ import javax.swing.KeyStroke;
 
 import app.frontend.mainwindow.MainWindowManager;
 
+/** 
+ * This KeyBindingController manages the movin/esc-key actions.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ */
 public class KeyBindingController {
+    /**
+     * Maps the bindings to their respective funtions.
+     */
     public void addKeyBindingController() {
         JComponent component = MainWindowManager.getWindowContentPane();
         InputMap inputMap = component.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);

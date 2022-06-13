@@ -5,6 +5,9 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
+/**
+ * 
+ */
 public enum ComponentBorder {
     ALL_GOLD(ComponentColor.GOLD.get(),6),
     NO_TOP_ALL_GOLD(ComponentColor.GOLD.get(),0,6,6,6),

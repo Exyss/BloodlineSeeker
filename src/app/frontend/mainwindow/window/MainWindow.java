@@ -17,25 +17,75 @@ import app.frontend.mainwindow.listeners.imageholder.ImageHolderMouseWheelListen
 import app.frontend.mainwindow.listeners.keybindings.KeyBindingController;
 import app.frontend.utils.ComponentColor;
 
+/**
+ * MainWindow extends JFrame in order to to create the main window where visualize the various components.
+ * 
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ * 
+ */
 public class MainWindow extends JFrame {
     private static final long serialVersionUID = 29L;
 
+    /**
+     * The window dimwnsions.
+     */ 
     private final static Dimension WINDOW_DIM = new Dimension(1280, 720);
     
+    /**
+     * The ScrollPaneController.
+     */
     private ScrollPaneController scrollPaneController;
+
+    /**
+     * The ImageController.
+     */
     private ImageController imageController;
+
+    /**
+     * The ImageHolder.
+     */
     private ImageHolder imageHolder;
+
+    /**
+     * The ScrollPane.
+     */
     private ScrollPane scrollPane;
+
+    /**
+     * The SearchBar.
+     */
     private SearchBar searchbar;
+
+    /**
+     * The ButtonBox.
+     */
     private ButtonBox buttonBox;
+
+    /**
+     * The InfoBox.
+     */
     private InfoBox infoBox;
+
+    /**
+     * The JPanel used as background.
+     */
     private JPanel background;
     
+    /**
+     * Creates the window, sets it up and creates the window components.
+     */
     public MainWindow() {
         this.setup();
         this.createStaticComponents();
     }
 
+    /**
+     * Sets the window title as APP_TITLE, the size, the icon as APP_LOGO, the Resizable as false, the LocationRelativeTo as null, the DefaultCloseOperation as EXIT_ON_CLOSE and visile as true.
+     */
     private void setup() {
         this.setTitle(FrontendManager.APP_TITLE);
         this.getContentPane().setPreferredSize(WINDOW_DIM);
@@ -48,6 +98,9 @@ public class MainWindow extends JFrame {
         this.setVisible(true);
     }
     
+    /**
+     * Creates the static components of the window.
+     */
     private void createStaticComponents() {
         this.createBackgroundPanel();
         this.createInfoBox();
@@ -57,12 +110,18 @@ public class MainWindow extends JFrame {
         this.createImageHolder();
     }
     
+    /**
+     * Creates the dinamic components of the window.
+     */
     public void createDynamicComponents() {
         this.createImageController();
         this.createScrollPaneController();
         this.setActionListener();
     }
-
+    
+    /**
+     * Initializes the background panel, sets the layout as null, the bounds and the bacground as PERSIAN_RED, then adds the panel to the window.
+     */
     private void createBackgroundPanel() {
         this.background = new JPanel();
         this.background.setLayout(null);
@@ -70,40 +129,63 @@ public class MainWindow extends JFrame {
         this.background.setBackground(ComponentColor.PERSIAN_RED.get());
         this.add(this.background);
     }
-
+    /**
+     * Initializes the searchbar and adds it to the window.
+     */
     private void createSearchBar() {
         this.searchbar = new SearchBar();
         this.background.add(searchbar);
     }
     
+    /**
+     * Initializes the infobox and adds it to the window.
+     */
     private void createInfoBox() {
         this.infoBox = new InfoBox();
         this.background.add(infoBox);
     }
 
+    /**
+     * Initializes the buttonBox and adds it to the window.
+     */
     private void createButtonBox() {
         this.buttonBox = new ButtonBox();
         this.background.add(buttonBox);
     }
     
+    /**
+     * Initializes the imageHolder and adds it to the window.
+     */
     private void createImageHolder() {
         this.imageHolder = new ImageHolder();
         this.background.add(imageHolder);
     }
     
+    /**
+     * Initializes the scrollPane and adds it to the window.
+     */
     private void createScrollPane() {
         this.scrollPane = new ScrollPane();
         this.background.add(scrollPane);
     }
     
+    /**
+     * Initializes the imageController and adds it to the window.
+     */
     private void createImageController() {
         this.imageController = new ImageController();
     }
 
+    /**
+     * Initializes the scrollPaneController and adds it to the window.
+     */
     private void createScrollPaneController() {
         this.scrollPaneController = new ScrollPaneController();
     }
 
+    /**
+     * Stops the programs for an certain amount of time.
+     */
     private void sleep(){   
         try {
             Thread.sleep(300);
@@ -112,11 +194,17 @@ public class MainWindow extends JFrame {
         }
     }
 
+    /**
+     * Adds the ImageHolderMouseWheelListener to the window and sets the keyBindingController.
+     */
     private void setActionListener() {
         this.addMouseWheelListener(new ImageHolderMouseWheelListener());
         this.setKeyBindingController();
     }
     
+    /**
+     * Creates a KeyBindingController and adds the key binding functions by addKeyBindingController method.
+     */
     private void setKeyBindingController() {
         KeyBindingController keyBinding = new KeyBindingController();
         keyBinding.addKeyBindingController();
@@ -124,7 +212,7 @@ public class MainWindow extends JFrame {
     
     
     /** 
-     * @return ScrollPaneController
+     * @return The ScrollPaneController.
      */
     public ScrollPaneController getScrollPaneController() {
         return this.scrollPaneController;
@@ -132,7 +220,7 @@ public class MainWindow extends JFrame {
 
     
     /** 
-     * @return ImageController
+     * @return The ImageController.
      */
     public ImageController getImageController() {
         return this.imageController;
@@ -140,7 +228,7 @@ public class MainWindow extends JFrame {
 
     
     /** 
-     * @return ImageHolder
+     * @return The ImageHolder.
      */
     public ImageHolder getImageHolder() {
         return this.imageHolder;
@@ -148,7 +236,7 @@ public class MainWindow extends JFrame {
 
     
     /** 
-     * @return ScrollPane
+     * @return The ScrollPane.
      */
     public ScrollPane getScrollPane() {
         return this.scrollPane;
@@ -156,7 +244,7 @@ public class MainWindow extends JFrame {
 
     
     /** 
-     * @return ButtonBox
+     * @return The ButtonBox.
      */
     public ButtonBox getButtonBox() {
         return this.buttonBox;
@@ -164,7 +252,7 @@ public class MainWindow extends JFrame {
 
     
     /** 
-     * @return InfoBox
+     * @return The InfoBox.
      */
     public InfoBox getInfoBox() {
         return this.infoBox;
@@ -172,7 +260,7 @@ public class MainWindow extends JFrame {
 
     
     /** 
-     * @return SearchBar
+     * @return The SearchBar.
      */
     public SearchBar getSearchBar() {
         return this.searchbar;
