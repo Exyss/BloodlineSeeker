@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import org.json.JSONException;
 
+import app.backend.controllers.BinariesController;
 import app.backend.scraper.engine.DynastiesScraper;
 import app.backend.scraper.engine.ScraperRunner;
 import app.backend.scraper.results.dynasty.Dynasty;
@@ -29,6 +30,11 @@ public final class BackendManager {
 
     private static ScraperRunner runner;
     private static DynastiesScraper scraper;
+
+    public static void setupGraphviz() {
+        BinariesController.clearTempDirectories();
+        BinariesController.extractGraphVizBinaries();
+    }
 
     public static void loadFromScraper() {
         BackendManager.printDebug("Loading dynasties from scaper (seleniumMode: " + seleniumMode + ")");

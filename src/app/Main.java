@@ -8,7 +8,6 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import app.backend.BackendManager;
-import app.backend.controllers.BinariesController;
 import app.frontend.FrontendManager;
 import app.tests.DynastyTester;
 import app.tests.SearchTester;
@@ -22,7 +21,6 @@ public class Main {
      */
     public static void main(String[] args) {
         Main.programConfiguration();
-        Main.programInitialization();
 
         boolean doRun = Main.parseArgs(args);
 
@@ -40,12 +38,9 @@ public class Main {
         BasicConfigurator.configure();
         Logger.getRootLogger().setLevel(Level.OFF);
         System.setProperty("java.awt.headless", "false");
+        BackendManager.setupGraphviz();
     }
     
-    private static void programInitialization() {
-        BinariesController.clearTempDirectories();
-        BinariesController.extractGraphVizBinaries();
-    }
     
     /** 
      * @param inputArgs
