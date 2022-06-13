@@ -10,23 +10,55 @@ import app.frontend.utils.ComponentColor;
 import app.frontend.utils.Margin;
 import app.frontend.utils.QuattrocentoFont;
 
+/** 
+ * This SuggestionMessage extends JPanel in order to give a suggestion to the user if necessary.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ */
 public final class SuggestionMessage extends JPanel {
     private static final long serialVersionUID = 22L;
-
+    
+    /**
+     * A string used as defaultLabel.
+     */
     private final String defaultLabel = "Forse cercavi: ";
-
+    
+    /**
+     * The open tag for each suggestion.
+     */
     private final String HTML_OPEN_TAG = "<html><a style='text-decoration:underline'>";
+    
+    /**
+     * The close tag for each suggestion.
+     */
     private final String HTML_CLOSE_TAG = "</a></html>";
-
+    
+    /**
+     * A JPanel used as textPanel.
+     */
     private JPanel textPanel;
+    
+    /**
+     * A JPanel used as buttonPanel.
+     */
     private JPanel buttonPanel;
 
+    /**
+     * Creates SuggestionMessage panel with text, sets it up, initializes the textPanel using the createTextPanel method and the buttonPanel using the createButtonPanel method.
+     * @param suggestion the text of the panel.
+     */
     public SuggestionMessage(String suggestion) {
         this.setup();
         this.createTextPanel();
         this.createButtonPanel(suggestion);
     }
 
+    /**
+     * Sets up the Suggestion Layout as null, the
+     */
     private void setup() {
         this.setLayout(null);
         this.setBounds(0, 0, 600, 100);
