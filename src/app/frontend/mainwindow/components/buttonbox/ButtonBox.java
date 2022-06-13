@@ -54,7 +54,7 @@ public class ButtonBox extends JPanel {
      */
     private void setup() {
         this.setLayout(null);
-        this.setBounds(964,570,291,125);
+        this.setBounds(968,570,287,125);
         this.setBorder(ComponentBorder.ALL_GOLD.get());
         this.setBackground(ComponentColor.WHITE.get());
     }
@@ -137,7 +137,7 @@ public class ButtonBox extends JPanel {
      * Creates the wikipediaText using the createLabel method and adds it to the ButtonBoxPanel.
      */
     private void createWikipediaText() {
-        this.wikipediaText= this.createLabel("Dinastia", 173,65,100,40);
+        this.wikipediaText= this.createLabel("Dinastia", 172,65,100,40);
         this.add(wikipediaText);
     }
 }
