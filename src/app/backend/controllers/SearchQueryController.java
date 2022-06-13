@@ -135,10 +135,10 @@ public class SearchQueryController {
         ArrayList<String> substrings = new ArrayList<String>();
 
         int queryLength = query.length();
-
+        int minSubstringLength = queryLength * 2 / 5;
         int substringLength = queryLength;
 
-        while (substringLength != 0) {
+        while (substringLength != minSubstringLength) {
             int startingIndex = 0;
 
             int numberOfSubstrings = queryLength - substringLength + 1;
