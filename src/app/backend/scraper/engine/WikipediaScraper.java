@@ -351,21 +351,22 @@ public class WikipediaScraper {
             return;
         }
         
+        // The header element of the row
         String thsText = ths.get(0).text();
         
+        // Avoid some type of separation in the rows of the "sinottico"
         if (ths.size() != 0) {
-            // extract the td text from the row
-            // which will be the value in the HashMap entry
             Elements tds = row.getElementsByTag("td");
             
-            // this check does the same thing
-            // but for another type of possible
-            // separations between sections
+            // Avoid some other type of separation in the rows of the "sinottico"
             if (tds.size() != 0) {
+                // This hashmap represents a table consisting of key-value pairs of Text-Link
                 HashMap<String, String> tdData = new HashMap<String, String>();
 
+                // The description element of the row
                 Element td = tds.get(0);
 
+                // Split the description HTML code between <br> to take out every piece of information separately
                 for (String chunk : td.html().split("<br>")) {
                     this.parseChunk(tdData, chunk);
                 }
