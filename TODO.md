@@ -3,11 +3,13 @@
 - [ ] Pubblicare Release 1.2.0
 
 ## Javadoc
+
 - [ ] Completare scrittura Javadoc
 - [ ] Rilettura Javadoc
 - [ ] Aggiungere Javadoc al Readme
 
 ## Readme
+
 - [ ] Cambiare nome al programma (probabilmente no?)
 - [ ] Aggiungere relazione al Readme
 - [ ] Testare Compiler e Programma su Windows
@@ -27,4 +29,3 @@
 - [ ] Lista delle funzionalità, con referenti
 - [x] Manuale della gui
 - [ ] Descrizione delle funzionalità
-
