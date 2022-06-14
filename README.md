@@ -1,3 +1,5 @@
+<p align="center"><img src=".github/icon.png" /></p>
+
 # BloodlineSeeker
 
 BloodlineSeeker is a GUI program written in Java, which allows to explore the dynasties of roman emperors. It works by scraping off of Wikipedia the information about the emperors, and then, recursively, scrapes the information of any other person on their bloodline.
@@ -8,20 +10,20 @@ BloodlineSeeker is a GUI program written in Java, which allows to explore the dy
 
 - search every person from every roman dynasty!
 - dynamically explore the searched person's close family graph in the Graph Viewer
-- download the graph of the full dynasty with just 1 click
+- download the graph of the full dynasty with just 1 click ✨
 - search suggestion if query gives no result
 - debug mode from terminal
 - dynasties saved locally without having to download them again 🥱
 
 ## How does it work
 
-The starting point of the scraping is [this Wikipedia page](https://it.wikipedia.org/wiki/Imperatori_romani), which lists every roman emperor with the associated Wikipedia links; with these, the program is able to create an object for every emperor on this page, as well as for any other person in their bloodline, recursively. The information about the relatives of any person are taken from the `sinottico` element, which is present in almost every Wikipedia page.
+The starting point of the scraping is [this Wikipedia page](https://it.wikipedia.org/wiki/Imperatori_romani), which lists every roman emperor with the associated Wikipedia links; with these, the program is able to create an object for every emperor on this page, as well as for any other person in their bloodline, recursively 🪆. The information about the relatives of any person are taken from the `sinottico` element, which is present in almost every Wikipedia page.
 
 For example, here is the sinottico for Julius Caesar: from this, BloodlineSeeker is able to retrieve the information about his children, his parents and his spouses, and scrape their information recursively.
 
 ![Julius Caesar's "sinottico"](.github/sinottico.png)
 
-## Requirements
+## ⚠️ Requirements
 
 In order to work properly, BloodlineSeeker needs these external programs to be installed:
 
@@ -42,7 +44,7 @@ Support on macOS is not guaranteed, due to the inability to test the program.
 
 The portable executable `BloodlineSeeker.jar` file can be found in the [releases page of this repository](https://github.com/Exyss/BloodlineSeeker/releases). Just download the latest release and you are ready to go.
 
-## Run
+## ✅ Run
 
 To run the jar file, simply double-click on it, or run
 
@@ -64,9 +66,9 @@ Once `BloodlineSeeker.jar` is run, the user will be prompted with the BloodlineS
 
 In the Download page, the user will be able to choose between HTTP requests and Selenium for loading the HTML pages from Wikipedia, since HTTP requests are *significantly faster*, even when the selenium driver is run with the headless mode activated (which it is by default).
 
-After the download is completed, the files of the found dynasties will be created under `data/jsons/`. Then, the program will launch, giving the user the ability to search through every person of every dynasty, and the option to explore the person's close family graph dynamically in the program.
+After the download is completed, the files of the found dynasties will be created under `data/jsons/`. Then, the program will launch, giving the user the ability to search through every person of every dynasty, and the option to explore the person's close family graph dynamically in the program 🧭.
 
-## Documentation
+## 📖 Documentation
 
 To generate the Javadoc, on any UNIX distribution simply run:
 
