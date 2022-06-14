@@ -16,12 +16,34 @@ import app.backend.scraper.results.dynasty.DynastyVisualizer;
 import app.backend.scraper.results.member.Member;
 
 public final class BackendManager {
+	/**
+	 * The default data path.
+	 */
     public static final String DATA_PATH = "data/";
+    
+    /**
+     * The PNG complete path.
+     */
     public static final String PNG_PATH = DATA_PATH + "pngs/";
+    
+    /**
+     * The JSON complete path. 
+     */
     public static final String JSON_PATH = DATA_PATH + "jsons/";
 
+    /**
+     * If true the program is running the debug mode.
+     */
     private static boolean debugMode = false;
+    
+    /**
+     * If it is true the scraping uses Selenium, else the scraping uses HTTP requests.
+     */
     private static boolean seleniumMode = false;
+    
+    /**
+     * If it is true the browser id not showed up.
+     */
     private static boolean headlessMode = true;
 
     private static ArrayList<Dynasty> dynasties = new ArrayList<Dynasty>();

@@ -159,7 +159,8 @@ public class SearchQueryController {
 
     
     /** 
-     * @param results
+     * Sorts a given ArrayList by the ScrapingResult algorithm.
+     * @param results the ArrayList to be sorted.
      */
     public static void sortResults(ArrayList<ScraperResult> results) {
         Collections.sort(results);

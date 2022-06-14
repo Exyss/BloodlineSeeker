@@ -4,9 +4,22 @@ import app.backend.scraper.results.dynasty.Dynasty;
 import app.backend.scraper.results.member.Member;
 
 public final class ScraperResult implements Comparable<ScraperResult> {
+	
+	/**
+	 * A member object.
+	 */
     private final Member member;
+    
+    /**
+     * A dynasty object.
+     */
     private final Dynasty dynasty;
 
+    /**
+     * Creates a ScraperResults with member and dynasty.
+     * @param member The new member value.
+     * @param dynasty The new dynasty value.
+     */
     public ScraperResult(Member member, Dynasty dynasty) {
         this.member = member;
         this.dynasty = dynasty;
@@ -14,7 +27,7 @@ public final class ScraperResult implements Comparable<ScraperResult> {
 
     
     /** 
-     * @return Member
+     * @return The member of the ScraperResult.
      */
     public Member getMember() {
         return this.member;
@@ -22,7 +35,7 @@ public final class ScraperResult implements Comparable<ScraperResult> {
 
     
     /** 
-     * @return Dynasty
+     * @return The dynasty of the ScraperResult.
      */
     public Dynasty getDynasty() {
         return this.dynasty;

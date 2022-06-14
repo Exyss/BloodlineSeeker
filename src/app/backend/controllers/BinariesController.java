@@ -15,18 +15,40 @@ import guru.nidi.graphviz.engine.Graphviz;
 import guru.nidi.graphviz.engine.GraphvizCmdLineEngine;
 
 public class BinariesController {
+	
+	/**
+	 * The temporary system directory path.
+	 */
     public static final String TEMP_PATH = BinariesController.getTempPath();
 
+    /**
+     * The graphviz local zip path.
+     */
     public static final String GRAPHVIZ_LOCAL_ZIP_PATH = "/assets/graphviz/graphviz.zip";
+    
+    /**
+     * The graphviz directory in the temporary system directory path.
+     */
     public static final String GRAPHVIZ_TEMP_PATH = TEMP_PATH + "graphviz";
+    
+    /**
+     * The directory for the binary file path of graphviz in the graphviz directory.
+     */
     public static final String GRAPHVIZ_TEMP_EXE_PATH = GRAPHVIZ_TEMP_PATH + "/dot.exe";
     
+    /**
+     * The path of the local drivers.
+     */
     public static final String DRIVERS_LOCAL_PATH = "/assets/drivers/";
+    
+    /**
+     * The path of the temporary drivers.
+     */
     public static final String DRIVERS_TEMP_PATH = TEMP_PATH + "RomanEmperorsDrivers";
 
     
     /** 
-     * @return String
+     * @return the right temporary path depending by the Operative System.
      */
     private static String getTempPath() {
         String tmpPath = System.getProperty("java.io.tmpdir");
@@ -38,6 +60,9 @@ public class BinariesController {
         return tmpPath;
     }
 
+    /**
+     * Extracts the graphviz binary files in GRAPHVIZ_TEMP_EXE_PATH.
+     */
     public static void extractGraphVizBinaries() {
         //Run this feature only on Windows
         if (!(OperatingSystem.get().equals(OperatingSystem.WINDOWS))) {
@@ -87,6 +112,7 @@ public class BinariesController {
     
     
     /** 
+     * 
      * @param zipInputStream
      * @param outputPath
      * @throws IOException
@@ -129,7 +155,8 @@ public class BinariesController {
     
     
     /** 
-     * @param folderToRemove
+     * Removes a specified directory.
+     * @param folderToRemove the directory path to remove.
      */
     private static void removeTempDirectory(String folderToRemove) {
         File tempDirectory = new File(folderToRemove);
@@ -143,6 +170,9 @@ public class BinariesController {
         }
     }
 
+    /**
+     * Removes the temporary directories.
+     */
     public static void clearTempDirectories() {
         removeTempDirectory(GRAPHVIZ_TEMP_PATH);
         removeTempDirectory(DRIVERS_TEMP_PATH);

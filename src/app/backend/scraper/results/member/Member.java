@@ -23,12 +23,32 @@ public class Member implements JSONable {
      * A String used as wikipedia link.
      */
     private String wikipediaLink;
+    
+    /**
+     * A boolean which represent if the Member was an emperor.
+     */
     private boolean isEmperor;
 
+    /**
+     * An ArrayList<Member> which contains the parents of the member.
+     */
     private ArrayList<Member> parents;
+    
+    /**
+     * An ArrayList<Member> which contains the children of the member.
+     */
     private ArrayList<Member> children;
+    
+    /**
+     * An ArrayList<Member> which contains the spouses of the member.
+     */
     private ArrayList<Member> spouses;
     
+    /**
+     * Creates a member with name and wikipedia link, increase by one the ID_counter and sets the ID, the isEmperor as False and initialize  the parents, children and spouses ArrayLists.
+     * @param name The name of the member.
+     * @param wikipediaLink The wikipedia link of the member.
+     */
     public Member(String name, String wikipediaLink) {
         Member.ID_counter += 1;
         this.ID = Integer.toString(Member.ID_counter);
@@ -42,6 +62,12 @@ public class Member implements JSONable {
         this.spouses = new ArrayList<Member>();
     }
 
+    /**
+     * Creates a member with name and wikipedia link, increase by one the ID_counter and sets the ID, the isEmperor as the parameter and initialize  the parents, children and spouses ArrayLists.
+     * @param name The name of the member.
+     * @param wikipediaLink The wikipedia link of the member.
+     * @param isEmperor The new isEmperor boolean value.
+     */
     public Member(String name, String wikipediaLink, boolean isEmperor) {
         this(name, wikipediaLink);
         this.isEmperor = isEmperor;
@@ -123,9 +149,9 @@ public class Member implements JSONable {
 
     
     /** 
-     * Adds a specified parent to the correct relative ArrayList.
-     * @param member 
-     * @param relative
+     * Adds a specified member to the correct relative ArrayList.
+     * @param member The member which will be added.
+     * @param relative 
      */
     public void addRelative(Member member, Relative relative) {
         switch (relative) {

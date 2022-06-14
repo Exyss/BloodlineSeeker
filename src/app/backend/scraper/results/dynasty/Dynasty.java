@@ -15,11 +15,28 @@ import app.backend.scraper.results.member.Relative;
 import app.backend.utils.JSONable;
 
 public class Dynasty implements JSONable {
+	
+	/**
+	 * The dynasty name.
+	 */
     private String name;
+    
+    /**
+     * The dynasty wikipedia link.
+     */
     private String wikipediaLink;
+    
+    /**
+     * 
+     */
     private ArrayList<Member> members;
     private ArrayList<ScraperResult> membersResults;
 
+    /**
+     * Creates a dynasty with name and wikipedia link.
+     * @param name The dynasty name.
+     * @param wikipediaLink The dynasty wikipedia link.
+     */
     public Dynasty(String name, String wikipediaLink) {
         this.name = name;
         this.wikipediaLink = wikipediaLink;
@@ -55,8 +72,8 @@ public class Dynasty implements JSONable {
 
     
     /** 
-     * @param membersArray
-     * @return HashMap<String, JSONObject>
+     * @param membersArray The JSONArray containing the members.
+     * @return an HashMap<String, JSONObject> containing the members ID.
      */
     private static HashMap<String, JSONObject> getMembersIDs(JSONArray membersArray) {
         HashMap<String, JSONObject> membersIDs = new HashMap<String, JSONObject>();
@@ -132,7 +149,8 @@ public class Dynasty implements JSONable {
 
     
     /** 
-     * @return JSONObject
+     * Creates a JSONObject and adds to it the members of the dynasty.
+     * @return the JSONObject.
      */
     @Override
     public JSONObject toJSONObject() {
@@ -152,9 +170,6 @@ public class Dynasty implements JSONable {
     }
     
     
-    /** 
-     * @return String
-     */
     @Override
     public String toString() {
         StringBuilder output = new StringBuilder();
@@ -188,6 +203,7 @@ public class Dynasty implements JSONable {
 
     
     /** 
+     * Adds the members to the dynasty.
      * @param member
      */
     public void addMember(Member member) {
