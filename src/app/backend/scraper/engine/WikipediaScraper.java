@@ -77,7 +77,7 @@ public class WikipediaScraper {
     /**
 	 * Creates the WikipediaScraper and initializes useSelenium, useHeadless, isScraperActive as false and ScraperStatusHolder.
      * @param useSelenium the new boolean value of useSelenium.
-     * @param usHeadless the new boolean value of useHeadless.
+     * @param useHeadless the new boolean value of useHeadless.
 	 */
     public WikipediaScraper(boolean useSelenium, boolean useHeadless) {
         this.useSelenium = useSelenium;

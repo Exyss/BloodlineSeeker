@@ -15,8 +15,16 @@ import app.frontend.launcher.LauncherManager;
  *
  */
 public class SwitchPageActionListener implements ActionListener {
-    
+	
+    /**
+     * True if the current page is the load page, false if not.
+     */
     boolean isLoadPage;
+    
+    /**
+     * Updates the isLoad value.
+     * @param isLoadPage the new boolean value.
+     */
     public SwitchPageActionListener(boolean isLoadPage){
         this.isLoadPage=isLoadPage;
     }

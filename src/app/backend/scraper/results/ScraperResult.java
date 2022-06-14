@@ -4,7 +4,7 @@ import app.backend.scraper.results.dynasty.Dynasty;
 import app.backend.scraper.results.member.Member;
 
 /**
- * This ScraperResult rapresent a touple (Dynasty, Member) and implements Comparable<ScraperResult> in order to compare each instance of this class.
+ * This ScraperResult rapresent a touple (Dynasty, Member) and implements Comparable in order to compare each instance of this class.
  * @author Alessio Bandiera
  * @author Andrea Ladogana
  * @author Matteo Benvenuti

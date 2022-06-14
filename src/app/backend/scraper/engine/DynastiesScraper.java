@@ -57,8 +57,8 @@ public class DynastiesScraper extends WikipediaScraper {
 
     
     /** 
-     * Creates the ArrayList<Dynasty> containing all the scraped dinasties.
-     * @return  the ArrayList<Dynasty>.
+     * Creates the ArrayList containing all the scraped dinasties.
+     * @return the ArrayList.
      * @throws FileNotFoundException in case the scraping doesn't work.
      */
     public ArrayList<Dynasty> scrapeDynasties() throws FileNotFoundException {

@@ -13,11 +13,21 @@ import app.tests.DynastyTester;
 import app.tests.SearchTester;
 import app.tests.WikipediaScraperTester;
 
+/**
+ * This Main class of the project.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ *
+ */
 public class Main {
     private static final String VERSION = "1.1.2";
     
     /** 
-     * @param args
+     * The main method of the project.
+     * @param args a String array which may contain some key Strings.
      */
     public static void main(String[] args) {
         Main.programConfiguration();
@@ -29,11 +39,17 @@ public class Main {
         }
     }
 
+    /**
+     * Runs the programs.
+     */
     private static void run() {
         FrontendManager.setupGUI();
         FrontendManager.createLauncherWindow();
     }
 
+    /**
+     * Configurates the program.
+     */
     private static void programConfiguration() {
         BasicConfigurator.configure();
         Logger.getRootLogger().setLevel(Level.OFF);
@@ -43,8 +59,9 @@ public class Main {
     
     
     /** 
-     * @param inputArgs
-     * @return boolean
+     * Parses the input String array.
+     * @param inputArgs the Array to be parsed.
+     * @return true if the array doesn't contains key Strings.
      */
     private static boolean parseArgs(String[] inputArgs) {
         List<String> args = Arrays.asList(inputArgs);
@@ -78,6 +95,9 @@ public class Main {
         return true;
     }
 
+    /**
+     * Runs the tests.
+     */
     private static void runTests() {
         System.out.println("Running Tests:\n");
 
@@ -100,6 +120,9 @@ public class Main {
         System.out.println("Success rate: " + successRate + "%");
     }
 
+    /**
+     * Prints an help message.
+     */
     private static void printHelp() {
         String titleASCIIArt = String.join("\n",
             "  ____  _                 _ _ _             _____           _             ",
@@ -127,6 +150,9 @@ public class Main {
         System.out.println("   -t,  --run-tests:      runs the tests on the program");
     }
 
+    /**
+     * Prints the version of the program.
+     */
     private static void printVersion() {
         System.out.println("Version " + Main.VERSION);
     }

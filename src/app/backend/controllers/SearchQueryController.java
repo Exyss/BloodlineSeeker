@@ -22,7 +22,7 @@ public class SearchQueryController {
     /** 
      * Searches the queried dynasty and returns it's members as ScraperResults.
      * @param query the dynasty to search.
-     * @return the ArrayList<ScraperResult> containing the results.
+     * @return the ArrayList containing the results.
      */
     public static ArrayList<ScraperResult> findMatchingDynastyAsResults(String query) {
         ArrayList<ScraperResult> results = new ArrayList<ScraperResult>();
@@ -50,7 +50,7 @@ public class SearchQueryController {
     /** 
      * Searches the queried members and returns them as ScraperResults.
      * @param query the member to search.
-     * @return the ArrayList<ScraperResult> containing the results.
+     * @return the ArrayList containing the results.
      */
     public static ArrayList<ScraperResult> findMatchingMembersAsResults(String query) {
         ArrayList<ScraperResult> results = new ArrayList<ScraperResult>();
@@ -79,7 +79,7 @@ public class SearchQueryController {
     /** 
       * Searches the queried members and returns their names as Strings.
      * @param query the member to search.
-     * @return the ArrayList<String> containing the results.
+     * @return the ArrayList containing the results.
      */
     private static ArrayList<String> findMatchingMemberAsNames(String query) {
         ArrayList<String> matchingMembersNames = new ArrayList<String>();
@@ -161,7 +161,7 @@ public class SearchQueryController {
     /** 
      * Sorts the substring of the parameter by the shortest to the largest.
      * @param query the member to search.
-     * @return the sorted ArrayList<String> containing the substrings.
+     * @return the sorted ArrayList containing the substrings.
      */
     private static ArrayList<String> getSortedSubstrings(String query) {
         ArrayList<String> substrings = new ArrayList<String>();

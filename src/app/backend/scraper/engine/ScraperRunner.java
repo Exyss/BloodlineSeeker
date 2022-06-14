@@ -56,7 +56,7 @@ public final class ScraperRunner extends Thread {
 
     
     /** 
-     * @return The ArrayList<Dynasty> with the scraper results.
+     * @return The ArrayList with the scraper results.
      * @throws FileNotFoundException if drivers are not fond.
      */
     public ArrayList<Dynasty> getScraperDynasties() throws FileNotFoundException {

@@ -38,8 +38,8 @@ public class AntiAliasedTextCheckBox extends JCheckBox {
 
     /**
      * Creates a check box with text and specifies whether or not it is initially selected.
-     * @param text the text of the check box.
-     * @param selected a boolean value indicating the initial selection state. If true the check box is selected.
+     * @param test the text of the check box.
+     * @param bool a boolean value indicating the initial selection state. If true the check box is selected.
      */
     public AntiAliasedTextCheckBox(String test , boolean bool) {
         super(test,bool);

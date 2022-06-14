@@ -21,6 +21,7 @@ public interface JSONable {
 	
 	/**
 	 * A method that must be implemented by the classes that use this interface.
+	 * @return a JSONObject.
 	 */
     public JSONObject toJSONObject();
 

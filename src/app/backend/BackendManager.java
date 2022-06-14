@@ -171,9 +171,9 @@ public final class BackendManager {
         }
     }
     
-    /*
+    /**
      * Saves the current session by saving every loaded dynasty into a file.
-    */
+     */
     public static void saveSession() {
         try {
             dynasties = runner.getScraperDynasties();

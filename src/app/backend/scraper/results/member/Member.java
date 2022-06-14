@@ -85,7 +85,7 @@ public class Member implements JSONable {
     
     /** 
      * @param relative the type of relatives that should be returned
-     * @return an ArrayList<Member> of the given relative type.
+     * @return an ArrayList of the given relative type.
      */
     public ArrayList<Member> getRelatives(Relative relative) {
         ArrayList<Member> relatives;
@@ -113,7 +113,7 @@ public class Member implements JSONable {
     
     /** 
      * @param relative the type of relatives that should be returned.
-     * @return an ArrayList<String> the ID list of the given relatives type.
+     * @return an ArrayList the ID list of the given relatives type.
      */
     private ArrayList<String> getRelativesIDs(Relative relative) {
         ArrayList<String> IDs = new ArrayList<String>();
@@ -147,7 +147,7 @@ public class Member implements JSONable {
     
     /** 
      * Returns all members related
-     * @return ArrayList<Member> all member relatives
+     * @return ArrayList all member relatives
      */
     public ArrayList<Member> getAllRelatives() {
         ArrayList<Member> relatives = new ArrayList<Member>();
@@ -161,7 +161,7 @@ public class Member implements JSONable {
     /** 
      * Adds a specified member to the correct relative ArrayList.
      * @param member The member which will be added.
-     * @param relative 
+     * @param relative The relative ArrayList.
      */
     public void addRelative(Member member, Relative relative) {
         switch (relative) {
@@ -234,7 +234,7 @@ public class Member implements JSONable {
     
     /** 
      * Sets the ID of the Member.
-     * @param a String which identify the new ID
+     * @param ID a String which identify the new ID
      */
     public void setID(String ID) {
         this.ID = ID;

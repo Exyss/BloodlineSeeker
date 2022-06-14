@@ -7,6 +7,15 @@ import app.backend.scraper.results.dynasty.Dynasty;
 import app.backend.scraper.results.member.Member;
 import app.backend.scraper.results.member.Relative;
 
+/**
+ * This DynystyTester is used to test the Dynasty class.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ *
+ */
 public class DynastyTester {
     private static final int TESTS_NUMBER = 2;
 

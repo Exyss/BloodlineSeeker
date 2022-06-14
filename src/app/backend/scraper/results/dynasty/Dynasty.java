@@ -210,7 +210,7 @@ public class Dynasty implements JSONable {
     
     /** 
      * Sets the wikipedia link of the dynasty.
-     * @param thewikipediaLink the string containing the wikipedia link.
+     * @param wikipediaLink the string containing the wikipedia link.
      */
     public void setLink(String wikipediaLink) {
         this.wikipediaLink = wikipediaLink;
@@ -219,7 +219,7 @@ public class Dynasty implements JSONable {
     
     /** 
      * Adds the members to the dynasty.
-     * @param member
+     * @param member the member to be added.
      */
     public void addMember(Member member) {
         if (this.members == null) {
@@ -264,7 +264,7 @@ public class Dynasty implements JSONable {
 
     
     /** 
-     * @return thr ArrayList<Member> containing the dynasty members.
+     * @return thr ArrayList containing the dynasty members.
      */
     public ArrayList<Member> getMembers() {
         return this.members;
@@ -272,7 +272,7 @@ public class Dynasty implements JSONable {
 
     
     /** 
-     * @return the ArrayList<ScraperResult> containing the search result members.
+     * @return the ArrayList containing the search result members.
      */
     public ArrayList<ScraperResult> getMembersResults() {
         return this.membersResults;

@@ -16,9 +16,6 @@ import app.frontend.FrontendManager;
  */
 public class StartMainWindowActionListener implements ActionListener {
     
-    /** 
-     * @param arg0
-     */
     @Override
     public void actionPerformed(ActionEvent arg0) {
         FrontendManager.switchToMainWindow();

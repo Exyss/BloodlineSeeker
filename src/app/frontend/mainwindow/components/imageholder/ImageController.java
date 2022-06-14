@@ -109,6 +109,7 @@ public class ImageController {
     
     /**
      * Sets the icon of the label.
+     * @param image the image of the label.
      */
     private void setImageToEdit(ImageIcon image) {
         this.label.setIcon(image);
@@ -116,6 +117,7 @@ public class ImageController {
 
     /**
      * Changes the graph to visualize.
+     * @param newImage the new graph to visualize.
      */
     public void changeGraph(BufferedImage newImage) {
         this.imageEditor.setImageToEdit(newImage);

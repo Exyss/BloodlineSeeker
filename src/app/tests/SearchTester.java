@@ -9,18 +9,27 @@ import app.backend.scraper.results.dynasty.Dynasty;
 import app.backend.scraper.results.member.Member;
 import app.backend.scraper.results.member.Relative;
 
+/**
+ * This SearchTester tests the search.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ *
+ */
 public class SearchTester {
     private static final int TESTS_NUMBER = 2;
 
     /** 
-     * @return int
+     * @return the tests number.
      */
     public static int getTotalTests() {
         return TESTS_NUMBER;
     }
     
     /** 
-     * @return int
+     * @return the tests passed.
      */
     public static int runTests() {
         
@@ -51,8 +60,8 @@ public class SearchTester {
         return passedTests;
     }
     
-    /** 
-     * @return Dynasty
+    /**
+     * Loads the test dynasties.
      */
     private static void loadTestDynasty() {
         Dynasty dynasty = new Dynasty("Test Dynasty", "https://example.com");
@@ -71,7 +80,11 @@ public class SearchTester {
         // load test dynasty
         BackendManager.getDynasties().add(dynasty);
     }
-
+    
+    /**
+     * Makes a search for each tests.
+     * @return true if the program pass the test, false if not.
+     */
     private static boolean testMemberSearch(){
 
         ArrayList<ScraperResult> foundMembers = SearchQueryController.findMatchingMembersAsResults("Franc");
@@ -110,6 +123,10 @@ public class SearchTester {
         return true;
     }
 
+    /**
+     * Tests the correct functioning of the search suggestion.
+     * @return true if the program pass the test, false if not.
+     */
     private static boolean testSearchSuggestion(){
 
         String suggestion = SearchQueryController.findSuggestion("Fran");

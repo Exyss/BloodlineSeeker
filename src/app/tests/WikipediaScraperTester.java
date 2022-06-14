@@ -8,13 +8,35 @@ import java.util.HashMap;
 
 import app.backend.scraper.engine.WikipediaScraper;
 
+/**
+ * This WikipediaScraperTester test the scraper.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ *
+ */
 public class WikipediaScraperTester {
+	
+	/**
+	 * Number of tests.
+	 */
     private static final int TESTS_NUMBER = 3;
 
+    /**
+     * An example link.
+     */
     private static final String EXAMPLE_LINK = "https://example.com";
 
+    /**
+     * The Romolo wikipedia web page link.
+     */
     private static final String ROMOLO_LINK = "https://it.wikipedia.org/wiki/Romolo";
 
+    /**
+     * A representation of Romolo summary.
+     */
     private static final String ROMOLO_SUMMARY = String.join("\n", 
         "Morte",
         "\tRoma, il 5: https://it.wikipedia.org/wiki/Roma_(citt%C3%A0_antica)",
@@ -43,7 +65,7 @@ public class WikipediaScraperTester {
 
     
     /** 
-     * @return int
+     * @return The tests number.
      */
     public static int getTotalTests() {
         return TESTS_NUMBER;
@@ -51,7 +73,8 @@ public class WikipediaScraperTester {
 
     
     /** 
-     * @return int
+     * Runs the tests.
+     * @return The number of tests passed.
      */
     public static int runTests() {
         System.out.print("Testing HTML scraping with HTTP Requests... ");
@@ -91,7 +114,8 @@ public class WikipediaScraperTester {
 
     
     /** 
-     * @return boolean
+     * Gets the HTML page with the HTTP request.
+     * @return true if the HTTP request works, false if not.
      */
     private static boolean testHTTPrequests() {
         try {
@@ -106,7 +130,8 @@ public class WikipediaScraperTester {
     
     
     /** 
-     * @return boolean
+     * Gets the HTML page with Selenium.
+     * @return true if Selenium works, false if not.
      */
     private static boolean testSelenium() {
         WikipediaScraper scraper = new WikipediaScraper();
@@ -141,7 +166,8 @@ public class WikipediaScraperTester {
 
     
     /** 
-     * @return boolean
+     * Tests if the result of the scraping is equals as the expected.
+     * @return true if works, false if not.
      */
     private static boolean testWikipediaSummary() {
         HashMap<String, HashMap<String, String>> summary;
@@ -186,6 +212,9 @@ public class WikipediaScraperTester {
 }
 
 // Fake output to disable system streams
+/**
+ * A class used to disable the system streams.
+ */
 class NullOutputStream extends OutputStream {
     @Override
     public void write(int b) {
@@ -202,5 +231,8 @@ class NullOutputStream extends OutputStream {
         return;
     }
 
+    /**
+     * The constructor of the class.
+     */
     public NullOutputStream() {}
 }

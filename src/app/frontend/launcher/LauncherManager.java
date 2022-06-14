@@ -128,6 +128,10 @@ public final class LauncherManager {
         return window;
     }
     
+    /**
+     * 
+     * @return the pageStatus
+     */
     public static boolean getPageStatus() {
         return pageStatus;
     }
