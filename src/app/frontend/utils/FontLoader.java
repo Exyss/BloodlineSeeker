@@ -8,10 +8,20 @@ import java.io.InputStream;
 
 import app.backend.BackendManager;
 
+/**
+ * This FontLoader it's used to load the fonts.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ *
+ */
 public final class FontLoader {
     
     /** 
-     * @param fontFile
+     * Loads the font.
+     * @param fontFile the font file path.
      */
     public static void loadFont(String fontFile) {
         try {

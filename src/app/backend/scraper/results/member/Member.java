@@ -8,8 +8,20 @@ import app.backend.utils.JSONable;
 
 public class Member implements JSONable {
     private static int ID_counter = 0;
+    
+    /**
+     * A String used as member ID.
+     */
     private String ID;
+    
+    /**
+     * A String used as member name.
+     */
     private String name;
+    
+    /**
+     * A String used as wikipedia link.
+     */
     private String wikipediaLink;
     private boolean isEmperor;
 
@@ -111,7 +123,8 @@ public class Member implements JSONable {
 
     
     /** 
-     * @param member
+     * Adds a specified parent to the correct relative ArrayList.
+     * @param member 
      * @param relative
      */
     public void addRelative(Member member, Relative relative) {
@@ -144,7 +157,7 @@ public class Member implements JSONable {
 
     
     /** 
-     * @return JSONObject
+     * @return A JSONObject of the member.
      */
     @Override
     public JSONObject toJSONObject() {
@@ -177,10 +190,6 @@ public class Member implements JSONable {
         return json;
     }
 
-    
-    /** 
-     * @return String
-     */
     @Override
     public String toString() {
         return "[" + this.getName() + "; isEmperor: "+ this.isEmperor() + "; " + this.getWikipediaLink() + "]";
@@ -188,8 +197,8 @@ public class Member implements JSONable {
 
     
     /** 
-     * 
-     * @param ID
+     * Sets the ID of the Member.
+     * @param a String which identify the new ID
      */
     public void setID(String ID) {
         this.ID = ID;

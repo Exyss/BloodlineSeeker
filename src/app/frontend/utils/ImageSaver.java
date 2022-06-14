@@ -12,10 +12,21 @@ import com.idrsolutions.image.JDeli;
 import app.backend.BackendManager;
 import app.frontend.elements.antialiased.text.AntialiasedTextFileChooser;
 
+/**
+ * This ImageSaver extends Thread in order to save an image within a specific thread.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ *
+ */
 public class ImageSaver extends Thread{
     
-
-    public  void saveDynastyGraph()  {
+	/**
+     * Saves the dynasty graph image in a directory chosen by the user.
+     */
+    public void saveDynastyGraph()  {
         
         if (BackendManager.getLoadedDynasty() == null) {
             return;
@@ -46,6 +57,14 @@ public class ImageSaver extends Thread{
         }
     }
 
+    /**
+     * Creates a file name, and if it already exists generates other file names procedurally.
+     * @param folderName the folder where the file will be saved.
+     * @param fileName the file name not processed.
+     * @param extension the extension of the file.
+     * @return the final file name.
+     * @throws FileNotFoundException if the method don't find the directory. 
+     */
     private String createFileName(String folderName,String fileName,String extension) throws FileNotFoundException {
         int i = 1; 
         extension = "."+extension;

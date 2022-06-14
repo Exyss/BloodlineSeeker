@@ -11,11 +11,21 @@ import javax.swing.ImageIcon;
 
 import app.backend.BackendManager;
 
+/**
+ * This ImageLoader it's used to load the images.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ *
+ */
 public final class ImageLoader {
     
     /** 
-     * @param path
-     * @return ImageIcon
+     * Converts an image path to an ImageIcon.
+     * @param path The image path.
+     * @return the ImageIcon.
      */
     public static ImageIcon asImageIcon(String path) {
         BufferedImage bimg = asBufferedImage(path);
@@ -26,8 +36,9 @@ public final class ImageLoader {
 
     
     /** 
-     * @param path
-     * @return Image
+     * Converts an image path to an Image.
+     * @param path The image path.
+     * @return the Image. 
      */
     public static Image asImage(String path) {
         return Toolkit.getDefaultToolkit().getImage(getImageURL(path));
@@ -35,8 +46,9 @@ public final class ImageLoader {
 
     
     /** 
-     * @param path
-     * @return URL
+     * Transforms an image path to an URL.
+     * @param path The path to transform.
+     * @return the URL.
      */
     public static URL getImageURL(String path) {
         return ImageLoader.class.getResource(path);
@@ -44,8 +56,9 @@ public final class ImageLoader {
 
     
     /** 
-     * @param path
-     * @return BufferedImage
+     * Converts an image path to a BufferedImage.
+     * @param path The path to converts.
+     * @return the BufferedImage.
      */
     public static BufferedImage asBufferedImage(String path) {
         try {
