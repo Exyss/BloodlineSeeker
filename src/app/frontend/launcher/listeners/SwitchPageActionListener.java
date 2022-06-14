@@ -33,6 +33,7 @@ public class SwitchPageActionListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         boolean pageStatus = LauncherManager.getPageStatus();
 
+        // If the page tried to be opened is already loaded, it won't switch pages
         if (isLoadPage != pageStatus){
             LauncherManager.switchPage();
         }

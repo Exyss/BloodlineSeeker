@@ -29,11 +29,13 @@ public final class ConsoleRunner extends Thread{
     @Override
     public void run() {
         BackendManager.loadFromScraper();
+
         updateConsoleAndSleep(DOWNLOAD_START_MSG, 1000);
 
-        while(BackendManager.isScraperRunnerActive()) {
+        while (BackendManager.isScraperRunnerActive()) {
             String newStatus = BackendManager.getScraperStatus();
-
+            
+            // Ignores the status if it's a link
             if (!newStatus.contains("/")) {
                 LauncherManager.updateConsole(newStatus);
             }
@@ -46,6 +48,7 @@ public final class ConsoleRunner extends Thread{
         
         FrontendManager.switchToMainWindow();
     }
+
     /**
      * Update the console and causes the currently executing thread to sleep.
      * @param consoleMsg the new status of the console.

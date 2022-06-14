@@ -80,12 +80,17 @@ public final class ScrollPaneController {
     private void createCards(ArrayList<ScraperResult> data) {
         int dataSize = data.size();
 
+        // Generates the cards of every result, with the name of the person,
+        // the dynasty and the corresponding roman literal
         for (int i = 0; i < dataSize; i++) {
-            ScraperResultCard resultCard = createCard(i , data.get(i));
+            ScraperResultCard resultCard = createCard(i, data.get(i));
+
             this.cardHolder.add(resultCard);
         }
 
+        // Makes the card holder big enough to hold every result card
         this.cardHolder.setPreferredSize(new Dimension(PANEL_WIDTH, computeY(dataSize)));
+
         this.cardHolder.revalidate();
         this.cardHolder.repaint();
     }

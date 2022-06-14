@@ -101,7 +101,7 @@ public class ImageController {
      * @param xChange the shift amount of the x coordinate.
      * @param yChange the shift amount of the y coordinate.
      */
-    public void move(int xChange , int yChange) {
+    public void move(int xChange, int yChange) {
         if (canBrowse()) {
             this.setImageToEdit(this.imageEditor.editImage(xChange, yChange));
         }
@@ -151,10 +151,14 @@ public class ImageController {
 
         Point rectanglePixel = null;
 
+        // Searches through the image looking for the first pixel with the color
+        // of the center node, searching through the picture by skipping many pixels
+        // because the displacements are evaluated to be always exact
         for (int y = GRAPH_MARGIN; y < graphHeight; y += VERTICAL_DISPLACEMENT) {
             for (int x = GRAPH_MARGIN; x < graphWidth; x += HORIZONTAL_DISPLACEMENT) {
                 int pixelColorValue = graphImage.getRGB(x, y);
                 
+                // If the pixel is found, stop searching
                 if (pixelColorValue == RECTANGLE_BACKGROUND) {
                     rectanglePixel = new Point(x, y);
 
@@ -162,6 +166,7 @@ public class ImageController {
                 }
             }
 
+            // If the pixel is found, stop searching
             if (rectanglePixel != null) {
                 break;
             }
@@ -217,22 +222,28 @@ public class ImageController {
         int graphImageWidth = graphImage.getWidth();
         int graphImageHeight = graphImage.getHeight();
 
+        // If the mean pixel is not found, which should never be the case,
+        // by default the algorithm returns the center of the image
         Point meanPixel = new Point(graphImageWidth / 2, graphImageHeight / 2);
 
         if (rectanglePixel == null) {
-            return meanPixel; // should never happen
+            return meanPixel; // Should never happen
         }
 
         int startX = rectanglePixel.getX();
         int startY = rectanglePixel.getY();
 
+        // Evaluate the coordinates of the top left vertex of the box of the center node
         int upperLeftX = findHorizontalRectBound(graphImage, startX, startY, -1);
         int upperLeftY = findVerticalRectBound(graphImage, startX, startY, -1);
         int upperRightX = findHorizontalRectBound(graphImage, upperLeftX + UPPER_LEFT_X_SHIFT, upperLeftY + UPPER_LEFT_Y_SHIFT, +1);
 
+        // Evaluate the rectangle width based on the travelled pixels on the right
         int rectangleWidth = upperRightX - upperLeftX + UPPER_LEFT_X_SHIFT;
 
+        // Finds the center of the rectangle
         meanPixel = new Point(upperLeftX + (rectangleWidth / 2), upperLeftY + (RECTANGLE_HEIGHT / 2));
+
         return meanPixel;
     }
 

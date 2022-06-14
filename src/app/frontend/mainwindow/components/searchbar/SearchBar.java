@@ -164,7 +164,9 @@ public class SearchBar extends JPanel {
         this.button.addActionListener(this.searchActionListener);
     }
     
-    
+    /**
+     * Sets the placeholer text in the searchbar.
+     */
     private void setUI() {
         textField.putClientProperty("JTextField.placeholderText", DEFAULT_TEXT);
     }    

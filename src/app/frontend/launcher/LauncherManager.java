@@ -86,6 +86,7 @@ public final class LauncherManager {
         AntiAliasedTextButton switchToLoadPageButton = getWindowPageButtonPanel().getLoadButton();
         AntiAliasedTextButton switchToDownloadPageButton = getWindowPageButtonPanel().getDownloadButton();
         
+        // Displays the page based on the current page status
         if (pageStatus) {
             contentPanel.add(getWindowDownloadPage());
 
@@ -211,6 +212,7 @@ public final class LauncherManager {
 
         boolean seleniumMode = BackendManager.getSeleniumMode();
 
+        // Performs the switch between the two checkboxes, disabling one of the two properly
         if (seleniumMode) {
             SeleniumCheckBox.setEnabled(true);
             SeleniumCheckBox.setSelected(false);

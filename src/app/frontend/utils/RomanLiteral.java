@@ -90,10 +90,13 @@ public enum RomanLiteral {
         StringBuilder roman = new StringBuilder();
 
         for (RomanLiteral romanLiteral : RomanLiteral.values()) {
-            for(int value = romanLiteral.get(); decimal >= value; decimal -= value) {
+            // Decrements the decimal with the biggest possible roman literal value,
+            // and adds to the output string the corresponding symbol
+            for (int value = romanLiteral.get(); decimal >= value; decimal -= value) {
                 roman.append(romanLiteral.name());
             }
         }
+
         return roman.toString();
     }
 }

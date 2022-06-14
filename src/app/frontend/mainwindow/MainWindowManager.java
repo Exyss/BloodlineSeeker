@@ -124,6 +124,7 @@ public class MainWindowManager {
             return null;
         }
     }
+    
     /**
      * Shows the search results by updating the ScollPane.
      */
@@ -132,19 +133,21 @@ public class MainWindowManager {
 
         String searchBarText = searchBar.getText();
 
+        // Removes the non-alphabetical characters (leaving the spaces), removes useless spaces and trims the query
         String query = searchBarText.replaceAll("[^a-zA-Z\\s]", "").replaceAll("\\s+", " ").trim();
 
         searchBar.removeFocus();
 
-        if (searchBarText.replaceAll(" ","").equals("")) { // Case when the input is only spaces
+        if (searchBarText.replaceAll(" ", "").equals("")) { // Case when the query is made up of spaces only
             searchBar.setText(null);
 
             return;
-        } else if (query.equals("")) { 
+        } else if (query.equals("")) { // Case when the query is made up of non-alphabetical characters only
             MainWindowManager.showResultNotFound();
-        } else {
-            searchBar.setText(query);
+        } else { // Case when the query is valid
             BackendManager.printDebug("Search query: " + query);
+
+            searchBar.setText(query);
             MainWindowManager.updateScollPane(query);
         }
     }
@@ -155,22 +158,28 @@ public class MainWindowManager {
      * @param query the search made by the user.
      */
     public static void updateScollPane(String query) {
+        // Searches for any results based on the query
         ArrayList<ScraperResult> results = SearchQueryController.findMatchingMembersAsResults(query);
-        SearchQueryController.sortResults(results);
 
+        // If there are no results
         if (results.size() == 0) {
+            // Checks if the query was a dynasty name
             results = SearchQueryController.findMatchingDynastyAsResults(query);
-            SearchQueryController.sortResults(results);
         }
 
         // If there are no results again
         if (results.size() == 0) {
+            // Look for any possible suggestion based on the query
             String suggestion = SearchQueryController.findSuggestion(query);
             showSuggestion(suggestion);
 
             return;
         }
+        
+        // Sorts the reults
+        SearchQueryController.sortResults(results);
 
+        // Shows the results
         getWindowScrollPaneController().showScrollPaneResults(results);
     }
 
@@ -203,6 +212,7 @@ public class MainWindowManager {
         try {
             URI uri = new URI(link);
 
+            // Uses the default browser to open the given link
             Desktop.getDesktop().browse(uri);
         } catch (URISyntaxException | IOException e) {
             BackendManager.printDebug("An error occurred while trying to open a Wikipedia page");

@@ -120,6 +120,7 @@ public final class SuggestionMessage extends JPanel {
     private AntiAliasedTextButton createSearchButton(String suggestion) {
         AntiAliasedTextButton searchButton = new AntiAliasedTextButton();
 
+        // Makes the label underlined
         searchButton.setText(HTML_OPEN_TAG + suggestion + HTML_CLOSE_TAG);
         searchButton.setForeground(ComponentColor.PERSIAN_RED.get());
         searchButton.setFont(QuattrocentoFont.PLAIN_24.get());

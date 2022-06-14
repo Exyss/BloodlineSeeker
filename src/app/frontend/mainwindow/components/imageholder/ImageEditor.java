@@ -133,9 +133,9 @@ public class ImageEditor {
     public ImageIcon editImage(int zoomChange) {
         this.zoomChange(zoomChange*zoomValue);
         
-        if (zoom == 0) {
+        if (zoom == 0) { // If the zoom is 0 there image doesn't get resized
             return this.toImageIcon(image.getSubimage(startX, startY, LABEL_WIDTH, LABEL_HEIGHT));
-        }else{
+        } else {
             BufferedImage temp = image.getSubimage(startX, startY, LABEL_WIDTH - zoom, LABEL_HEIGHT - zoom);
             return this.toImageIcon(resizeImage(temp, LABEL_WIDTH, LABEL_HEIGHT));
         }
@@ -150,13 +150,14 @@ public class ImageEditor {
         if (xChange != 0) {
             changeX(xChange * shift);
         }
+
         if (yChange != 0) {
             changeY(yChange * shift);
         }
         
         if (zoom == 0) {
             return this.toImageIcon(image.getSubimage(startX, startY, LABEL_WIDTH, LABEL_HEIGHT));
-        }else{
+        } else {
             BufferedImage temp = image.getSubimage(startX, startY, LABEL_WIDTH - zoom, LABEL_HEIGHT - zoom);
             return this.toImageIcon(resizeImage(temp, LABEL_WIDTH, LABEL_HEIGHT));
         }
@@ -226,8 +227,11 @@ public class ImageEditor {
     private void zoomChange(int zoomChange) {
         int dim = LABEL_WIDTH - (this.zoom + zoomChange);
 
+        // Checks if the zoom is valid
         if (dim > MIN_ZOOM_IMAGE_SIZE  && maxZoom > dim) {
             this.zoom += zoomChange;
+            
+            // Changes the coordinates according to the new zoom
             changeX(zoomChange/2);
             changeY(zoomChange/2);
         }

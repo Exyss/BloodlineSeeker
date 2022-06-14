@@ -39,10 +39,13 @@ public final class FrontendManager {
      * Sets up the GUI
      */
     public static void setupGUI() {
+        // Sets the system anti-aliasing to true
         System.setProperty("awt.useSystemAAFontSettings","on");
         System.setProperty("swing.aatext", "true");
+
         FlatLightLaf.setup();
         
+        // Sets the file chooser to read-only
         UIManager.put("FileChooser.readOnly", true); 
         FrontendManager.loadFonts();
     }
