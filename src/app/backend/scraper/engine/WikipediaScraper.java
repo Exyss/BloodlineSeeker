@@ -30,7 +30,7 @@ import app.backend.utils.OperatingSystem;
 import app.backend.utils.SeleniumDriver;
 
 /**
- * This WikipediaScraper manage the scrape oh wikipedia.
+ * This WikipediaScraper manage the scrape on wikipedia.
  * @author Alessio Bandiera
  * @author Andrea Ladogana
  * @author Matteo Benvenuti
@@ -272,9 +272,10 @@ public class WikipediaScraper {
     
     
     /** 
-     * @param pageURL
-     * @return String
-     * @throws FileNotFoundException
+     * Retrieves the HTML code of the given page.
+     * @param pageURL the URL of the page.
+     * @return the HTML code. 
+     * @throws FileNotFoundException in case fallback on Selenium doesn't work.
      */
     public String getPageHTML(String pageURL) throws FileNotFoundException {
         if (!this.useSelenium) {
@@ -290,9 +291,10 @@ public class WikipediaScraper {
 
     
     /** 
-     * @param pageURL
-     * @return String
-     * @throws IOException
+     * Retrieves the HTML code of the given page by using HTTP Requests.
+     * @param pageURL the URL of the page.
+     * @return the HTML code
+     * @throws IOException in case the connection socket collapses.
      */
     public static String getPageHTMLwithHTTP(String pageURL) throws IOException {
         StringBuilder result = new StringBuilder();
@@ -321,9 +323,10 @@ public class WikipediaScraper {
     
     
     /** 
-     * @param pageURL
-     * @return String
-     * @throws FileNotFoundException
+     * Retrieves the HTML code of the given page by using Selenium.
+     * @param pageURL the URL of the page.
+     * @return the HTML code
+     * @throws FileNotFoundException in case the driver isn't found.
      */
     public String getPageHTMLwithSelenium(String pageURL) throws FileNotFoundException {
         // Avoid usage while scraper isn't active
@@ -346,9 +349,10 @@ public class WikipediaScraper {
 
     
     /** 
-     * @param pageURL
-     * @return HashMap<String, HashMap<String, String>>
-     * @throws FileNotFoundException
+     * Finds the summary of the wikipedia page and converts it into an HashMap.
+     * @param pageURL The wikipedia page URL.
+     * @return the converted summary.
+     * @throws FileNotFoundException in case the fallback on Selenium doesn't work.
      */
     public HashMap<String, HashMap<String, String>> getWikipediaSummary(String pageURL) throws FileNotFoundException {
         HashMap<String, HashMap<String, String>> summaryData = new HashMap<String, HashMap<String, String>>();
@@ -395,8 +399,9 @@ public class WikipediaScraper {
 
     
     /** 
-     * @param summaryData
-     * @param row
+     * Parses sinottico row adding it's contents to the summary data.
+     * @param summaryData the HashMap which contains the sinottico.
+     * @param row the row to be parsed.
      */
     private void parseRow(HashMap<String, HashMap<String, String>> summaryData, Element row) {
         Elements ths = row.getElementsByTag("th");
@@ -432,8 +437,9 @@ public class WikipediaScraper {
     
     
     /** 
-     * @param tdData
-     * @param rowChunk
+     * Parses the given row chunk adding it's contents to the row data.
+     * @param tdData the HashMap which contains the row data.
+     * @param row the row to be parsed.
      */
     private void parseChunk(HashMap<String, String> tdData, String rowChunk) {
         Document tdChunk = Jsoup.parse(rowChunk);
@@ -465,8 +471,9 @@ public class WikipediaScraper {
     
     
     /** 
-     * @param text
-     * @return String
+     * Parse the parenthesis of a String.
+     * @param text the String to be parsed.
+     * @return the new String. 
      */
     protected static String parseParenthesis(String text) {
         return text.replaceAll("\\[.*\\]|\\(.*\\)", "").trim();
@@ -474,8 +481,9 @@ public class WikipediaScraper {
 
     
     /** 
-     * @param anchor
-     * @return boolean
+     * Checks if the given anchor element is parsable.
+     * @param anchor the anchor element
+     * @return true if it's parsable, false if not
      */
     private static boolean isValidAnchor(Element anchor) {
         boolean isValid = true;
@@ -497,7 +505,8 @@ public class WikipediaScraper {
     
     
     /** 
-     * @param status
+     * Update the ScraperStatusHolder status variable.
+     * @param status The new status.
      */
     protected void setStatus(String status) {
         if (this.debugMode) {
@@ -509,7 +518,8 @@ public class WikipediaScraper {
     
     
     /** 
-     * @param debugMode
+     * Updates the debugMode variable.
+     * @param debugMode the debug mode to be set.
      */
     public void setDebugMode(boolean debugMode) {
         this.debugMode = debugMode;
@@ -517,7 +527,8 @@ public class WikipediaScraper {
 
     
     /** 
-     * @param useSelenium
+     * Updates the useSelenium variable.
+     * @param useSelenium the selenium mode to be set.
      */
     public void setSeleniumMode(boolean useSelenium) {
         this.useSelenium = useSelenium;
@@ -525,15 +536,16 @@ public class WikipediaScraper {
     
     
     /** 
-     * @param useHeadless
+     * Updates the setHeadlessMode variable.
+     * @param useHeadless the headless mode to be set.
      */
     public void setHeadlessMode(boolean useHeadless) {
         this.useHeadless = useHeadless;
     }
 
     
-    /** 
-     * @return String
+    /**
+     * @return the current scraper status message.
      */
     public String getStatus() {
         return this.ScraperStatusHolder.getStatus();
@@ -541,7 +553,7 @@ public class WikipediaScraper {
 
     
     /** 
-     * @return boolean
+     * @return the current scraper active status.
      */
     public boolean isActive() {
         return this.isScraperActive;
