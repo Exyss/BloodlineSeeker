@@ -11,7 +11,7 @@ BloodlineSeeker is a GUI program written in Java, which allows to explore the dy
 - search every person from every roman dynasty! 🔍
 - dynamically explore the searched person's close family graph in the Graph Viewer 🧭
 - download the graph of the full dynasty with just 1 click ✨
-- search suggestion if query gives no result ❗
+- search suggestion if the query gives no result ❗
 - debug mode from terminal 💻
 - dynasties saved locally without having to download them again 🥱
 
