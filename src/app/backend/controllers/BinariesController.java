@@ -14,6 +14,15 @@ import app.backend.utils.SeleniumDriver;
 import guru.nidi.graphviz.engine.Graphviz;
 import guru.nidi.graphviz.engine.GraphvizCmdLineEngine;
 
+/**
+ * This BinariesContoller reads the binary file in the assets and extract their content in the temoprary directories.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ *
+ */
 public class BinariesController {
 	
 	/**
@@ -48,9 +57,11 @@ public class BinariesController {
 
     
     /** 
-     * @return the right temporary path depending by the Operative System.
+     * @return the system temporary path based on the type of Operative System.
      */
     private static String getTempPath() {
+
+        //Get the system temporary dir path
         String tmpPath = System.getProperty("java.io.tmpdir");
 
         if (!(OperatingSystem.get().equals(OperatingSystem.WINDOWS))) {
@@ -88,7 +99,8 @@ public class BinariesController {
 
     
     /** 
-     * @param driver
+     * Finds the driver gived as parameter, extract its content in the drivers temporary directory.
+     * @param driver the selected driver to extract.
      */
     public static void extractDriverBinary(SeleniumDriver driver) {
         String driverZipPath = driver.get(DRIVERS_LOCAL_PATH) + ".zip";
@@ -112,10 +124,10 @@ public class BinariesController {
     
     
     /** 
-     * 
-     * @param zipInputStream
-     * @param outputPath
-     * @throws IOException
+     * Extracts the given Zip Stream into the given output path.
+     * @param zipInputStream the zip stream to extract.
+     * @param outputPath the extraction output path.
+     * @throws IOException in case the zip file is corrupted.
      */
     private static void extractZip(InputStream zipInputStream, String outputPath) throws IOException {
         ZipInputStream zipStream = new ZipInputStream(zipInputStream);
@@ -134,11 +146,13 @@ public class BinariesController {
             ZipEntry entry;
             FileOutputStream output;
             
+            // For each file compressed in the zip file
             while ((entry = zipStream.getNextEntry()) != null) {
 
                 int len = 0;
                 output = new FileOutputStream(outputPath + "/" + entry.getName());
                 
+                // Copy uncompressed file data as stream
                 while ((len = zipStream.read(buffer)) > 0) {
                     output.write(buffer, 0, len);
                 }

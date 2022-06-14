@@ -29,31 +29,74 @@ import app.backend.utils.Browser;
 import app.backend.utils.OperatingSystem;
 import app.backend.utils.SeleniumDriver;
 
+/**
+ * This WikipediaScraper manage the scrape oh wikipedia.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ *
+ */
 public class WikipediaScraper {
+    /**
+	 * The wikipedia domain.
+	 */
     protected static final String WIKI_DOMAIN = "https://it.wikipedia.org";
 
+    /**
+	 * The scraper status holder.
+	 */
     private ScraperStatusHolder ScraperStatusHolder;
+
+    /**
+	 * The web driver.
+	 */
     private WebDriver driver;
 
+    /**
+	 * The useSelenium boolean.
+	 */
     private boolean useSelenium;
+
+    /**
+	 * The useHeadless boolean.
+	 */
     private boolean useHeadless;
+
+    /**
+	 * The isScraperActive boolean.
+	 */
     private boolean isScraperActive;
+
+    /**
+	 * The debugMode boolean.
+	 */
     private boolean debugMode;
     
+    /**
+	 * Creates the WikipediaScraper and initializes useSelenium, useHeadless, isScraperActive as false and ScraperStatusHolder.
+     * @param useSelenium the new boolean value of useSelenium.
+     * @param usHeadless the new boolean value of useHeadless.
+	 */
     public WikipediaScraper(boolean useSelenium, boolean useHeadless) {
         this.useSelenium = useSelenium;
         this.useHeadless = useHeadless;
         this.isScraperActive = false;
         this.ScraperStatusHolder = new ScraperStatusHolder();
     }
-
+    
+    /**
+     * Creates the WikipediaScraper and initializes useSelenium as true, useHeadless as true, isScraperActive as false and ScraperStatusHolder.
+     */
     public WikipediaScraper() {
         this(true, true);
     }
 
     
     /** 
-     * @throws FileNotFoundException
+     * Starts the scraper. 
+     * @throws FileNotFoundException in case the driver isn't found.
      */
     public void start() throws FileNotFoundException {
         // Avoid usage while scraper has already been spawned
@@ -71,6 +114,9 @@ public class WikipediaScraper {
         }
     }
     
+    /** 
+     * Kills the scraper. 
+     */
     public void kill() {
         // Avoid usage while scraper isn't active
         if (!this.isScraperActive) {
@@ -87,8 +133,9 @@ public class WikipediaScraper {
     }
 
     
-    /** 
-     * @throws FileNotFoundException
+    /**
+     * Tries to spawn a driver instance with one of the supported browsers.
+     * @throws FileNotFoundException in case the driver isn't found.
      */
     private void spawnDriver() throws FileNotFoundException {
         this.setStatus("Finding a supported driver-driven browser to start...");
@@ -111,8 +158,9 @@ public class WikipediaScraper {
 
     
     /** 
-     * @param browser
-     * @throws FileNotFoundException
+     * Tests if the given browser type is runnable.
+     * @param browser the browser type to be tested.
+     * @throws FileNotFoundException in case the file doesn't exists.
      */
     private void testBrowserInstance(Browser browser) throws FileNotFoundException {
         //Setup driver path based on selected browser
@@ -121,6 +169,7 @@ public class WikipediaScraper {
         //Try to spawn an instance based on the selected browser
         switch (browser) {
             case CHROME:
+                // Setup Chrome instance
                 this.setStatus("Trying to spawn a Google Chrome instance...");
 
                 ChromeOptions chOpt = new ChromeOptions();
@@ -133,6 +182,8 @@ public class WikipediaScraper {
                 break;
                 
             case FIREFOX:
+
+                // Setup Firefox instance
                 this.setStatus("Trying to spawn a Mozilla Firefox instance...");
 
                 FirefoxOptions ffOpt = new FirefoxOptions();
@@ -145,6 +196,7 @@ public class WikipediaScraper {
                 break;
                 
             default:
+                // Setup Edge instance
                 this.setStatus("Trying to spawn a Microsoft Edge instance...");
                 
                 EdgeOptions edOpt = new EdgeOptions();
@@ -160,9 +212,10 @@ public class WikipediaScraper {
 
     
     /** 
-     * @param browser
-     * @throws FileNotFoundException
-     */
+     * Selects the correct driver based on given Browser type.
+     * @param browser the browser type.
+     * @throws FileNotFoundException in case the fle doesn't exists.
+     */ 
     private void selectDriverBasedOnBrowser(Browser browser) throws FileNotFoundException {
         String driverPath;
         String driverType;
@@ -196,9 +249,10 @@ public class WikipediaScraper {
 
     
     /** 
-     * @param windowsDriver
-     * @param unixDriver
-     * @return SeleniumDriver
+     * Selects the correct driver based on the current OperativeSystem.
+     * @param windowsDriver the selectable Windows driver.
+     * @param unixDriver the selectable Unix driver.
+     * @return the selected SeleniumDriver type.
      */
     private SeleniumDriver selectDriverBasedOnOS(SeleniumDriver windowsDriver, SeleniumDriver unixDriver) {
         SeleniumDriver driver;

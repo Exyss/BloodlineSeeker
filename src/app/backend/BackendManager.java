@@ -15,6 +15,15 @@ import app.backend.scraper.results.dynasty.Dynasty;
 import app.backend.scraper.results.dynasty.DynastyVisualizer;
 import app.backend.scraper.results.member.Member;
 
+/**
+ * This BackendManager is the principal class of the BackHand. Thanks to this class the frontEnd can get the access to all the non-graphic functioms of the program.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ *
+ */
 public final class BackendManager {
 	/**
 	 * The default data path.
@@ -46,18 +55,41 @@ public final class BackendManager {
      */
     private static boolean headlessMode = true;
 
+    /**
+     * The whole dynasties.
+     */
     private static ArrayList<Dynasty> dynasties = new ArrayList<Dynasty>();
+    
+    /**
+     * The loaded dynasty.
+     */
     private static Dynasty loadedDynasty;
+    
+    /**
+     * The loaded member.
+     */
     private static Member loadedMember;
 
+    /**
+     * The scraper thread.
+     */
     private static ScraperRunner runner;
+
+    /**
+     * The scraper.
+     */
     private static DynastiesScraper scraper;
 
+    /**
+     * Sets the Gphviz binaries up.
+     */
     public static void setupGraphviz() {
         BinariesController.clearTempDirectories();
         BinariesController.extractGraphVizBinaries();
     }
-
+    /**
+     * Does the scrape and loads the dynasties.
+     */
     public static void loadFromScraper() {
         BackendManager.printDebug("Loading dynasties from scaper (seleniumMode: " + seleniumMode + ")");
 
@@ -83,12 +115,12 @@ public final class BackendManager {
 
     
     /** 
-     * @return boolean
-     * @throws FileNotFoundException
-     * @throws JSONException
-     * @throws NullPointerException
+     * Loads the dynasties from the already existing files.
+     * @return true if the Files actually exists. 
+     * @throws FileNotFoundException in case the file doesn't exists.
+     * @throws JSONException in case the JSON file is empty or corrupted.
      */
-    public static boolean loadFromFiles() throws FileNotFoundException, JSONException, NullPointerException {
+    public static boolean loadFromFiles() throws FileNotFoundException, JSONException {
         BackendManager.printDebug("Trying to load dynasties from JSONs");
 
         //Flush existing dynasties
@@ -113,8 +145,8 @@ public final class BackendManager {
 
     
     /** 
-     * @param dynastyJSONpath
-     * @throws FileNotFoundException
+     * @param dynastyJSONpath The path of the file that has to be converted.
+     * @throws FileNotFoundException in case the file doesn't exists.
      */
     private static void JSONtoDynasty(String dynastyJSONpath) throws FileNotFoundException{
         BackendManager.printDebug("Loading dynasty from: " + dynastyJSONpath);
@@ -125,25 +157,33 @@ public final class BackendManager {
         } catch (IOException e) {
             // should never happen because of listDir
             throw new FileNotFoundException("The file '" + dynastyJSONpath + "' was not found");
+            
         } catch (JSONException j) {
             // remove partially found dynasties
             dynasties.clear();
 
             throw new JSONException("An error occurred while trying to parse '" + dynastyJSONpath + "'");
         } catch (NullPointerException n) {
+            // remove partially found dynasties
             dynasties.clear();
 
             throw new JSONException("The dynasty file '" + dynastyJSONpath + "' is empty");
         }
     }
-
+    
+    /*
+     * Saves the current session by saving every loaded dynasty into a file.
+    */
     public static void saveSession() {
         try {
             dynasties = runner.getScraperDynasties();
+
         } catch (FileNotFoundException e) {
+            // This will never happend, however it's needed
             throw new IllegalStateException(e.getMessage());
         }
 
+        //Serialize every loaded dynasty into a JSON file
         for (Dynasty dynasty : dynasties) {
             String dynastyPath = JSON_PATH + dynasty.getName() + ".json";
 
@@ -166,7 +206,7 @@ public final class BackendManager {
 
     
     /** 
-     * @throws IOException
+     * @throws IOException if the conversion doesn't work.
      */
     public static void loadedDynastyToPNG() throws IOException {
         String loadedDynastyPNGPath = PNG_PATH + loadedDynasty.getName() + ".png";
@@ -175,8 +215,8 @@ public final class BackendManager {
 
     
     /** 
-     * @return BufferedImage
-     * @throws FileNotFoundException
+     * @return the converted BufferedImage
+     * @throws FileNotFoundException if the conversion doesn't work.
      */
     public static BufferedImage loadedDynastyToBufferedImage() throws FileNotFoundException {
         return DynastyVisualizer.toBufferedImage(loadedDynasty);
@@ -184,7 +224,7 @@ public final class BackendManager {
     
     
     /** 
-     * @throws IOException
+     * @throws IOException if the conversion doesn't work.
      */
     public static void loadedMemberToPNG() throws IOException {
         String loadedMemberPNGPath = PNG_PATH + loadedMember.getName() + ".png";
@@ -193,8 +233,8 @@ public final class BackendManager {
 
     
     /** 
-     * @return BufferedImage
-     * @throws FileNotFoundException
+     * @return the converted BufferedImage
+     * @throws FileNotFoundException if the conversion doesn't work.
      */
     public static BufferedImage loadedMemberToBufferedImage() throws FileNotFoundException {
         return DynastyVisualizer.toBufferedImage(loadedMember);
@@ -202,8 +242,9 @@ public final class BackendManager {
     
     
     /** 
-     * @param dirPath
-     * @return ArrayList<String>
+     * Lists all files found in the given directory path.
+     * @param dirPath the path of the directory that should be listed.
+     * @return the list of files.
      */
     private static ArrayList<String> listDir(String dirPath) {
         ArrayList<String> fileNames = new ArrayList<String>();
@@ -225,7 +266,8 @@ public final class BackendManager {
 
     
     /** 
-     * @param debugMsg
+     * Prints a debug message only if debug mode is active.
+     * @param debugMsg the message to be printed.
      */
     public static void printDebug(String debugMsg) {
         if (debugMode) {
@@ -235,7 +277,7 @@ public final class BackendManager {
 
     
     /** 
-     * @param debugMode
+     * @param debugMode the debug mode to be set.
      */
     public static void setDebugMode(boolean debugMode) {
         if (debugMode) {
@@ -249,7 +291,7 @@ public final class BackendManager {
 
     
     /** 
-     * @param seleniumMode
+     * @param seleniumMode the selenium mode to be set.
      */
     public static void setSeleniumMode(boolean seleniumMode) {
         if (seleniumMode) {
@@ -263,7 +305,7 @@ public final class BackendManager {
     
     
     /** 
-     * @param headlessMode
+     * @param headlessMode the headless mode to be set.
      */
     public static void setHeadlessMode(boolean headlessMode) {
         if (headlessMode) {
@@ -276,8 +318,8 @@ public final class BackendManager {
     }
     
     
-    /** 
-     * @param dynasty
+    /**
+     * @param dynasty the dynasty to be set.
      */
     public static void setLoadedDynasty(Dynasty dynasty) {
         loadedDynasty = dynasty;
@@ -285,7 +327,7 @@ public final class BackendManager {
 
     
     /** 
-     * @param member
+     * @param member the member to be set.
      */
     public static void setLoadedMember(Member member) {
         loadedMember = member;
@@ -293,7 +335,7 @@ public final class BackendManager {
 
     
     /** 
-     * @return boolean
+     * @return the current selenium mode setting.
      */
     public static boolean getSeleniumMode() {
         return seleniumMode;
@@ -301,7 +343,7 @@ public final class BackendManager {
 
     
     /** 
-     * @return String
+     * @return the current scraper status message.
      */
     public static String getScraperStatus() {
         if (scraper != null) {
@@ -313,7 +355,7 @@ public final class BackendManager {
 
     
     /** 
-     * @return ArrayList<Dynasty>
+     * @return the currently loaded dynasties.
      */
     public static ArrayList<Dynasty> getDynasties() {
         return dynasties;
@@ -321,7 +363,7 @@ public final class BackendManager {
     
     
     /** 
-     * @return Dynasty
+     * @return the currently loaded dynasty.
      */
     public static Dynasty getLoadedDynasty() {
         return loadedDynasty;
@@ -329,7 +371,7 @@ public final class BackendManager {
 
     
     /** 
-     * @return Member
+     * @return the currently loaded member.
      */
     public static Member getLoadedMember() {
         return loadedMember;
@@ -337,7 +379,7 @@ public final class BackendManager {
 
     
     /** 
-     * @return boolean
+     * @return the scraper activation status.
      */
     public static boolean isScraperRunnerActive() {
         return runner.isScraperActive();
@@ -345,7 +387,7 @@ public final class BackendManager {
 
     
     /** 
-     * @return boolean
+     * @return the current debug mode setting.
      */
     public static boolean isDebugModeActive() {
         return debugMode;

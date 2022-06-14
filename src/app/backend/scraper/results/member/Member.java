@@ -6,6 +6,15 @@ import org.json.JSONObject;
 
 import app.backend.utils.JSONable;
 
+/**
+ * This Member describes all the attributes and methods of dynasty member. Implements JSONable in order to let the instance of this class serializable in JSON
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ *
+ */
 public class Member implements JSONable {
     private static int ID_counter = 0;
     
@@ -75,8 +84,8 @@ public class Member implements JSONable {
 
     
     /** 
-     * @param relative
-     * @return ArrayList<Member>
+     * @param relative the type of relatives that should be returned
+     * @return an ArrayList<Member> of the given relative type.
      */
     public ArrayList<Member> getRelatives(Relative relative) {
         ArrayList<Member> relatives;
@@ -103,8 +112,8 @@ public class Member implements JSONable {
 
     
     /** 
-     * @param relative
-     * @return ArrayList<String>
+     * @param relative the type of relatives that should be returned.
+     * @return an ArrayList<String> the ID list of the given relatives type.
      */
     private ArrayList<String> getRelativesIDs(Relative relative) {
         ArrayList<String> IDs = new ArrayList<String>();
@@ -137,7 +146,8 @@ public class Member implements JSONable {
 
     
     /** 
-     * @return ArrayList<Member>
+     * Returns all members related
+     * @return ArrayList<Member> all member relatives
      */
     public ArrayList<Member> getAllRelatives() {
         ArrayList<Member> relatives = new ArrayList<Member>();

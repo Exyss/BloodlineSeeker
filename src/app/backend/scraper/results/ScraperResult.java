@@ -3,6 +3,15 @@ package app.backend.scraper.results;
 import app.backend.scraper.results.dynasty.Dynasty;
 import app.backend.scraper.results.member.Member;
 
+/**
+ * This ScraperResult rapresent a touple (Dynasty, Member) and implements Comparable<ScraperResult> in order to compare each instance of this class.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ *
+ */
 public final class ScraperResult implements Comparable<ScraperResult> {
 	
 	/**
@@ -43,8 +52,9 @@ public final class ScraperResult implements Comparable<ScraperResult> {
 
     
     /** 
-     * @param other
-     * @return int
+     * Compare the given results choosing the the one which has more relations.
+     * @param other the ScraperResult that should be compared.
+     * @return int the comparation rank.
      */
     private int compareRank(ScraperResult other) {
         int thisRank = this.member.getAllRelatives().size();
@@ -63,12 +73,15 @@ public final class ScraperResult implements Comparable<ScraperResult> {
 
     
     /** 
-     * @param other
-     * @return int
+     * Compare the given results choosing the the one which has highest status and relations.
+     * @param other the ScraperResult that should be compared
+     * @return int the comparation rank.
      */
     private int compareRankAndStatus(ScraperResult other) {
         boolean thisStatus = this.member.isEmperor();
         boolean otherStatus  = other.member.isEmperor();
+
+        // Emperors have the highest priority - The number of connections is the secondary priority
         if (!(thisStatus || otherStatus) || (thisStatus && otherStatus)) {
             return compareRank(other);
         }else if (thisStatus) {
@@ -80,8 +93,8 @@ public final class ScraperResult implements Comparable<ScraperResult> {
 
     
     /** 
-     * @param other
-     * @return int
+     * @param other the ScraperResult that should be compared.
+     * @return int the comparation rank.
      */
     @Override
     public int compareTo(ScraperResult other) {

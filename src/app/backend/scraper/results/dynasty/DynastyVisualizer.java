@@ -24,30 +24,77 @@ import guru.nidi.graphviz.engine.Renderer;
 import guru.nidi.graphviz.model.MutableGraph;
 import guru.nidi.graphviz.model.MutableNode;
 
+/**
+ * This DynastyVisualizer generates a graph from aspecific dynasty or member.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ *
+ */
 public final class DynastyVisualizer {
     //Colors are in hexadecimal RGB
+    
+    /**
+     * The primary color of the center member.
+     */
     private static final String CENTER_MEMBER_PRIMARY_COLOR = "#12664B";
+
+    /**
+     * The secondary color of the center member.
+     */
     private static final String CENTER_MEMBER_SECONDARY_COLOR = "#FFFFFF";
+
+    /**
+     * The primary color of the emperor members.
+     */
     private static final String EMPEROR_MEMBER_PRIMARY_COLOR = "#7E2526";
+    /**
+     * The secondary color of the emperor members.
+     */
     private static final String EMPEROR_MEMBER_SECONDARY_COLOR = "#D4AF37";
+
+    /**
+     * The font size of the node.
+     */
     private static final String NODE_FONTSIZE = "20";
 
     //Measures are in inches
+    
+    /**
+     * The gap between the various ranks in the graph.
+     */
     private static final int SUBGRAPH_RANK_SEPARATION = 2;
+
+    /**
+     * The gap between the nodes which are in the same rank in the graph.
+     */
     private static final double SUBGRAPH_NODE_SEPARATION = 1.5;
+
+    /**
+     * The gap between the margin of the graph and the nodes.
+     */
     private static final double SUBGRAPH_PADDING = 3.5;
 
+    /**
+     * The maximum number of ranks in the graph.
+     */
     private static final int MAX_DEPTH = 3;
 
+    /**
+     * The centered node.
+     */
     private static Member centerMember;
 
     
     /** 
-     * @param dynasty
-     * @return MutableGraph
+     * Converts a whole Dynasty object to a graph.
+     * @param dynasty the Dynasty object to be converted.
+     * @return the converted MutableGraph.
      */
-    //Iteratively generate whole dynasty with no central member
     public static MutableGraph toGraph(Dynasty dynasty) {
+        //Iteratively generate whole dynasty with no central member
         DynastyVisualizer.centerMember = null;
 
         MutableGraph dynastyGraph = generateBlankGraph(dynasty.getName());
@@ -65,12 +112,12 @@ public final class DynastyVisualizer {
     }
     
     
-    /** 
-     * @param member
-     * @return MutableGraph
+    /**
+     * @param member the Member to use as center of the graph.
+     * @return the generated MutableGraph containing the closest relatives of the given Member.
      */
-    //Recursively generate limited dynasty graph using a central member 
     public static MutableGraph toGraph(Member member) {
+        //Recursively generate limited dynasty graph using a central member 
         DynastyVisualizer.centerMember = member;
 
         ArrayList<String> existingIDs = new ArrayList<String>();
@@ -80,10 +127,11 @@ public final class DynastyVisualizer {
     }
 
     
-    /** 
-     * @param memberNode
-     * @param member
-     * @param relative
+    /**
+     * Iteratively link members to it's relatives of the given type.
+     * @param member the member to be linked.
+     * @param memberNode the given member's associated MutableNode.
+     * @param relative the member's type of relatives to be linked.
      */
     private static void linkToRelativesIterative(MutableNode memberNode, Member member, Relative relative) {
         for (Member memberRelative : member.getRelatives(relative)) {
@@ -93,21 +141,22 @@ public final class DynastyVisualizer {
 
     
     /** 
-     * @param existingIDs
-     * @param familyGraph
-     * @param relative
-     * @param member
-     * @param memberNode
-     * @param depth
+     * Recursively links members to the given relative type. 
+     * @param existingIDs the ArrayList of already loaded links.
+     * @param familyGraph the graph which the new nodes should be added.
+     * @param relative the type of relatives to be linked.
+     * @param member the member to be linked.
+     * @param memberNode the given member's associated MutableNode.
+     * @param depth the maximum recursion depth
      */
     private static void linkToRelativesRecursive(ArrayList<String> existingIDs, MutableGraph familyGraph, Relative relative, Member member, MutableNode memberNode, int depth) {
         for (Member memberRelative : member.getRelatives(relative)) {
 
-            //Create links only if the relative is a child or a spouse
             if (!relative.equals(Relative.PARENT)) {
                 linkToRelativeNode(memberNode, memberRelative, relative);
             }
 
+            //Recursively create links only if the relative is a child or a spouse
             if (!existingIDs.contains(memberRelative.getID())) {
                 MutableGraph memberRelativeFamily = createFamily(existingIDs, memberRelative, depth - 1);
 
@@ -120,9 +169,10 @@ public final class DynastyVisualizer {
     
     
     /** 
-     * @param memberNode
-     * @param memberRelative
-     * @param relative
+     * Links the given nodes with the given type of relation.
+     * @param memberNode the given member node to be linked.
+     * @param memberRelative the given relative node to be linked.
+     * @param relative the type of relation link.
      */
     private static void linkToRelativeNode(MutableNode memberNode, Member memberRelative, Relative relative) {
         switch (relative) {
@@ -143,10 +193,11 @@ public final class DynastyVisualizer {
 
     
     /** 
-     * @param existingIDs
-     * @param member
-     * @param depth
-     * @return MutableGraph
+     * Recursively generates a graph containing the nearest relatives of the given member.
+     * @param existingIDs the ArrayList of already loaded links.
+     * @param member the member to be linked.
+     * @param depth the maximum recursion depth
+     * @return the generated graph.
      */
     private static MutableGraph createFamily(ArrayList<String> existingIDs, Member member, int depth) {
         if (depth == 0) {
@@ -175,26 +226,36 @@ public final class DynastyVisualizer {
 
     
     /** 
-     * @param member
-     * @return MutableNode
+     * Creates a MemberNode for the given member or returns the already existing one
+     * @param member the member which has to be coverted in MutableNode.
+     * @return the generated MutableNode.
      */
     private static MutableNode createMemberNode(Member member) {
+        // In case the MutableNodes already exists, it gets automatically returned
         MutableNode memberNode = mutNode(member.getID()).add(Shape.RECTANGLE);
 
         String nodePrimaryColor;
         String nodeSecondaryColor;
 
+        // Set node styles based on it's type:
+
+        // If it's a central graph node
         if (centerMember != null && member.getID().equals(centerMember.getID())) {
             nodePrimaryColor = CENTER_MEMBER_PRIMARY_COLOR;
             nodeSecondaryColor = CENTER_MEMBER_SECONDARY_COLOR;
+        
+        // If it's an emperor
         } else if (member.isEmperor()) {
             nodePrimaryColor = EMPEROR_MEMBER_PRIMARY_COLOR;
             nodeSecondaryColor = EMPEROR_MEMBER_SECONDARY_COLOR;
         }
+
+        // If it's a common member
         else{
             return memberNode.add(Label.lines(member.getName()));
         }
 
+        // Create the node
         memberNode.add(
             Style.FILLED,
             Label.lines(member.getName()),
@@ -211,8 +272,9 @@ public final class DynastyVisualizer {
 
     
     /** 
-     * @param subGraphName
-     * @return MutableGraph
+     * Generates a new blank graph with no linked nodes
+     * @param subGraphName the name of the graph.
+     * @return the generated MutableGraph.
      */
     private static MutableGraph generateBlankGraph(String subGraphName) {
         return mutGraph(subGraphName)
@@ -227,8 +289,9 @@ public final class DynastyVisualizer {
 
     
     /** 
-     * @param subGraphName
-     * @return MutableGraph
+     * Generates a new blank subgraph with no linked nodes.
+     * @param subGraphName the name of the subgraph.
+     * @return the generated MutableGraph
      */
     private static MutableGraph generateBlankSubGraph(String subGraphName) {
         return mutGraph(subGraphName).setDirected(true);
@@ -236,9 +299,9 @@ public final class DynastyVisualizer {
 
     
     /** 
-     * @param graph
-     * @return Renderer
-     * @throws FileNotFoundException
+     * @param graph the graph to render.
+     * @return the rendered graph as Render. 
+     * @throws FileNotFoundException in absence of the GraphViz executable file.
      */
     private static Renderer renderGraph(MutableGraph graph) throws FileNotFoundException {
         try {
@@ -250,9 +313,9 @@ public final class DynastyVisualizer {
 
     
     /** 
-     * @param dynasty
-     * @return Renderer
-     * @throws FileNotFoundException
+     * @param dynasty the dynasty to render.
+     * @return the rendered graph as Render. 
+     * @throws FileNotFoundException in absence of the GraphViz executable file.
      */
     public static Renderer toRenderedGraph(Dynasty dynasty) throws FileNotFoundException {
         return renderGraph(toGraph(dynasty));
@@ -260,9 +323,9 @@ public final class DynastyVisualizer {
 
     
     /** 
-     * @param member
-     * @return Renderer
-     * @throws FileNotFoundException
+     * @param member the dynasty to render.
+     * @return the rendered graph as Render. 
+     * @throws FileNotFoundException in absence of the GraphViz executable file.
      */
     public static Renderer toRenderedGraph(Member member) throws FileNotFoundException {
         return renderGraph(toGraph(member));
@@ -270,9 +333,9 @@ public final class DynastyVisualizer {
 
     
     /** 
-     * @param dynasty
+     * @param dynasty dynasty the dynasty to render.
      * @return BufferedImage
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException in absence of the GraphViz executable file.
      */
     public static BufferedImage toBufferedImage(Dynasty dynasty) throws FileNotFoundException {
         return toRenderedGraph(dynasty).toImage();
@@ -280,9 +343,9 @@ public final class DynastyVisualizer {
 
     
     /** 
-     * @param member
-     * @return BufferedImage
-     * @throws FileNotFoundException
+     * @param member the member to render.
+     * @return the rendered graph as BufferedImage. 
+     * @throws FileNotFoundException in absence of the GraphViz executable file.
      */
     public static BufferedImage toBufferedImage(Member member) throws FileNotFoundException {
         return toRenderedGraph(member).toImage();
@@ -290,9 +353,9 @@ public final class DynastyVisualizer {
 
     
     /** 
-     * @param dynasty
-     * @param outputPath
-     * @throws IOException
+     * @param dynasty the dynasty to render.
+     * @param outputPath the output path.
+     * @throws IOException in absence of the GraphViz executable file.
      */
     public static void toImageFile(Dynasty dynasty, String outputPath) throws IOException {
         toRenderedGraph(dynasty).toFile(new File(outputPath));
@@ -300,9 +363,9 @@ public final class DynastyVisualizer {
 
     
     /** 
-     * @param member
-     * @param outputPath
-     * @throws IOException
+     * @param member the member to render.
+     * @param outputPath the output path.
+     * @throws IOException in absence of the GraphViz executable file.
      */
     public static void toImageFile(Member member, String outputPath) throws IOException {
         toRenderedGraph(member).toFile(new File(outputPath));

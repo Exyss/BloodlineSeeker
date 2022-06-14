@@ -14,6 +14,15 @@ import app.backend.scraper.results.member.Member;
 import app.backend.scraper.results.member.Relative;
 import app.backend.utils.JSONable;
 
+/**
+ * This Dynasty describes all the attributes and methods of a dynasty. Implements JSONable in order to let the instance of this class serializable in JSON.
+ * @author Alessio Bandiera
+ * @author Andrea Ladogana
+ * @author Matteo Benvenuti
+ * @author Simone Bianco
+ * @version 1.0
+ *
+ */
 public class Dynasty implements JSONable {
 	
 	/**
@@ -27,9 +36,13 @@ public class Dynasty implements JSONable {
     private String wikipediaLink;
     
     /**
-     * 
+     * The member of the dynasty.
      */
     private ArrayList<Member> members;
+
+    /**
+     * The member of the dynasty as ScraperResult.
+     */
     private ArrayList<ScraperResult> membersResults;
 
     /**
@@ -44,10 +57,11 @@ public class Dynasty implements JSONable {
 
     
     /** 
-     * @param membersIDs
-     * @param name
-     * @param wikipediaLink
-     * @return Dynasty
+     * Recursively builds the dynasty using the given wikipedia link.
+     * @param membersIDs the hashmap of currently loaded members.
+     * @param name the name of the current member to be created.
+     * @param wikipediaLink the link of the current member to be created.
+     * @return the built Dynasty
      */
     private static Dynasty buildDynasty(HashMap<String, JSONObject> membersIDs, String name, String wikipediaLink) {
         Dynasty dynasty = new Dynasty(name, wikipediaLink);
@@ -104,10 +118,11 @@ public class Dynasty implements JSONable {
 
     
     /** 
-     * @param membersIDs
-     * @param member
-     * @param relativeType
-     * @param relativesIDs
+     * Completes de-serialization by adding relatives to the given member.
+     * @param membersIDs the hashmap of currently loaded members.
+     * @param member the given member to be completed.
+     * @param relativeType the given type of the relatives to be added.
+     * @param relativesIDs the given IDs of the relatives to be added.
      */
     private static void completeRelatives(HashMap<String, JSONObject> membersIDs, Member member, Relative relativeType, JSONArray relativesIDs) {
         for (Object relativeID : relativesIDs) {
@@ -119,8 +134,8 @@ public class Dynasty implements JSONable {
 
     
     /** 
-     * @param json
-     * @return Dynasty
+     * @param json the JSONObject to be converted.
+     * @return the converted Dynasty.
      */
     public static Dynasty fromJSONObject(JSONObject json) {
         String name = (String)json.get("Name");
@@ -134,9 +149,9 @@ public class Dynasty implements JSONable {
 
     
     /** 
-     * @param jsonPath
-     * @return Dynasty
-     * @throws IOException
+     * @param jsonPath the path of the JSON file to be converted.
+     * @return the converted Dynasty.
+     * @throws IOException in case the file doesn't exists.
      */
     public static Dynasty fromJSONFile(String jsonPath) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(jsonPath));
@@ -218,7 +233,8 @@ public class Dynasty implements JSONable {
 
     
     /** 
-     * @param member
+     * Adds the given member to the current list of ScraperResults.
+     * @param member the member to be added.
      */
     public void addMemberResult(Member member) {
         if (this.membersResults == null) {
