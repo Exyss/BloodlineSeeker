@@ -73,7 +73,7 @@ After the download is completed, the files of the found dynasties will be create
 To generate the Javadoc, on any UNIX distribution simply run:
 
 ```bash
-javadoc -classpath "lib/*:lib/graphviz/*:lib/selenium-java-4.1.4/*" -sourcepath ./src **/*.java -d ./doc
+javadoc -classpath "lib/*:lib/graphviz/*:lib/selenium-java-4.1.4/*" -sourcepath ./src **/*.java -d ./docs
 ```
 
 ## ⚙️ Compiling and Contributing
