@@ -9,32 +9,32 @@ package app.backend.scraper.results.member;
  *
  */
 public enum Relative {
-	
-	/**
-	 * The CHILD relative.
-	 */
+    
+    /**
+     * The CHILD relative.
+     */
     CHILD,
     
     /**
-	 * The PARENTS relative.
-	 */
+     * The PARENTS relative.
+     */
     PARENT,
     
     /**
-	 * The SPOUSE relative.
-	 */
+     * The SPOUSE relative.
+     */
     SPOUSE,
     
     /**
-	 * The INVALID relative.
-	 */
+     * The INVALID relative.
+     */
     INVALID;
 
-	/**
-	 * Match the string given as parameter with the correct relative.
-	 * @param field the String containing a certain word.
-	 * @return the Relative that matches with the field.
-	 */
+    /**
+     * Match the string given as parameter with the correct relative.
+     * @param field the String containing a certain word.
+     * @return the Relative that matches with the field.
+     */
     public static Relative matchRelative(String field) {
         if (field.contains("Figli")) {
             return CHILD;

@@ -24,10 +24,10 @@ import guru.nidi.graphviz.engine.GraphvizCmdLineEngine;
  *
  */
 public class BinariesController {
-	
-	/**
-	 * The temporary system directory path.
-	 */
+    
+    /**
+     * The temporary system directory path.
+     */
     public static final String TEMP_PATH = BinariesController.getTempPath();
 
     /**

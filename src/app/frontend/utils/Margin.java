@@ -12,14 +12,14 @@ import java.awt.Insets;
  *
  */
 public enum Margin {
-	/**
-	 * The EMPTY margin.
-	 */
+    /**
+     * The EMPTY margin.
+     */
     EMPTY(0, 0, 0, 0);
 
-	/**
-	 * The insets used as margin.
-	 */
+    /**
+     * The insets used as margin.
+     */
     private Insets inset;
 
     /**

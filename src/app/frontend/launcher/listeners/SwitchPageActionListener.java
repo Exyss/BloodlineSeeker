@@ -15,7 +15,7 @@ import app.frontend.launcher.LauncherManager;
  *
  */
 public class SwitchPageActionListener implements ActionListener {
-	
+    
     /**
      * True if the current page is the load page, false if not.
      */

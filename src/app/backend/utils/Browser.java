@@ -10,9 +10,9 @@ package app.backend.utils;
  *
  */
 public enum Browser {
-	/**
-	 * The Microsoft EDGE browser.
-	 */
+    /**
+     * The Microsoft EDGE browser.
+     */
     EDGE,
     
     /**

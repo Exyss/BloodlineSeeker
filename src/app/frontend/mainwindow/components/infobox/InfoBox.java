@@ -72,14 +72,14 @@ public class InfoBox extends JPanel {
     
     
     /**
-	 * Creates an AntiAliasedTextLabel with text, coordinates and dimensions. Sets it the bounds and the project font.
-	 * @param text the text of the label.
-	 * @param x the x-coordinate of the label.
-	 * @param y the y-coordinate of the label.
-	 * @param width the width of the label.
-	 * @param height the height of the label.
-	 * @return the new AntiAliasedTextLabel.
-	 */
+     * Creates an AntiAliasedTextLabel with text, coordinates and dimensions. Sets it the bounds and the project font.
+     * @param text the text of the label.
+     * @param x the x-coordinate of the label.
+     * @param y the y-coordinate of the label.
+     * @param width the width of the label.
+     * @param height the height of the label.
+     * @return the new AntiAliasedTextLabel.
+     */
     private AntiAliasedTextLabel createTextLabel(String text, int x, int y, int width, int height) {
         AntiAliasedTextLabel label = new AntiAliasedTextLabel(text);
 

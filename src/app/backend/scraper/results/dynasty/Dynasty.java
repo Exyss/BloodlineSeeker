@@ -24,10 +24,10 @@ import app.backend.utils.JSONable;
  *
  */
 public class Dynasty implements JSONable {
-	
-	/**
-	 * The dynasty name.
-	 */
+    
+    /**
+     * The dynasty name.
+     */
     private String name;
     
     /**

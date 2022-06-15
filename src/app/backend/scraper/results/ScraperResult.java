@@ -13,10 +13,10 @@ import app.backend.scraper.results.member.Member;
  *
  */
 public final class ScraperResult implements Comparable<ScraperResult> {
-	
-	/**
-	 * A member object.
-	 */
+    
+    /**
+     * A member object.
+     */
     private final Member member;
     
     /**

@@ -10,10 +10,10 @@ package app.backend.scraper.engine;
  *
  */
 public final class ScraperStatusHolder{
-	
-	/**
-	 * The current status of the Scraping.
-	 */
+    
+    /**
+     * The current status of the Scraping.
+     */
     String status;
 
     /**

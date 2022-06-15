@@ -12,49 +12,49 @@ import java.awt.Color;
  *
  */
 public enum ComponentColor {
-	/**
-	 * The RED color.
-	 */
+    /**
+     * The RED color.
+     */
     RED(255, 0, 0),
     
     /**
-	 * The GREEN color.
-	 */
+     * The GREEN color.
+     */
     GREEN(0, 255, 0),
     
     /**
-	 * The BLUE color.
-	 */
+     * The BLUE color.
+     */
     BLUE(0, 0, 255),
     
     /**
-	 * The WHITE color.
-	 */
+     * The WHITE color.
+     */
     WHITE(255, 255, 255),
     
     /**
-	 * The BLACK color.
-	 */
+     * The BLACK color.
+     */
     BLACK(0, 0, 0),
     
     /**
-	 * The GREY color.
-	 */
+     * The GREY color.
+     */
     GRAY(150, 150, 150),
 
     /**
-	 * The GOLD color.
-	 */
+     * The GOLD color.
+     */
     GOLD(212, 175, 55),
     
     /**
-	 * The CRAYOLA_YELLOW color.
-	 */
+     * The CRAYOLA_YELLOW color.
+     */
     CRAYOLA_YELLOW(241,202,125),
     
     /**
-	 * The PERSIAN_RED color.
-	 */
+     * The PERSIAN_RED color.
+     */
     PERSIAN_RED(126, 37, 38),
     
     /**
@@ -62,9 +62,9 @@ public enum ComponentColor {
      */
     LIME_GREEN(25,198, 4);
 
-	/**
-	 * The color.
-	 */
+    /**
+     * The color.
+     */
     private Color color;
 
     /**

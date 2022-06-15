@@ -10,59 +10,59 @@ package app.frontend.utils;
  *
  */
 public enum RomanLiteral {
-	/**
-	 * The 400 Roman literal
-	 */
+    /**
+     * The 400 Roman literal
+     */
     CD(400),
     
     /**
-	 * The 100 Roman literal
-	 */
+     * The 100 Roman literal
+     */
     C(100),
     
     /**
-	 * The 90 Roman literal
-	 */
+     * The 90 Roman literal
+     */
     XC(90),
     
     /**
-	 * The 50 Roman literal
-	 */
+     * The 50 Roman literal
+     */
     L(50),
     
     /**
-	 * The 40 Roman literal
-	 */
+     * The 40 Roman literal
+     */
     XL(40),
     
     /**
-	 * The 10 Roman literal
-	 */
+     * The 10 Roman literal
+     */
     X(10),
     
     /**
-	 * The 9 Roman literal
-	 */
+     * The 9 Roman literal
+     */
     IX(9),
     
     /**
-	 * The 5 Roman literal
-	 */
+     * The 5 Roman literal
+     */
     V(5),
     
     /**
-	 * The 4 Roman literal
-	 */
+     * The 4 Roman literal
+     */
     IV(4),
     
     /**
-	 * The 1 Roman literal
-	 */
+     * The 1 Roman literal
+     */
     I(1);
     
-	/**
-	 * A decimal number.
-	 */
+    /**
+     * A decimal number.
+     */
     private int decimal;
     
     /**

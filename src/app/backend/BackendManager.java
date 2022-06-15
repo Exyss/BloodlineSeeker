@@ -25,9 +25,9 @@ import app.backend.scraper.results.member.Member;
  *
  */
 public final class BackendManager {
-	/**
-	 * The default data path.
-	 */
+    /**
+     * The default data path.
+     */
     public static final String DATA_PATH = "data/";
     
     /**

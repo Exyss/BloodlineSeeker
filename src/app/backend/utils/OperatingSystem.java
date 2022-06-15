@@ -10,26 +10,26 @@ package app.backend.utils;
  *
  */
 public enum OperatingSystem {
-	
-	/**
-	 * The WINDOWS OperativeSystem.
-	 */
+    
+    /**
+     * The WINDOWS OperativeSystem.
+     */
     WINDOWS,
     
     /**
-	 * The LINUX OperativeSystem.
-	 */
+     * The LINUX OperativeSystem.
+     */
     LINUX,
     
     /**
-	 * The MACOSX OperativeSystem.
-	 */
+     * The MACOSX OperativeSystem.
+     */
     MACOSX;
     
-	/**
-	 * 
-	 * @return The current OperativeSystem.
-	 */
+    /**
+     * 
+     * @return The current OperativeSystem.
+     */
     public static OperatingSystem get() {
         String osName = System.getProperty("os.name").toLowerCase();
     

@@ -40,45 +40,45 @@ import app.backend.utils.SeleniumDriver;
  */
 public class WikipediaScraper {
     /**
-	 * The wikipedia domain.
-	 */
+     * The wikipedia domain.
+     */
     protected static final String WIKI_DOMAIN = "https://it.wikipedia.org";
 
     /**
-	 * The scraper status holder.
-	 */
+     * The scraper status holder.
+     */
     private ScraperStatusHolder ScraperStatusHolder;
 
     /**
-	 * The web driver.
-	 */
+     * The web driver.
+     */
     private WebDriver driver;
 
     /**
-	 * The useSelenium boolean.
-	 */
+     * The useSelenium boolean.
+     */
     private boolean useSelenium;
 
     /**
-	 * The useHeadless boolean.
-	 */
+     * The useHeadless boolean.
+     */
     private boolean useHeadless;
 
     /**
-	 * The isScraperActive boolean.
-	 */
+     * The isScraperActive boolean.
+     */
     private boolean isScraperActive;
 
     /**
-	 * The debugMode boolean.
-	 */
+     * The debugMode boolean.
+     */
     private boolean debugMode;
     
     /**
-	 * Creates the WikipediaScraper and initializes useSelenium, useHeadless, isScraperActive as false and ScraperStatusHolder.
+     * Creates the WikipediaScraper and initializes useSelenium, useHeadless, isScraperActive as false and ScraperStatusHolder.
      * @param useSelenium the new boolean value of useSelenium.
      * @param useHeadless the new boolean value of useHeadless.
-	 */
+     */
     public WikipediaScraper(boolean useSelenium, boolean useHeadless) {
         this.useSelenium = useSelenium;
         this.useHeadless = useHeadless;

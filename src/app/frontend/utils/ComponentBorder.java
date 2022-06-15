@@ -15,70 +15,70 @@ import javax.swing.border.Border;
  *
  */
 public enum ComponentBorder {
-	
-	/**
-	 * The ALL_GOLD border.
-	 */
+    
+    /**
+     * The ALL_GOLD border.
+     */
     ALL_GOLD(ComponentColor.GOLD.get(),6),
     
     /**
-	 * The NO_TOP_ALL_GOLD border.
-	 */
+     * The NO_TOP_ALL_GOLD border.
+     */
     NO_TOP_ALL_GOLD(ComponentColor.GOLD.get(),0,6,6,6),
     
     /**
-	 * The NO_LEFT_ALL_GOLD border.
-	 */
+     * The NO_LEFT_ALL_GOLD border.
+     */
     NO_LEFT_ALL_GOLD(ComponentColor.GOLD.get(),6,0,6,6),
     
     /**
-	 * The NO_BOTTOM_ALL_GOLD border.
-	 */
+     * The NO_BOTTOM_ALL_GOLD border.
+     */
     NO_BOTTOM_ALL_GOLD(ComponentColor.GOLD.get(),6,6,0,6),
     
     /**
-	 * The NO_RIGHT_ALL_GOLD border.
-	 */
+     * The NO_RIGHT_ALL_GOLD border.
+     */
     NO_RIGHT_ALL_GOLD(ComponentColor.GOLD.get(),6,6,6,0),
 
     /**
-	 * The TRANSPARENT_TOP border.
-	 */
+     * The TRANSPARENT_TOP border.
+     */
     TRANSPARENT_TOP(10,0,0,0),
     
     /**
-	 * The TRANSPARENT_LEFT border.
-	 */
+     * The TRANSPARENT_LEFT border.
+     */
     TRANSPARENT_LEFT(0,10,0,0),
     
     /**
-	 * The TRANSPARENT_BOTTOM border.
-	 */
+     * The TRANSPARENT_BOTTOM border.
+     */
     TRANSPARENT_BOTTOM(0,0,10,0),
     
     /**
-	 * The TRANSPARENT_RIGHT border.
-	 */
+     * The TRANSPARENT_RIGHT border.
+     */
     TRANSPARENT_RIGHT(0,0,0,10),
 
     /**
-	 * The ONLY_BOTTOM_WHITE border.
-	 */
+     * The ONLY_BOTTOM_WHITE border.
+     */
     ONLY_BOTTOM_WHITE(ComponentColor.WHITE.get(),0,0,6,0),
     
     /**
-	 * The WHITE_BOTTOM_ALL_GOLD border.
-	 */
+     * The WHITE_BOTTOM_ALL_GOLD border.
+     */
     WHITE_BOTTOM_ALL_GOLD(NO_BOTTOM_ALL_GOLD.get(), ONLY_BOTTOM_WHITE.get()),
     
     /**
-	 * The TRANSPARENT_LEFT_ALL_GOLD border.
-	 */
+     * The TRANSPARENT_LEFT_ALL_GOLD border.
+     */
     TRANSPARENT_LEFT_ALL_GOLD(NO_RIGHT_ALL_GOLD.get(), TRANSPARENT_LEFT.get());
 
-	/**
-	 * The border.
-	 */
+    /**
+     * The border.
+     */
     private Border border;
 
     /**

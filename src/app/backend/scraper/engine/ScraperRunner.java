@@ -15,10 +15,10 @@ import app.backend.scraper.results.dynasty.Dynasty;
  *
  */
 public final class ScraperRunner extends Thread {
-	
-	/**
-	 * The scraper object.
-	 */
+    
+    /**
+     * The scraper object.
+     */
     private DynastiesScraper scraper;
     
     /**

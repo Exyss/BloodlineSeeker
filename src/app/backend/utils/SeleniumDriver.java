@@ -10,40 +10,40 @@ package app.backend.utils;
  *
  */
 public enum SeleniumDriver {
-	
-	/**
-	 * The UNIX_GECKODRIVER SeleniumDriver.
-	 */
+    
+    /**
+     * The UNIX_GECKODRIVER SeleniumDriver.
+     */
     UNIX_GECKODRIVER("geckodriver"),
     
     /**
-	 * The UNIX_CHROMEDRIVER SeleniumDriver.
-	 */
+     * The UNIX_CHROMEDRIVER SeleniumDriver.
+     */
     UNIX_CHROMEDRIVER("chromedriver"),
     
     /**
-	 * The UNIX_EDGEDRIVER SeleniumDriver.
-	 */
+     * The UNIX_EDGEDRIVER SeleniumDriver.
+     */
     UNIX_EDGEDRIVER("msedgedriver"),
     
     /**
-	 * The WIN_GECKODRIVER SeleniumDriver.
-	 */
+     * The WIN_GECKODRIVER SeleniumDriver.
+     */
     WIN_GECKODRIVER("geckodriver.exe"),
     
     /**
-	 * The WIN_CHROMEDRIVER SeleniumDriver.
-	 */
+     * The WIN_CHROMEDRIVER SeleniumDriver.
+     */
     WIN_CHROMEDRIVER("chromedriver.exe"),
     
     /**
-	 * The WIN_EDGEDRIVER SeleniumDriver.
-	 */
+     * The WIN_EDGEDRIVER SeleniumDriver.
+     */
     WIN_EDGEDRIVER("msedgedriver.exe");
 
-	/**
-	 * The path of the SeleniumDriver.
-	 */
+    /**
+     * The path of the SeleniumDriver.
+     */
     private String path;
     
     /**

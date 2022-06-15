@@ -10,19 +10,19 @@ package app.frontend.utils;
  *
  */
 public enum FontPath {
-	
-	/**
-	 * The QUATTROCENTO_FONT_REGULAR font path.
-	 */
+    
+    /**
+     * The QUATTROCENTO_FONT_REGULAR font path.
+     */
     QUATTROCENTO_FONT_REGULAR("/assets/fonts/Quattrocento-Regular.ttf"),
     /**
-	 * The QUATTROCENTO_FONT_BOLD font path.
-	 */
+     * The QUATTROCENTO_FONT_BOLD font path.
+     */
     QUATTROCENTO_FONT_BOLD("/assets/fonts/Quattrocento-Bold.ttf");
 
-	/**
-	 * The font path.
-	 */
+    /**
+     * The font path.
+     */
     private String path;
 
     /**

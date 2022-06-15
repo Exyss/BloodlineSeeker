@@ -86,6 +86,8 @@ In case you want to compile your own version of this program, you can do it by u
 bash <path_to_repository>/compile.sh [options]
 ```
 
+**NOTE**: inside this script there are some escape sequences that may be incorrectly interpreted depending on the shell used to run it; if that's the case, you may be able to fix the issue by removing the `\"` sequences [in the compile function](https://github.com/Exyss/BloodlineSeeker/blob/main/unix_compile.sh#L71) and [in the run function](https://github.com/Exyss/BloodlineSeeker/blob/main/unix_compile.sh#L151).
+
 - on Windows, you can use the file named `win_compile.bat`:
 
 ```bash

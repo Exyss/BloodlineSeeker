@@ -20,10 +20,10 @@ import app.frontend.utils.RomanLiteral;
  * @version 1.0
  */
 public final class ScrollPaneController {
-	
-	/**
-	 * The width of the panel.
-	 */
+    
+    /**
+     * The width of the panel.
+     */
     private final int PANEL_WIDTH = 685;
     
     /**

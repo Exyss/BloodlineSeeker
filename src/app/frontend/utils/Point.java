@@ -10,10 +10,10 @@ package app.frontend.utils;
  *
  */
 public class Point {
-	
-	/**
-	 * The x-coordinates of the point.
-	 */
+    
+    /**
+     * The x-coordinates of the point.
+     */
     private int x;
     
     /**

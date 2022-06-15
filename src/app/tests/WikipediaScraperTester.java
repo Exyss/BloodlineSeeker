@@ -18,10 +18,10 @@ import app.backend.scraper.engine.WikipediaScraper;
  *
  */
 public class WikipediaScraperTester {
-	
-	/**
-	 * Number of tests.
-	 */
+    
+    /**
+     * Number of tests.
+     */
     private static final int TESTS_NUMBER = 3;
 
     /**
