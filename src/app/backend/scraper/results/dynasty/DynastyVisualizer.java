@@ -12,8 +12,10 @@ import java.util.ArrayList;
 
 import app.backend.scraper.results.member.Member;
 import app.backend.scraper.results.member.Relative;
+import app.frontend.utils.QuattrocentoFont;
 import guru.nidi.graphviz.attribute.Attributes;
 import guru.nidi.graphviz.attribute.Color;
+import guru.nidi.graphviz.attribute.Font;
 import guru.nidi.graphviz.attribute.Label;
 import guru.nidi.graphviz.attribute.Shape;
 import guru.nidi.graphviz.attribute.Style;
@@ -59,6 +61,11 @@ public final class DynastyVisualizer {
      * The font size of the node.
      */
     private static final String NODE_FONTSIZE = "20";
+
+    /**
+     * The font used for the graphs.
+     */
+    private static final String GRAPH_FONT = QuattrocentoFont.PLAIN_20.get().getName();
 
     //Measures are in inches
     
@@ -178,12 +185,12 @@ public final class DynastyVisualizer {
         switch (relative) {
             case CHILD:
                 MutableNode childNode = createMemberNode(memberRelative);
-                memberNode.addLink(to(childNode).with(Style.BOLD));
+                memberNode.addLink(to(childNode).with(Style.BOLD, Font.name(GRAPH_FONT)));
                 break;
                 
             case SPOUSE:
                 MutableNode spouseNode = createMemberNode(memberRelative);
-                memberNode.addLink(to(spouseNode).with(Style.DASHED, Color.RED));
+                memberNode.addLink(to(spouseNode).with(Style.DASHED, Color.RED, Font.name(GRAPH_FONT)));
                 break;
 
             default:
@@ -252,7 +259,10 @@ public final class DynastyVisualizer {
 
         // If it's a common member
         else{
-            return memberNode.add(Label.lines(member.getName()));
+            return memberNode.add(
+                Label.lines(member.getName()),
+                Font.name(GRAPH_FONT)
+            );
         }
 
         // Create the node
@@ -263,7 +273,8 @@ public final class DynastyVisualizer {
                 Attributes.attr("fillcolor", nodePrimaryColor),        //background color
                 Attributes.attr("fontcolor", nodeSecondaryColor),    //font color
                 Attributes.attr("color", nodeSecondaryColor),        //border color
-                Attributes.attr("fontsize", NODE_FONTSIZE)            //font size
+                Attributes.attr("fontsize", NODE_FONTSIZE),            //font size
+                Attributes.attr("fontname", GRAPH_FONT)                 //graph font
             )
         );
 

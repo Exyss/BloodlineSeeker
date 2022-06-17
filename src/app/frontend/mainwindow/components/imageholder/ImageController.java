@@ -1,5 +1,6 @@
 package app.frontend.mainwindow.components.imageholder;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
@@ -25,26 +26,32 @@ public class ImageController {
      * The vertical displacement used to find the center node of the graph.
      */
     private final static int VERTICAL_DISPLACEMENT = 30;
+
     /**
      * The horizontal displacement used to find the center node of the graph.
      */
-    private final static int HORIZONTAL_DISPLACEMENT = 10;
+    private final static int HORIZONTAL_DISPLACEMENT = 7;
+
     /**
      * The rectangle (node) backgrund color.
      */
-    private final static int RECTANGLE_BACKGROUND = -15571381;
+    private final static int RECTANGLE_BACKGROUND = new Color(18, 102, 75).getRGB();
+
     /**
      * The height of the rectangle (node).
      */
     private final static int RECTANGLE_HEIGHT = 34;
+
     /**
      * The graph margin.
      */
     private final static int GRAPH_MARGIN = 245;
+
     /**
      * The x shift.
      */
     private final static int UPPER_LEFT_X_SHIFT = 5;
+
     /**
      * The y shift.
      */
