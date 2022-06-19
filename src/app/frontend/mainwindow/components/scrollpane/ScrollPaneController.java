@@ -24,7 +24,7 @@ public final class ScrollPaneController {
     /**
      * The width of the panel.
      */
-    private final int PANEL_WIDTH = 685;
+    private final int PANEL_WIDTH = 650;
     
     /**
      * The panel height.
