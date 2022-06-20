@@ -30,7 +30,7 @@ public class ImageController {
     /**
      * The horizontal displacement used to find the center node of the graph.
      */
-    private final static int HORIZONTAL_DISPLACEMENT = 5;
+    private final static int HORIZONTAL_DISPLACEMENT = 7;
 
     /**
      * The rectangle (node) backgrund color.
